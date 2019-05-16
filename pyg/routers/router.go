@@ -18,6 +18,13 @@ func init() {
 
 	beego.Router("/index",&controllers.GoodsController{},"get:ShowIndex")
 
+	beego.Router("/user/logout",&controllers.UserController{},"get:Logout")
+	//展示用户中心页
+	beego.Router("/user/userCenterInfo",&controllers.UserController{},"get:ShowUserCenterInfo")
+	//收货地址页
+	beego.Router("/user/site",&controllers.UserController{},"get:ShowSite;post:HandleSite")
 
+	beego.Router("/index_sx",&controllers.GoodsController{},"get:ShowIndex_sx")
 
+	beego.Router("/goodsType",&controllers.GoodsController{},"get:ShowList")
     }

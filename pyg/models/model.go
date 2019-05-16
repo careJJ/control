@@ -87,12 +87,20 @@ type IndexPromotionBanner struct {//首页促销商品展示表
 	Image 	string						//活动图片
 	Index 	int  `orm:"default(0)"` //展示顺序
 }
-
+type TpshopCategory struct {
+	Id int
+	CateName string `orm:"default('')"`
+	Pid int `orm:"default(0)"`
+	IsShow int `orm:"default(1)"`
+	CreateTime int `orm:"null"`
+	UpdateTime int `orm:"null"`
+	DeleteTime int `orm:"null"`
+}
 
 
 func init(){
 	orm.RegisterDataBase("default","mysql","root:123456@tcp(127.0.0.1:3306)/pyg")
-	orm.RegisterModel(new(User),new(Address),new(IndexPromotionBanner),new(IndexTypeGoodsBanner),new(IndexGoodsBanner),new(GoodsImage),new(GoodsSKU),new(GoodsType),new(Goods))
+	orm.RegisterModel(new(User),new(Address),new(TpshopCategory),new(IndexPromotionBanner),new(IndexTypeGoodsBanner),new(IndexGoodsBanner),new(GoodsImage),new(GoodsSKU),new(GoodsType),new(Goods))
 	orm.RunSyncdb("default",false,true)
 
 }

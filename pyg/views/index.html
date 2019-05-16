@@ -28,13 +28,13 @@
                     {{if compare .name ""}}
                         <li class="f-item">请<a href="/login" target="_blank">登录</a>　<span><a href="/register" target="_blank">免费注册</a></span></li>
                     {{else}}
-                        <li class="f-item">{{.name}}　<span><a href="/logout" target="_blank">退出登录</a></span></li>
+                        <li class="f-item">{{.name}}　<span><a href="/user/logout" target="_blank">退出登录</a></span></li>
                     {{end}}
                     </ul>
                     <ul class="fr">
                         <li class="f-item">我的订单</li>
                         <li class="f-item space"></li>
-                        <li class="f-item"><a href="home.html" target="_blank">我的品优购</a></li>
+                        <li class="f-item"><a href="/user/userCenterInfo">我的品优购</a></li>
                         <li class="f-item space"></li>
                         <li class="f-item">品优购会员</li>
                         <li class="f-item space"></li>
@@ -109,23 +109,27 @@
                         </div>
                         <div class="sort">
                             <div class="all-sort-list2">
-                                <div class="item bo">
-                                    <h3><a href="">图书、音像、数字商品</a></h3>
+                            {{range .types}}
+                                <div class="item">
+                                    <h3><a href="">{{.t1.CateName}}</a></h3>
                                     <div class="item-list clearfix">
                                         <div class="subitem">
+                                        {{range .t3}}
                                             <dl class="fore1">
-                                                <dt><a href="">电子书</a></dt>
-                                                <dd><em><a href="">免费</a></em><em><a href="">小说</a></em><em><a href="">励志与成功</a></em><em><a href="">婚恋/两性</a></em><em><a href="">文学</a></em><em><a href="">经管</a></em><em><a href="">畅读VIP</a></em></dd>
+                                                <dt><a href="">{{.t22.CateName}}</a></dt>
+                                                <dd>{{range .t23}}<em><a href="">{{.CateName}}</a></em>{{end}}</dd>
                                             </dl>
+                                        {{end}}
                                         </div>
                                     </div>
                                 </div>
+                            {{end}}
                             </div>
                         </div>
                     </div>
                     <div class="yui3-u Center navArea">
                         <ul class="nav">
-                            <li class="f-item"><a href="index_sx.html">生鲜模块</a></li>
+                            <li class="f-item"><a href="/index_sx">生鲜模块</a></li>
                             <li class="f-item">美妆馆</li>
                             <li class="f-item">品优超市</li>
                             <li class="f-item">全球购</li>
@@ -157,7 +161,7 @@
                 <div class="carousel-inner">
                     <div class="active item">
                         <a href="http://baidu2.wypxj.com/">
-                            <img src="images/banner1.jpg"  />
+                            <img src="/static/images/banner1.jpg"  />
                         </a>
                     </div>
                     <div class="item">
