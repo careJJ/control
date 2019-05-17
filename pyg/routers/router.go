@@ -25,6 +25,10 @@ func init() {
 	beego.Router("/user/site",&controllers.UserController{},"get:ShowSite;post:HandleSite")
 
 	beego.Router("/index_sx",&controllers.GoodsController{},"get:ShowIndex_sx")
+	//商品详情
+	beego.Router("/goodsDetail",&controllers.GoodsController{},"get:ShowDetail")
 
 	beego.Router("/goodsType",&controllers.GoodsController{},"get:ShowList")
+
+	beego.Router("/addCart",&controllers.CartController{},"post:HandleAddCart")
     }

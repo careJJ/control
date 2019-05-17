@@ -104,6 +104,33 @@ func (this*GoodsController)ShowIndex_sx(){
 	this.TplName="index_sx.html"
 }
 
+func(this*GoodsController)ShowDetail(){
+	//获取数据
+	id,err := this.GetInt("Id")
+	//校验数据
+	if err != nil {
+		beego.Error("商品链接错误")
+		this.Redirect("/index_sx",302)
+		return
+	}
+	//处理数据
+	//根据id获取商品有关数据
+	o := orm.NewOrm()
+	var goodsSku models.GoodsSKU
+
+	//获取商品详情
+	o.QueryTable("GoodsSKU").RelatedSel("Goods","GoodsType").Filter("Id",id).One(&goodsSku)
+
+	//获取同一类型的新品推荐
+	var newGoods []models.GoodsSKU
+	qs := o.QueryTable("GoodsSKU").RelatedSel("GoodsType").Filter("GoodsType__Name",goodsSku.GoodsType.Name)
+	qs.OrderBy("-Time").Limit(2,0).All(&newGoods)
+	this.Data["newGoods"] = newGoods
+	//传递数据
+	this.Data["goodsSku"] = goodsSku
+	this.TplName = "detail.html"
+}
+
 //商品列表
 func (this*GoodsController)ShowList(){
 	//获取数据

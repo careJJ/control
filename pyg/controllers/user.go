@@ -23,7 +23,7 @@ func(this*UserController)ShowRegister(){
 	this.TplName = "register.html"
 }
 
-func RespFunc(this* UserController,resp map[string]interface{}){
+func RespFunc(this* beego.Controller,resp map[string]interface{}){
 	//3.把容器传递给前段
 	this.Data["json"] = resp
 	//4.指定传递方式
@@ -43,7 +43,7 @@ func(this*UserController)HandleSendMsg(){
 	phone := this.GetString("phone")
 	resp := make(map[string]interface{})
 
-	defer RespFunc(this,resp)
+	defer RespFunc(&this.Controller,resp)
 	//返回json格式数据
 	//校验数据
 	if phone == ""{
