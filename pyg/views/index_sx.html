@@ -71,7 +71,7 @@
     <div class="slide fl">
         <ul class="slide_pics">
         {{range .goodsBanners}}
-            <li><img src="/192.168.176.88:8888/{{.Image}}" alt="幻灯片"></li>
+            <li><img src="http://192.168.176.88:8888/{{.Image}}" alt="幻灯片"></li>
         {{end}}
         </ul>
         <div class="prev"></div>
@@ -80,7 +80,7 @@
     </div>
     <div class="adv fl">
     {{range .promotions}}
-        <a href="{{.Url}}"><img src="/192.168.176.88:8888/{{.Image}}"></a>
+        <a href="{{.Url}}"><img src="http://192.168.176.88:8888/{{.Image}}"></a>
     {{end}}
     </div>
 </div>

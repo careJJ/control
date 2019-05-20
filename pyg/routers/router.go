@@ -3,6 +3,7 @@ package routers
 import (
 	"pyg/controllers"
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/context"
 )
 
 func init() {
@@ -31,4 +32,23 @@ func init() {
 	beego.Router("/goodsType",&controllers.GoodsController{},"get:ShowList")
 
 	beego.Router("/addCart",&controllers.CartController{},"post:HandleAddCart")
+
+	beego.Router("/user/showCart",&controllers.CartController{},"get:ShowCart")
+
+	beego.Router("/upCart",&controllers.CartController{},"post:HandleUpCart")
+	beego.Router("/deleteCart",&controllers.CartController{},"post:HandDeleteCart")
+
+
+
     }
+
+
+
+func guolvFunc(ctx*context.Context) {
+	//过滤校验
+	name := ctx.Input.Session("name")
+	if name == nil {
+		ctx.Redirect(302, "/login")
+		return
+	}
+}

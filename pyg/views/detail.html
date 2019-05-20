@@ -78,7 +78,7 @@
 </div>
 
 <div class="goods_detail_con clearfix">
-    <div class="goods_detail_pic fl"><img src="192.168.176.88:8888/{{.goodsSku.Image}}"></div>
+    <div class="goods_detail_pic fl"><img src="http://192.168.176.88:8888/{{.goodsSku.Image}}"></div>
 
     <div class="goods_detail_list fr">
         <h3>{{.goodsSku.Name}}</h3>
@@ -95,7 +95,7 @@
                 <a href="javascript:;" class="minus fr">-</a>
             </div>
         </div>
-        <div class="total">总价：<em>16.80元</em></div>
+        <div class="total">总价：<em>16.8</em></div>
         <div class="operate_btn">
             <a href="javascript:;" class="buy_btn">立即购买</a>
             <a href="javascript:;" class="add_cart" id="add_cart">加入购物车</a>
@@ -108,13 +108,13 @@
         <div class="new_goods">
             <h3>新品推荐</h3>
             <ul>
-                {{range .newGoods}}
+            {{range .newGoods}}
                 <li>
-                    <a href="/goodsDetail?Id={{.Id}}"><img src="/192.168.176.88:8888/{{.Image}}"></a>
+                    <a href="/goodsDetail?Id={{.Id}}"><img src="http://192.168.176.88:8888/{{.Image}}"></a>
                     <h4><a href="/goodsDetail?Id={{.Id}}">{{.Name}}</a></h4>
                     <div class="prize">￥{{.Price}}</div>
                 </li>
-                {{end}}
+            {{end}}
             </ul>
         </div>
     </div>
@@ -128,9 +128,7 @@
         <div class="tab_content">
             <dl>
                 <dt>商品详情：</dt>
-                <dd>草莓采摘园位于北京大兴区 庞各庄镇四各庄村
-                    ，每年1月-6月面向北京以及周围城市提供新鲜草莓采摘和精品礼盒装草莓，草莓品种多样丰富，个大香甜。所有草莓均严格按照有机标准培育，不使用任何化肥和农药。草莓在采摘期间免洗可以直接食用。欢迎喜欢草莓的市民前来采摘，也欢迎各大单位选购精品有机草莓礼盒，有机草莓礼盒是亲朋馈赠、福利送礼的最佳选择。
-                </dd>
+                <dd>{{.goodsSku.Goods.Detail}}</dd>
             </dl>
         </div>
 
@@ -154,7 +152,7 @@
 </div>
 <div class="add_jump"></div>
 
-<script type="text/javascript" src="/static/jquery-1.12.2.js"></script>
+<script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
     var $add_x = $('#add_cart').offset().top;
     var $add_y = $('#add_cart').offset().left;
@@ -165,11 +163,11 @@
     $(".add_jump").css({'left': $add_y + 80, 'top': $add_x + 10, 'display': 'block'})
     $('#add_cart').click(function () {
         //添加购物车ajax,自定义属性sttr  原有属性用prop
-        goodId=$('.num_show').attr("goodId")
-    num=$('.num_show').val()
-        param={"goodId":goodId,"num":num}
-        $post("/addCart",param,function (data) {
-            if (data.errno!=5){
+        goodsId = $('.num_show').attr("goodsId")
+        num = $('.num_show').val()
+        param = {"goodsId": goodsId, "num": num}
+        $.post("/addCart", param, function (data) {
+            if (data.errno != 5) {
                 alert(data.errmsg)
             }
         })
@@ -184,46 +182,52 @@
                         $('#show_count').html(2);
                     });
                 });
-        function CalTotalPrice() {
-            //單價
-            price = $('.show_pirze').children('em').text()
-            price = parseFloat(price)
-            //数量
-            count = $('.num_show').val()
-            count = parseInt(count)
-            $('.total').children('em').text(totalPrice.toFixed(2) + '元')
+
+    })
+
+    function CalTotalPrice() {
+        //單價
+        price = $('.show_pirze').children('em').text()
+        price = parseFloat(price)
+        //数量
+        count = $('.num_show').val()
+        count = parseInt(count)
+        totalPrice = price * count
+        $('.total').children('em').text(totalPrice.toFixed(2) + '元')
+    }
+
+    CalTotalPrice()
+
+
+    $('.add').click(function () {
+        num = $('.num_show').val()
+        num = parseInt(num)
+        num += 1
+        $('.num_show').val(num)
+        CalTotalPrice()
+
+    })
+
+
+    $('.minus').click(function () {
+        num = $('.num_show').val()
+        num = parseInt(num) - 1
+        if (num <= 1) {
+            num = 1
         }
+        $('.num_show').val(num)
         CalTotalPrice()
+    })
 
 
-        $('.add').click(function () {
-            num = $('.num_show').val()
-            num = parseInt(num)
-            num += 1
-            $('.num_show').val(num)
-
-        })
-            CalTotalPrice()
-
-
-        $('.minus').click(function () {
-            num=$('.num_show').val()
-            num=parseInt(num)-1
-            if (num<=1){
-                num=1
-            }
-            $('.num_show').val(num)
-        })
-        CalTotalPrice()
-
-        $('.num_show').blur(function () {
-            num=$(this).val()
-            //校验数据  判断是否为数字，是否都是空格，是否小于0
-            if  (isNaN(num)||num.trim().length==0 ||parseInt(num)<=0){
-                num=1
-            }
+    $('.num_show').blur(function () {
+        num = $(this).val()
+        //校验数据  判断是否为数字，是否都是空格，是否小于0
+        if (isNaN(num) || num.trim().length == 0 || parseInt(num) <= 0) {
+            num = 1
             $(this).val(num)
-        })
+        }
+
         CalTotalPrice()
     })
 </script>
