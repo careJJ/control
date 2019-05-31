@@ -1,10 +1,22 @@
 package net
 
+import "zin/zinface"
+
 type Message struct {
 	Id uint32
 	Datalen uint32
 	Data []byte
 }
+
+//提供一个创建Message的方法
+func NewMsgPackage(id uint32,data []byte)zinface.IMessage{
+	return &Message{
+		Id:id,
+		Datalen:uint32(len(data)),
+		Data:data,
+	}
+}
+
 
 
 func (m *Message)GetMsgId() uint32{
