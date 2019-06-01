@@ -3,7 +3,7 @@
   "Port": 8999,
   "Name": "MMO Game Server",
   "MaxPackageSize": 4096,
-  "WorkerPoolSize":10,
+  "WorkerPoolSize":100,
   "MaxWorkerTaskLen":4096,
-  "MaxConn":1000
+  "MaxConn":100
 }

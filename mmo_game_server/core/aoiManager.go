@@ -23,6 +23,7 @@ type AOIManager struct{
 func (m *AOIManager) GridWidth() int{
 	return (m.MaxX-m.MinX) / m.CntsX
 }
+
 //得到每个格子在Y轴方向高度
 func (m *AOIManager) GridHeight() int{
 	return (m.MaxY-m.MinY) / m.CntsY
@@ -55,6 +56,7 @@ func NewAOIManager(minX, maxX, cntsX, minY, maxY, cntsY int) *AOIManager{
 	}
 	return aoiMgr
 }
+
 //打印当前的地图信息
 func (m *AOIManager)String()string{
 	s := fmt.Sprintf("AOIManager : \n MinX:%d,MaxX:%d,cntsX:%d, minY:%d, maxY:%d,cntsY:%d, Grids inManager:\n",
@@ -65,11 +67,18 @@ func (m *AOIManager)String()string{
 	}
 	return s
 }
+
 //添加一个playerID到一个AOI格子中
 func (m *AOIManager) AddPidToGrid(pID,gID int){
 	m.grids[gID].Add(pID,nil)
-
 }
+
+//移除一个PlayerID 从一个AOI区域中
+func (m *AOIManager) RemovePidFromGrid(pID, gID int) {
+	m.grids[gID].Remove(pID)
+}
+
+
 //通过格子ID获取当前格子的全部PlayerID
 func(m *AOIManager) GetPidsByGid(gID int) (playerIDs []int){
 	playerIDs=m.grids[gID].GetPlayerIDs()

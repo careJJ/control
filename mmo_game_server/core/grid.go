@@ -40,6 +40,16 @@ func (g *Grid) Add(playerID int,player interface{}){
 	defer g.pIDLock.Unlock()
 	g.playerIDs[playerID]=player
 }
+
+//从格子中删除一个玩家
+func (g *Grid) Remove(playerID int) {
+	g.pIDLock.Lock()
+	defer g.pIDLock.Unlock()
+
+	delete(g.playerIDs, playerID)
+}
+
+
 //得到当前格子所有玩家的ID
 func (g *Grid) GetPlayerIDs() (playerIDs []int){
 	g.pIDLock.Lock()
