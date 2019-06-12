@@ -1,0 +1,17 @@
+
+syntax = "proto3";
+
+package myproto;
+
+//服务
+service hello{
+rpc GetAdd(In)returns(Out);
+}
+
+message In{
+int64 num = 1;
+}
+
+message Out{
+int64 size = 1;
+}
