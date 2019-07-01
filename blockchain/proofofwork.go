@@ -20,7 +20,7 @@ func NewProofOfWork(block *Block) *ProofOfWork{
 	}
 	//难度值先写死，不去推导，后面补充推导方式
 	//64位的16进制数: 64 * 4 = 256
-	targetStr := "0000010000000000000000000000000000000000000000000000000000000000"
+	targetStr := "0001000000000000000000000000000000000000000000000000000000000000"
 	tmpBigInt := new(big.Int)
 	//将我们的难度值赋值给bigint
 	tmpBigInt.SetString(targetStr,16)
@@ -70,7 +70,7 @@ func (pow *ProofOfWork)PrepareData(nonce uint64)[]byte{
 		uintToByte(b.Bits),
 		uintToByte(nonce),
 		// b.Hash, //它不应该参与哈希运算
-		b.Data,
+		//b.Data,
 
 	}
 	//使用join方法，将二维切片转为1维切片

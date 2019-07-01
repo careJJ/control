@@ -1,38 +1,37 @@
 package main
 
-import (
-	"fmt"
-	//"time"
-
-)
 
 //打印区块链
 func main() {
+	cli := CLI{}
+	cli.Run()
+
+
 	//bc := NewBlockChain()
 	//变量区块数据
-	err := CreateBlockChain()
-	fmt.Println("err:", err)
-
-	//获取区块链实例
-	bc, err := GetBlockChainInstance()
-	defer bc.db.Close()
-
-	if err != nil {
-		fmt.Println("GetBlockChainInstance, err :", err)
-		return
-	}
-
-	err = bc.AddBlock("hello world!!!!!")
-	if err != nil {
-		fmt.Println("AddBlock, err :", err)
-		return
-	}
-
-	err = bc.AddBlock("hello itast!!!!!")
-	if err != nil {
-		fmt.Println("AddBlock, err :", err)
-		return
-	}
+	//err := CreateBlockChain()
+	//fmt.Println("err:", err)
+	//
+	////获取区块链实例
+	//bc, err := GetBlockChainInstance()
+	//defer bc.db.Close()
+	//
+	//if err != nil {
+	//	fmt.Println("GetBlockChainInstance, err :", err)
+	//	return
+	//}
+	//
+	//err = bc.AddBlock("hello world!!!!!")
+	//if err != nil {
+	//	fmt.Println("AddBlock, err :", err)
+	//	return
+	//}
+	//
+	//err = bc.AddBlock("hello itast!!!!!")
+	//if err != nil {
+	//	fmt.Println("AddBlock, err :", err)
+	//	return
+	//}
 
 	//bc.AddBlock("26号btc暴涨20%")
 	//time.Sleep(1*time.Second)

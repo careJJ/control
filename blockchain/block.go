@@ -2,10 +2,11 @@ package main
 
 import (
 	"bytes"
-	//"crypto/sha256"
+	"crypto/sha256"
 	"time"
 	"encoding/gob"
 	"fmt"
+
 )
 
 //定义区块结构
@@ -34,13 +35,16 @@ type Block struct {
 	Hash []byte
 
 	//数据
-	Data []byte
+	//Data []byte
+	//一个区块可以有很多交易(交易的集合)
+	Transactions []*Transaction
 }
 
 //创建一个区块（提供一个方法）
 //输入：数据，前区块的哈希值
 //输出：区块
-func NewBlock(data string, prevHash []byte) *Block {
+//func NewBlock(data string, prevHash []byte) *Block {
+func NewBlock(txs []*Transaction, prevHash []byte) *Block {
 	b := Block{
 		Version:    0,
 		PrevHash:   prevHash,
@@ -50,8 +54,13 @@ func NewBlock(data string, prevHash []byte) *Block {
 		Bits:  0, //随意写的
 		Nonce: 0, //随意写的
 		Hash:  nil,
-		Data:  []byte(data),
+		//Data:  []byte(data),
+		Transactions: txs,
 	}
+	//填充梅克尔根值
+	b.HashTransactionMerkleRoot()
+	fmt.Printf("merkleRoot:%x\n", b.MerkleRoot)
+
 
 	//计算哈希值
 	//b.setHash()
@@ -120,4 +129,24 @@ func Deserialize(src []byte) *Block{
 	return &block
 
 
+}
+
+
+//简易梅克尔根，把所有的交易拼接到一起，做哈希处理，最终赋值给block.MerKleRoot
+func (block *Block) HashTransactionMerkleRoot() {
+	//遍历所有的交易，求出交易哈希值
+
+	var info [][]byte
+
+	for _, tx := range block.Transactions {
+		//将所有的哈希值拼接到一起，做sha256处理
+		txHashValue := tx.TXID //[]byte
+		info = append(info, txHashValue)
+	}
+
+	value := bytes.Join(info, []byte{})
+	hash := sha256.Sum256(value)
+
+	//将hash值赋值MerKleRoot字段
+	block.MerkleRoot = hash[:]
 }
