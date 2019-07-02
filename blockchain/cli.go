@@ -76,6 +76,9 @@ func (cli *CLI) Run() {
 	case "createWallet":
 		fmt.Println("创建钱包命令被调用!")
 		cli.createWallet()
+	case "listAddress":
+		fmt.Println("创建打印地址命令被调用")
+		cli.listAddress()
 	default:
 		fmt.Println("输入参数无效，请检查!")
 		fmt.Println(Usage)

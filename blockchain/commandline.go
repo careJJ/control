@@ -129,3 +129,17 @@ func (cli *CLI) createWallet() {
 	fmt.Println("新钱包地址为:", address)
 }
 
+
+//打印所有地址
+func (cli *CLI)listAddress(){
+	wm:=NewWalletManager()
+	if wm ==nil{
+		fmt.Println("NewWalletManager 失败")
+		return
+	}
+	addresses:=wm.listAddresses()
+	for _,address:=range addresses{
+		fmt.Printf("%s\n",address)
+	}
+}
+
