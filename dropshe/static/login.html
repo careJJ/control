@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)http://app.dropshe.com/login -->
+<html class="js login-bg sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers" lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Login - Dropshe</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="http://app.dropshe.com/static/home/site.webmanifest">
+<link rel="apple-touch-icon" href="http://app.dropshe.com/static/home/icon.png">
+<link rel="shortcut icon" type="image/png" href="http://app.dropshe.com/static/home/favicon.ico">
+<!-- Place favicon.ico in the root directory -->
+
+<link rel="stylesheet" href="./Login/normalize.css">
+<link rel="stylesheet" href="./Login/main.css">
+<link rel="stylesheet" href="./Login/style.css">
+<link href="./Login/font-awesome.min.css" rel="stylesheet">
+
+<!-- 提示插件 -->
+<link rel="stylesheet" type="text/css" href="./Login/animate.css">
+<link rel="stylesheet" href="./Login/noticejs.css">
+<script src="./Login/notice.js"></script>
+
+<script src="./Login/modernizr-3.7.1.min.js"></script>
+<script src="./Login/jquery-3.4.1.min.js"></script>
+<script src="./Login/plugins.js"></script>
+<script src="./Login/main.js"></script>
+<script src="./Login/common.js"></script>
+
+
+    <!--<link rel="stylesheet/less" href="/static/home/less/style.less" />
+    <script type="text/javascript" src="/static/home/js/less.min.js"></script>-->
+
+    <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+<!--[if IE]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]
+
+		Add your site or application content here -->
+<div class="login login-box" id="app">
+    <div class="login-logo">
+        <img src="./Login/logo.svg" style="width: 330px; height: 65px;">
+    </div>
+    <div class="login-content">
+        <h1 class="title">Log In</h1>
+<!--        <div v-if="tips != ''">
+            <p v-text="tips" style="color: #F08118;font-weight: bold;"></p>
+        </div>-->
+        <form class="login-form">
+            <div class="login-input has-icon">
+                <input type="email" name="email" class="form-control email" placeholder="Email">
+<!--                <span class="icon icon-edit"></span>-->
+            </div>
+            <div class="login-input has-icon">
+                <input type="password" name="password" class="form-control password" placeholder="Password">
+<!--                <span class="icon icon-pw"></span>-->
+            </div>
+
+            <div class="handle-box clearfix">
+                <a class="reset-pw" href="http://app.dropshe.com/forgot_password">Forgot Password?</a>
+            </div>
+            <button type="button" class="btn btn-block btn-bg-main login-button">Log In</button>
+
+            <div class="login-text">OR</div>
+            <a href="http://app.dropshe.com/login/oauth" class="btn btn-block secondary-button"><img class="icon" src="./Login/icon-google.png">Log in with Google Account</a>
+            <div class="login-foot">Don't have an account?
+                <a class="action" href="http://app.dropshe.com/register">register</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).keyup(function(event){
+        let email = $(".email").val();
+        let pass  = $(".password").val();
+        if (email == '' || pass == '') {
+            return false;
+        }
+
+        if(event.keyCode == 13){
+            $(".login-button").trigger("click");
+        }
+    });
+
+    $('.login-button').on("click", function() {
+        let email = $(".email").val();
+        let password = $(".password").val();
+        if (email == '') {
+            window.errors('Email is required', 'email');
+            return false;
+        }
+
+        if (password == '') {
+            window.errors('Password is required', 'password');
+            return false;
+        }
+
+        $(this).addClass("btn-loading");
+        $(this).attr('disabled',true);
+        $.ajax({
+            type:"post",
+            url: "/login/index/index",
+            data: {
+                email: email,
+                password: password,
+            },
+            success: function(data){
+                // console.log(data);
+                if(data.code == 0){
+                    $(".login-button").removeClass("btn-loading");
+                    $(".login-button").attr('disabled',false);
+                    window.errors(data.msg,data.input_name);
+                } else {
+                    setTimeout(function () {
+                        $(".login-button").removeClass("btn-loading");
+                        $(".login-button").attr('disabled',false);
+                        window.location.href="http://app.dropshe.com/hub";
+                    },1000);
+                }
+            }
+        });
+    });
+</script>
+
+
+</body></html>
