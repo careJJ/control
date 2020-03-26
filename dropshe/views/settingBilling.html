@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://app.dropshe.com/hub/setting/setting_billing -->
+<html class="js sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers" lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Dropshe</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="http://app.dropshe.com/static/home/site.webmanifest">
+<link rel="apple-touch-icon" href="http://app.dropshe.com/static/home/icon.png">
+<link rel="shortcut icon" type="image/png" href="http://app.dropshe.com/static/home/favicon.ico">
+<!-- Place favicon.ico in the root directory -->
+
+<link rel="stylesheet" href="/static/settingBilling/normalize.css">
+<link rel="stylesheet" href="/static/settingBilling/main.css">
+<link rel="stylesheet" href="/static/settingBilling/style.css">
+<link href="/static/settingBilling/font-awesome.min.css" rel="stylesheet">
+
+<!-- 提示插件 -->
+<link rel="stylesheet" type="text/css" href="/static/settingBilling/animate.css">
+<link rel="stylesheet" href="/static/settingBilling/noticejs.css">
+<script type="text/javascript" async="" src="/static/settingBilling/p6b7wznf"></script><script src="/static/settingBilling/notice.js"></script>
+
+<script src="/static/settingBilling/modernizr-3.7.1.min.js"></script>
+<script src="/static/settingBilling/jquery-3.4.1.min.js"></script>
+<script src="/static/settingBilling/plugins.js"></script>
+<script src="/static/settingBilling/main.js"></script>
+<script src="/static/settingBilling/common.js"></script>
+
+    <!--<link rel="stylesheet/less" href="../less/style.less" />
+    <script type="text/javascript" src="../js/less.min.js"></script>-->
+    <style>
+        .StripeElement {
+            box-sizing: border-box;
+
+            height: 40px;
+
+            padding: 10px 12px;
+
+            border: 1px solid transparent;
+            border-radius: 4px;
+            background-color: white;
+
+            box-shadow: 0 1px 3px 0 #e6ebf1;
+            -webkit-transition: box-shadow 150ms ease;
+            transition: box-shadow 150ms ease;
+        }
+
+        .StripeElement--focus {
+            box-shadow: 0 1px 3px 0 #cfd7df;
+        }
+
+        .StripeElement--invalid {
+            border-color: #fa755a;
+        }
+
+        .StripeElement--webkit-autofill {
+            background-color: #fefde5 !important;
+        }
+    </style>
+    <meta name="theme-color" content="#fafafa">
+<script>
+    window.intercomSettings = {
+        app_id: "p6b7wznf",
+        name: "Aierce Zheng", // Full name
+        email: "udbmnmidtf@gmail.com", // Email address
+        created_at: "1574039860" // Signup date as a Unix timestamp
+    };
+</script><script>
+    (function(){
+        var w=window;
+        var ic = w.Intercom;
+        if(typeof ic==="function")
+        {
+            ic('reattach_activator');
+            ic('update',w.intercomSettings);
+        }
+        else {
+            var d=document;
+            var i=function(){ i.c(arguments); };
+            i.q=[];i.c=function(args){ i.q.push(args); };
+            w.Intercom=i;var l=function(){
+                var s=d.createElement('script');
+                s.type='text/javascript';
+                s.async=true;
+                s.src='https://widget.intercom.io/widget/p6b7wznf';
+                var x=d.getElementsByTagName('script')[0];
+                x.parentNode.insertBefore(s,x);
+            };
+            if(w.attachEvent){
+                w.attachEvent('onload',l);
+            } else {
+                w.addEventListener('load',l,false);
+            }
+        }
+    })();
+</script></head>
+
+
+
+<body>
+    <!--[if IE]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+    <!-- Add your site or application content here -->
+
+    <!-- Add your site or application content here -->
+<div class="drop-header">
+    <div class="logo-box">
+        <a href="http://app.dropshe.com/dashboard"><img src="/static/settingBilling/logo.svg"></a>
+    </div>
+    <div class="head-nav">
+        <ul class="nav-list">
+            <li class="nav-item ">
+                <a href="/dashboard"><span class="tit">Dashboard</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/sourcing"><span class="tit">Sourcing</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/hub"><span class="tit">HUB</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/product"><span class="tit">Products</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/order/drop"><span class="tit">Orders</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/stores"><span class="tit">Stores</span></a>
+            </li>
+        </ul>
+    </div>
+    <div class="head-right">
+        <a class="notification-link" href="/notification">
+                        <i class="icon icon-notification"></i>
+        </a>
+        <div class="user dropdown">
+            <a class="dropdown-hd" href="javascript:void(0);">
+
+                   
+                <img src="/static/settingBilling/default.jpg" class="img">
+                <span class="user-name">{{.user.FirstName}}  {{.user.LastName}}</span>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="/account/general"><i class="icon"></i>Settings</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="icon icon-help"></i>Help Center</a>
+                </li>
+                <li>
+                    <a href="/tickets"><i class="icon icon-ticket"></i>Ticket</a>
+                </li>
+                <li>
+                    <a href="/login/index/logout"><i class="icon icon-logout"></i>Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="drop-main">
+        <div class="drop-content">
+            <div class="wrapper main-box">
+                <div class="main-title">Account Settings</div>
+                <div id="myTab" class="main-cont tab">
+                    <div class="tab-nav">
+                        <div class="tab-nav-list">
+                            <a class="tab-nav-item" href="/account/general">General</a>
+                            <a class="tab-nav-item" href="/account/password">Email &amp; Password</a>
+                            <a class="tab-nav-item actived" href="/account/billing">Billing</a>
+                            <a class="tab-nav-item" href="/account/payment">Payment Methods</a>
+                            <a class="tab-nav-item" href="/account/invoices">Invoices</a>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div style="    color: #666666;
+                        font-size: 18px;
+                        line-height: 22px;
+                        padding: 44px 0 43px 0;
+                        border-bottom: 1px solid #f7f7f7; margin: 35px 90px;">
+                            <div style="margin-bottom: 25px;"> <label for="">The card number:</label> <input type="text" id="card_number" name="card_number" value=""> </div>
+                            <div style="    margin-top: 35px;">
+                                <label for="">Expiry of Date:&nbsp;&nbsp;&nbsp; </label><input type="text" style="width:80px" id="year" name="year" value="">&nbsp;Year &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="width:80px" id="month" name="month" value=""> Month&nbsp;&nbsp;&nbsp;&nbsp;  CVV: <input type="text" style="width:50px" id="CVV" name="CVV" value="">
+                            </div>
+                        </div>
+                        <div class="tab-pane actived">
+                            <form class="setting-form">
+                                <div class="" id="main" style="width: 600px;margin-top: 45px;">
+                                    <h3>Please enter your credit card number</h3>
+                                    <p class="tip-text" style="padding: 10px 0 20px 0;">
+                                        The payment system is provided by <strong>Stripe</strong>.
+                                        Your credit card information will not be collected or stored on our website.
+                                    </p>
+                                    <!-- <div id="card-element"></div> -->
+                                    <div id="card-errors" role="alert"></div>
+                                </div>
+                                <br>
+                                <div class="btn-box tl" style="padding: 40px 0 10px 0;">
+                                    <button type="button" class="btn btn-bg-main btn-big" id="apply" >Apply Credit
+                                        Card</button>
+                                    <object data="/static/settingBilling/loding.svg" type="image/svg+xml" style="display: none" id="loading_svg">Loding...</object>
+                                </div>
+                                <!-- <p style="color: #797979;">You may see a Temporary Authorization for $1 on your
+                                    statement. But this charge will disappear latterly.</p> -->
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="drop-foot">Copyright 2019, Dropshipping. All rights reserved.</div>
+    </div>
+
+
+<script src="/static/settingBilling/saved_resource"></script>
+<style>
+#card_number,#month,#year,#CVV{
+    height: 45px;
+    padding: 11px 11px;
+    font-size: 14px;
+    line-height: 21px;
+    color: #666666;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #d9e0ea;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -moz-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+
+}
+</style>
+<script>
+    // var stripe = Stripe('pk_live_tfYrZXn9mUgI1qczKEQOoGZ300kwweNKJJ');
+    //
+    // var elements = stripe.elements();
+
+    // var card = elements.create('card');
+    // card.mount('#card-element');
+    // card.addEventListener('change', function (event) {
+    //     if (event.error) {
+    //         showError(event.error.message);
+    //     } else {
+    //         showError('');
+    //     }
+    // });
+    $('#apply').click(function (apply) {
+
+        $('#apply').hide();
+        $('#loading_svg').show();
+        $.ajax({
+                type:"post",
+                url:'/setting/setting_billing',
+                data:{
+                    card_number:$("input[name='card_number']").val(),   //卡号
+                    month:$("input[name='month']").val(),   //月份
+                    year:$("input[name='year']").val(),   //年期
+                    CVV:$("input[name='CVV']").val()   //cvn
+                },
+                success:function(data){
+                    $('#apply').show();
+                    $('#loading_svg').hide();
+                    // res = JSON.parse(res);
+                    if(data.errno == 1){
+                        //success
+                        // window.location.herf="/account/billing";
+                        setTimeout(function () {
+
+                            window.location.href="/account/billing";
+                        },1000);
+                        // return;
+                    }
+                    if(data.errno==2){
+                        alert(data.errmsg);
+                    }
+                    if(data.errno==3){
+                        alert(data.errmsg);
+                    }
+                    // showError(data.errmsg);
+                },
+                // error:function(data){
+                //     if(data.errno==2){
+                //         alert(data.errmsg);
+                //         // showError(data.errmsg);
+                //     }
+                //     console.log(data);
+                //     $('#apply').show();
+                //     $('#loading_svg').hide();
+                // }
+            })
+        
+        // stripe.createToken(card).then(function (result) {
+        //     if (result.error) {
+        //         $('#main').removeClass('load-indicator').removeClass('loading');
+        //         var errorElement = document.getElementById('card-errors');
+        //         errorElement.textContent = result.error.message;
+        //         $('#apply').show();
+        //         $('#loading_svg').hide();
+        //     }
+        //     var id = result.token.id;
+            
+           
+        // })
+    })
+    // )
+
+    function showError(error) {
+        var displayError = document.getElementById('card-errors');
+        displayError.textContent = error;
+    }
+</script><iframe frameborder="0" allowtransparency="true" scrolling="no" name="__privateStripeController1" allowpaymentrequest="true" src="/static/settingBilling/controller-40ee2e35c0e13e2e072320469122a918.html" aria-hidden="true" tabindex="-1" style="border: none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; visibility: hidden !important; position: fixed !important; height: 1px !important; pointer-events: none !important; user-select: none !important;"></iframe>
+
+<iframe frameborder="0" allowtransparency="true" scrolling="no" name="__privateStripeMetricsController0" allowpaymentrequest="true" src="/static/settingBilling/m-outer-a0f6c1465b8d9aab778cf2913d1d3c86.html" aria-hidden="true" tabindex="-1" style="border: none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; visibility: hidden !important; position: fixed !important; height: 1px !important; pointer-events: none !important; user-select: none !important;"></iframe></body></html>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://app.dropshe.com/order/drop -->
+<html class="js sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers" lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Stores orders - Dropshe</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="http://app.dropshe.com/static/home/site.webmanifest">
+<link rel="apple-touch-icon" href="http://app.dropshe.com/static/home/icon.png">
+<link rel="shortcut icon" type="image/png" href="http://app.dropshe.com/static/home/favicon.ico">
+<!-- Place favicon.ico in the root directory -->
+
+<link rel="stylesheet" href="/static/orders/normalize.css">
+<link rel="stylesheet" href="/static/orders/main.css">
+<link rel="stylesheet" href="/static/orders/style.css">
+<link href="/static/orders/font-awesome.min.css" rel="stylesheet">
+
+<!-- 提示插件 -->
+<link rel="stylesheet" type="text/css" href="/static/orders/animate.css">
+<link rel="stylesheet" href="/static/orders/noticejs.css">
+<script src="/static/orders/notice.js"></script>
+
+<script src="/static/orders/modernizr-3.7.1.min.js"></script>
+<script src="/static/orders/jquery-3.4.1.min.js"></script>
+<script src="/static/orders/plugins.js"></script>
+<script src="/static/orders/main.js"></script>
+<script src="/static/orders/common.js"></script>
+
+    <link rel="stylesheet" href="/static/orders/foundation-datepicker.min.css">
+    <link rel="stylesheet" href="/static/orders/amaran.min.css">
+    <script type="text/javascript" src="/static/orders/foundation-datepicker.min.js"></script>
+    <script src="/static/orders/moment.js"></script>
+
+
+    <style>
+        .toolbar {
+            margin-bottom: 35px;
+        }
+    </style>
+    <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+    <!--[if IE]>
+	    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+	  	<![endif]-->
+
+    <!-- Add your site or application content here -->
+    <!-- Add your site or application content here -->
+<div class="drop-header">
+    <div class="logo-box">
+        <a href="http://app.dropshe.com/dashboard"><img src="/static/orders/logo.svg"></a>
+    </div>
+    <div class="head-nav">
+        <ul class="nav-list">
+            <li class="nav-item ">
+                <a href="http://app.dropshe.com/dashboard"><span class="tit">Dashboard</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="http://app.dropshe.com/sourcing"><span class="tit">Sourcing</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="http://app.dropshe.com/hub"><span class="tit">HUB</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="http://app.dropshe.com/product"><span class="tit">Products</span></a>
+            </li>
+            <li class="nav-item active">
+                <a href="http://app.dropshe.com/order/drop"><span class="tit">Orders</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="http://app.dropshe.com/stores"><span class="tit">Stores</span></a>
+            </li>
+        </ul>
+    </div>
+    <div class="head-right">
+        <a class="notification-link" href="http://app.dropshe.com/notification">
+                        <i class="icon icon-notification"></i>
+        </a>
+        <div class="user dropdown">
+            <a class="dropdown-hd" href="javascript:void(0);">
+
+                   
+                <img src="/static/orders/default.jpg" class="img">
+                <span class="user-name">{{.user.FirstName}}  {{.user.LastName}}</span>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="http://app.dropshe.com/accout/general"><i class="icon"></i>Settings</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="icon icon-help"></i>Help Center</a>
+                </li>
+                <li>
+                    <a href="http://app.dropshe.com/tickets"><i class="icon icon-ticket"></i>Ticket</a>
+                </li>
+                <li>
+                    <a href="http://app.dropshe.com/login/index/logout"><i class="icon icon-logout"></i>Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+    <div class="drop-menu">
+        <div class="menu-box">
+            <div class="menu-tit">Orders</div>
+            <div class="panel-list">
+                <div class="panel active">
+                    <a href="http://app.dropshe.com/order/drop" class="panel-head"><span class="icon icon-menu-stores-orders"></span><span class="tit">Stores orders</span></a>
+                </div>
+                <div class="panel">
+                    <a href="http://app.dropshe.com/order/sample" class="panel-head"><span class="icon icon-menu-samples-orders"></span><span class="tit">Samples orders</span></a>
+                </div>
+                <!--<div class="panel">
+                    <a href="javascript:void(0);" class="panel-head"><span
+                            class="icon icon-menu-inventory-orders"></span><span class="tit">Inventory orders</span></a>
+                </div>-->
+            </div>
+        </div>
+    </div>
+    <div class="drop-main">
+        <div class="drop-content">
+                <div class="toolbar">
+                    <div class="tool-item serach-box">
+                        <input type="text" name="keywords" class="form-control serach-input" placeholder="Enter here..." value="" style="color:#000">
+                    </div>
+                    <div class="tool-item datepicker-box">
+                        <input class="form-control datepicker-input tolocaltime" type="text" value="" readonly="" placeholder="Start time" data="" onchange="datepickerToTimestamp(this,'start_time')">
+                        <input type="hidden" name="start_time" id="start_time" value="">
+                    </div>
+                    <div class="tool-item datepicker-box">
+                        <input class="form-control datepicker-input tolocaltime" type="text" value="" readonly="" placeholder="End time" data="" onchange="atepickerToTimestamp(this,'end_time')">
+                        <input type="hidden" name="end_time" id="end_time" value="">
+                    </div>
+                    <div class="tool-item" style="width: 160px; ">
+                        <!--<select class="form-control js-example-basic-single" name="search_type">
+                            <option value="title" >Product Title</option>
+                            <option value="sku" >SKU </option>
+                        </select>-->
+                        <!--<input style="width: 160px;" class="btn btn-main sync-btn" value="Sync Orders">-->
+                        <button style="width: 160px;" class="btn btn-main sync-btn">Sync Orders</button>
+                    </div>
+                    <div class="tool-item">
+                        <button type="submit" class="btn btn-main serach-btn">Search</button>
+                    </div>
+                </div>
+            <div class="order-filter-nav">
+                <div class="filter-item">
+                    <div class="dropdown js-dropdown">
+                        <div class="dropdown-hd" id="Fulfillment">
+                             All Fulfillment Status
+                                                    </div>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a onclick="$('#Fulfillment').text($(this).text())" href="http://app.dropshe.com/order/drop/?fulfillment=&paid=&order=&from=">All Fulfillment
+                                    Status</a>
+                            </li>
+                            <li>
+                                <a onclick="$('#Fulfillment').text($(this).text())" href="http://app.dropshe.com/order/drop/?fulfillment=0&paid=&order=&from=">No Fulfillment</a>
+                            </li>
+                            <li>
+                                <a onclick="$('#Fulfillment').text($(this).text())" href="http://app.dropshe.com/order/drop/?fulfillment=1&paid=&order=&from=">Part Fulfillment</a>
+                            </li>
+                            <li>
+                                <a onclick="$('#Fulfillment').text($(this).text())" href="http://app.dropshe.com/order/drop/?fulfillment=2&paid=&order=&from=">Fulfillment</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="filter-item">
+                    <div class="dropdown js-dropdown">
+                        <div class="dropdown-hd" id="Financial">
+                             All Paid Status
+                                                    </div>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a onclick="$('#Financial').text($(this).text())" href="http://app.dropshe.com/order/drop/?fulfillment=&paid=&order=&from=">All Paid Status</a>
+                            </li>
+                            <li>
+                                <a onclick="$('#Financial').text($(this).text())" href="http://app.dropshe.com/order/drop/?fulfillment=&paid=1&order=&from=">Paid</a>
+                            </li>
+                            <li>
+                                <a onclick="$('#Financial').text($(this).text())" href="http://app.dropshe.com/order/drop/?fulfillment=&paid=2&order=&from=">Refunded</a>
+                            </li>
+                            <li>
+                                <a onclick="$('#Financial').text($(this).text())" href="http://app.dropshe.com/order/drop/?fulfillment=&paid=3&order=&from=">Partially Refund</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="filter-item">
+                    <div class="dropdown js-dropdown">
+                        <div class="dropdown-hd" id="order_status">
+                             All Order Status
+                                                    </div>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a onclick="$('#order_status').text($(this).text())" href="http://app.dropshe.com/order/drop/?fulfillment=&paid=&order=&from=">All Order Status</a>
+                            </li>
+                            <li>
+                                <a onclick="$('#order_status').text($(this).text())" href="http://app.dropshe.com/order/drop/?fulfillment=&paid=&order=1&from=">To Order</a>
+                            </li>
+                            <li>
+                                <a onclick="$('#order_status').text($(this).text())" href="http://app.dropshe.com/order/drop/?fulfillment=&paid=&order=2&from=">Order Placed</a>
+                            </li>
+                            <li>
+                                <a onclick="$('#order_status').text($(this).text())" href="http://app.dropshe.com/order/drop/?fulfillment=&paid=&order=3&from=">In Processing</a>
+                            </li>
+                            <li>
+                                <a onclick="$('#order_status').text($(this).text())" href="http://app.dropshe.com/order/drop/?fulfillment=&paid=&order=4&from=">Shipped</a>
+                            </li>
+                            <li>
+                                <a onclick="$('#order_status').text($(this).text())" href="http://app.dropshe.com/order/drop/?fulfillment=&paid=&order=5&from=">Partially Shipped</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="filter-item">
+                    <div class="dropdown js-dropdown">
+                        <div class="dropdown-hd" id="from_products">
+                             All From Products
+                                                    </div>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a onclick="$('#from_products').text($(this).text())" href="http://app.dropshe.com/order/drop/?fulfillment=&paid=&order=&from=">All From Products</a>
+                            </li>
+                            <li>
+                                <a onclick="$('#from_products').text($(this).text())" href="http://app.dropshe.com/order/drop/?fulfillment=&paid=&order=&from=1">From Dropshe</a>
+                            </li>
+                            <li>
+                                <a onclick="$('#from_products').text($(this).text())" href="http://app.dropshe.com/order/drop/?fulfillment=&paid=&order=&from=2">From Other</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+                        <div class="order-list">
+                                <div class="order-item">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="td-id">shopify: findmagi #2090                                </th>
+                                <th class="td-time" colspan="2"><span class="order-time">2019-12-03 14:52:25</span></th>
+                                <th class="td-pald">
+                                                                        <span class="tag tag-sub">Pald</span>
+                                                                    </th>
+                                <th colspan="2">
+                                                                        <span class="tag tag-main">Unfulfilled</span>
+                                                                    </th>
+                                <th class="td-mark" colspan="2">
+                                                                    </th>
+                                <th colspan="2">
+                                                                    </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tr-customer">
+                                <td colspan="3">
+                                                                                                            <div class="address">
+                                        <div class="icons">
+                                                                                        <a href="mailto:" class="email"></a>    
+                                        </div>
+                                        <div class="address-text" style="float: left;">
+                                            Ko ping<br>
+                                            FLAT6B,GREEN VIEW,148 FUK HANG TUSEN ROAD. , <br>
+                                            TUEN MUN<br>
+                                            New Territories<br>
+                                            Hong Kong</div>
+                                        <div style="float: right;margin-right: 84px;">
+                                           
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="td-fare" colspan="1">
+                                    <div class="fare"><span style="color:#ff8500">$33.98</span></div>
+                                    <!--<a href="http://app.dropshe.com/order/drop/pay_now/order_id/30">Pay Now</a>-->
+                                </td>
+                                <td class="td-fare" colspan="2">
+                                                                        <div class="fare" style="width: 100px;">  Fast Shipping ( with tracking ) - About 3 - 5 Business Days</div>
+                                                                    </td>
+                                <td class="td-notes">
+                                    <div class="notes-box">
+                                        <h3 class="tit">Order Notes</h3>
+                                        <div class="text">
+                                                                                    </div>
+                                    </div>
+                                </td>
+                            </tr>
+                                                                                                                <tr class="tr-product-title">
+                                                                <td class="td-item" align="center" colspan="10">
+                                                                        <a href="http://app.dropshe.com/sourcing/add?order_id=30&product_item_id=49" target="_blank">
+                                        <button class="btn btn-main" style="height: 36px; line-height: 15px; margin-right: 30px;width: 200px" data-order-id="30">Sourcing Agent</button>
+                                    </a>
+                                                                    </td>
+                                                            </tr>
+                            <tr class="tr-product">
+                                <td class="td-item" colspan="3">
+                                    <div class="item-box">
+                                        <img class="img" src="/static/orders/14_366_sliver.jpg" alt="">
+                                        <div class="name">HydraSho 360 Rotating Shower Head</div>
+                                    </div>
+                                </td>
+                                <td class="td-skumod" colspan="2">LSB011920_2</td>
+                                <td class="td-price" colspan="3">2× <span style="color:#ff8500">$ 16.99</span></td>
+                            </tr>
+                                                                                </tbody>
+                    </table>
+                </div>
+                                <div class="order-item">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="td-id">shopify: findmagi #2149                                </th>
+                                <th class="td-time" colspan="2"><span class="order-time">2019-12-03 14:52:25</span></th>
+                                <th class="td-pald">
+                                                                        <span class="tag tag-sub">Pald</span>
+                                                                    </th>
+                                <th colspan="2">
+                                                                        <span class="tag tag-main">Unfulfilled</span>
+                                                                    </th>
+                                <th class="td-mark" colspan="2">
+                                                                    </th>
+                                <th colspan="2">
+                                                                    </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tr-customer">
+                                <td colspan="3">
+                                                                                                            <div class="address">
+                                        <div class="icons">
+                                                                                        
+                                                                                        <a href="mailto:" class="email"></a>    
+                                        </div>
+                                        <div class="address-text" style="float: left;">
+                                            Andrew Mula<br>
+                                            Carrera 37a #34-86 , 2nd floor<br>
+                                            Santa Marta<br>
+                                            Magdalena<br>
+                                            Colombia</div>
+                                        <div style="float: right;margin-right: 84px;">
+                                            
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="td-fare" colspan="1">
+                                    <div class="fare"><span style="color:#ff8500">$29.98</span></div>
+                                    <!--<a href="http://app.dropshe.com/order/drop/pay_now/order_id/31">Pay Now</a>-->
+                                </td>
+                                <td class="td-fare" colspan="2">
+                                                                        <div class="fare" style="width: 100px;">  Standard Shipping ( 12-20 Days , with tracking )</div>
+                                                                    </td>
+                                <td class="td-notes">
+                                    <div class="notes-box">
+                                        <h3 class="tit">Order Notes</h3>
+                                        <div class="text">
+                                                                                    </div>
+                                    </div>
+                                </td>
+                            </tr>
+                                                                                                                <tr class="tr-product-title">
+                                                                <td class="td-item" align="center" colspan="10">
+                                                                        <a href="http://app.dropshe.com/sourcing/add?order_id=31&product_item_id=50" target="_blank">
+                                        <button class="btn btn-main" style="height: 36px; line-height: 15px; margin-right: 30px;width: 200px" data-order-id="31">Sourcing Agent</button>
+                                    </a>
+                                                                    </td>
+                                                            </tr>
+                            <tr class="tr-product">
+                                <td class="td-item" colspan="3">
+                                    <div class="item-box">
+                                        <img class="img" src="./orders/1__1_f8888e23-450e-48de-85c6-fdb7eee16e49.jpg" alt="">
+                                        <div class="name">MAGIC Teeth Brace</div>
+                                    </div>
+                                </td>
+                                <td class="td-skumod" colspan="2">9070124-UP</td>
+                                <td class="td-price" colspan="3">2× <span style="color:#ff8500">$ 14.99</span></td>
+                                <td class="showMore"><a href="javascript:void(0)">展开</a></td>
+                            </tr>
+                            <tr class="tr-product product_more" style="display: none">
+                                <td class="td-item" colspan="3">
+                                    <div class="item-box">
+                                        <img class="img" src="./orders/1__1_f8888e23-450e-48de-85c6-fdb7eee16e49.jpg" alt="">
+                                        <div class="name">MAGIC Teeth Brace</div>
+                                    </div>
+                                </td>
+                                <td class="td-skumod" colspan="2">9070124-UP</td>
+                                <td class="td-price" colspan="3">2× <span style="color:#ff8500">$ 14.99</span></td>
+                            </tr>
+                            <tr class="tr-product product_more"  style="display: none" > 
+                                <td class="td-item" colspan="3">
+                                    <div class="item-box">
+                                        <img class="img" src="./orders/1__1_f8888e23-450e-48de-85c6-fdb7eee16e49.jpg" alt="">
+                                        <div class="name">MAGIC Teeth Brace</div>
+                                    </div>
+                                </td>
+                                <td class="td-skumod" colspan="2">9070124-UP</td>
+                                <td class="td-price" colspan="3">2× <span style="color:#ff8500">$ 14.99</span></td>
+                            </tr>
+                                                                                </tbody>
+                    </table>
+                </div>
+                                <div class="order-item">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="td-id">shopify: findmagi #1825                                </th>
+                                <th class="td-time" colspan="2"><span class="order-time">2019-12-03 14:52:24</span></th>
+                                <th class="td-pald">
+                                                                        <span class="tag tag-sub">Pald</span>
+                                                                    </th>
+                                <th colspan="2">
+                                                                        <span class="tag tag-main">Unfulfilled</span>
+                                                                    </th>
+                                <th class="td-mark" colspan="2">
+                                                                    </th>
+                                <th colspan="2">
+                                                                    </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tr-customer">
+                                <td colspan="3">
+                                                                                                            <div class="address">
+                                        <div class="icons">
+                                                                                        <!-- <embed type="image/svg+xml" class="flag" src="./orders/br.svg"> -->
+                                                                                        <a href="mailto:" class="email"></a>    
+                                        </div>
+                                        <div class="address-text" style="float: left;">
+                                            Frank  Souza<br>
+                                            Rua Nicolau da Silva  25  xxxxxxxxx , São Francisco<br>
+                                            Manaus<br>
+                                            Amazonas<br>
+                                            Brazil</div>
+                                        <div style="float: right;margin-right: 84px;">
+                                            <!-- <a href="http://app.dropshe.com/tickets/new?type=1&order_id=29&order_type=drop&title=[ASK%20ORDER]%20" style="color:#607d8b;"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Open Ticket</a><br>
+                                            <a href="http://app.dropshe.com/tickets/new?type=1&order_id=29&order_type=drop&title=[REFUND]%20" style="color:#607d8b;"><i class="fa fa-money" aria-hidden="true"></i>
+                                            Ask Refund</a> -->
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="td-fare" colspan="1">
+                                    <div class="fare"><span style="color:#ff8500">$9.99</span></div>
+                                    <!--<a href="http://app.dropshe.com/order/drop/pay_now/order_id/29">Pay Now</a>-->
+                                </td>
+                                <td class="td-fare" colspan="2">
+                                                                        <div class="fare" style="width: 100px;">  Standard Shipping ( 12-20 Days , with tracking )</div>
+                                                                    </td>
+                                <td class="td-notes">
+                                    <div class="notes-box">
+                                        <h3 class="tit">Order Notes</h3>
+                                        <div class="text">
+                                                                                    </div>
+                                    </div>
+                                </td>
+                            </tr>
+                                                                                                                <tr class="tr-product-title">
+                                                                <td class="td-item" align="center" colspan="10">
+                                                                        <a href="http://app.dropshe.com/sourcing/add?order_id=29&product_item_id=48" target="_blank">
+                                        <button class="btn btn-main" style="height: 36px; line-height: 15px; margin-right: 30px;width: 200px" data-order-id="29">Sourcing Agent</button>
+                                    </a>
+                                                                    </td>
+                                                            </tr>
+                            <tr class="tr-product">
+                                <td class="td-item" colspan="3">
+                                    <div class="item-box">
+                                        <img class="img" src="./orders/SKU__Nieuwe_Leuke_Magic_dubbelzijdig_Zuignap_Telefoon_Houder_Vacu_m_Adsorptie_Firm_Betrouwbare_Beug_1.jpg" alt="">
+                                        <div class="name">Rotatable Multi-Angle Double-Sided Phone Holder(2PCS)</div>
+                                    </div>
+                                </td>
+                                <td class="td-skumod" colspan="2">LB21936392HEI*2-1</td>
+                                <td class="td-price" colspan="3">1× <span style="color:#ff8500">$ 9.99</span></td>
+                            </tr>
+                                                                                </tbody>
+                    </table>
+                </div>
+                                <div class="order-item">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="td-id">shopify: findmagi #1148                                </th>
+                                <th class="td-time" colspan="2"><span class="order-time">2019-12-03 14:52:23</span></th>
+                                <th class="td-pald">
+                                                                        <span class="tag tag-sub">Pald</span>
+                                                                    </th>
+                                <th colspan="2">
+                                                                        <span class="tag tag-main">Unfulfilled</span>
+                                                                    </th>
+                                <th class="td-mark" colspan="2">
+                                                                    </th>
+                                <th colspan="2">
+                                                                    </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tr-customer">
+                                <td colspan="3">
+                                                                                                            <div class="address">
+                                        <div class="icons">
+                                                                                        <a href="mailto:" class="email"></a>    
+                                        </div>
+                                        <div class="address-text" style="float: left;">
+                                            Ary Bassous<br>
+                                            Rua do Humaitá  244  apto. 207 bloco 2 , Humaitá<br>
+                                            Rio de Janeiro<br>
+                                            Rio de Janeiro<br>
+                                            Brazil</div>
+                                        <div style="float: right;margin-right: 84px;">
+                                          
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="td-fare" colspan="1">
+                                    <div class="fare"><span style="color:#ff8500">$22.99</span></div>
+                                    <!--<a href="http://app.dropshe.com/order/drop/pay_now/order_id/27">Pay Now</a>-->
+                                </td>
+                                <td class="td-fare" colspan="2">
+                                                                        <div class="fare" style="width: 100px;">  Priority Processing ( 7-14 Days with tracking ) - Jump Ahead of The Queue</div>
+                                                                    </td>
+                                <td class="td-notes">
+                                    <div class="notes-box">
+                                        <h3 class="tit">Order Notes</h3>
+                                        <div class="text">
+                                                                                    </div>
+                                    </div>
+                                </td>
+                            </tr>
+                                                                                                                <tr class="tr-product-title">
+                                                                <td class="td-item" align="center" colspan="10">
+                                                                        <a href="http://app.dropshe.com/sourcing/add?order_id=27&product_item_id=46" target="_blank">
+                                        <button class="btn btn-main" style="height: 36px; line-height: 15px; margin-right: 30px;width: 200px" data-order-id="27">Sourcing Agent</button>
+                                    </a>
+                                                                    </td>
+                                                            </tr>
+                            <tr class="tr-product">
+                                <td class="td-item" colspan="3">
+                                    <div class="item-box">
+                                        <img class="img" src="./orders/11_8da1f8a2-1916-40e2-b1af-e6c1f11900af.jpg" alt="">
+                                        <div class="name">Ultra-Light Rainproof Windkicker</div>
+                                    </div>
+                                </td>
+                                <td class="td-skumod" colspan="2">90528169-BLACK-4XL</td>
+                                <td class="td-price" colspan="3">1× <span style="color:#ff8500">$ 22.99</span></td>
+                            </tr>
+                                                                                </tbody>
+                    </table>
+                </div>
+                                <div class="order-item">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="td-id">shopify: findmagi #1149                                </th>
+                                <th class="td-time" colspan="2"><span class="order-time">2019-12-03 14:52:23</span></th>
+                                <th class="td-pald">
+                                                                        <span class="tag tag-sub">Pald</span>
+                                                                    </th>
+                                <th colspan="2">
+                                                                        <span class="tag tag-main">Unfulfilled</span>
+                                                                    </th>
+                                <th class="td-mark" colspan="2">
+                                                                    </th>
+                                <th colspan="2">
+                                                                    </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tr-customer">
+                                <td colspan="3">
+                                                                                                            <div class="address">
+                                        <div class="icons">
+                                                                                        <a href="mailto:" class="email"></a>    
+                                        </div>
+                                        <div class="address-text" style="float: left;">
+                                            Sandra Mejia<br>
+                                            hc1 box 29030 , pmb 420<br>
+                                            caguas<br>
+                                            Puerto Rico<br>
+                                            United States of America</div>
+                                        <div style="float: right;margin-right: 84px;">
+                                           
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="td-fare" colspan="1">
+                                    <div class="fare"><span style="color:#ff8500">$49.99</span></div>
+                                    <!--<a href="http://app.dropshe.com/order/drop/pay_now/order_id/28">Pay Now</a>-->
+                                </td>
+                                <td class="td-fare" colspan="2">
+                                                                        <div class="fare" style="width: 100px;">  Standard Shipping ( 12-20 Days , with tracking )</div>
+                                                                    </td>
+                                <td class="td-notes">
+                                    <div class="notes-box">
+                                        <h3 class="tit">Order Notes</h3>
+                                        <div class="text">
+                                                                                    </div>
+                                    </div>
+                                </td>
+                            </tr>
+                                                                                                                <tr class="tr-product-title">
+                                                                <td class="td-item" align="center" colspan="10">
+                                                                        <a href="http://app.dropshe.com/sourcing/add?order_id=28&product_item_id=47" target="_blank">
+                                        <button class="btn btn-main" style="height: 36px; line-height: 15px; margin-right: 30px;width: 200px" data-order-id="28">Sourcing Agent</button>
+                                    </a>
+                                                                    </td>
+                                                            </tr>
+                            <tr class="tr-product">
+                                <td class="td-item" colspan="3">
+                                    <div class="item-box">
+                                        <img class="img" src="./orders/Jednolity_kolor_sofa_poliestrowa_pokrywa_wysokiej_elastyczno_antypo_lizgowe_kanapa_narzuty_uniwersal_4.jpg" alt="">
+                                        <div class="name">Universal Sofa Cushion Combination</div>
+                                    </div>
+                                </td>
+                                <td class="td-skumod" colspan="2">9070249-STYLE4-FOUR-11</td>
+                                <td class="td-price" colspan="3">1× <span style="color:#ff8500">$ 49.99</span></td>
+                            </tr>
+                                                                                </tbody>
+                    </table>
+                </div>
+                            </div>
+           
+            <div style="text-align: center;">
+                <ul class="pagination">
+                    <li><a href="http://app.dropshe.com/order/drop/?page=1" class="prev">&lt;&lt;</a></li>
+                                        <li><a class="prev" style="color: #b5b5b5;cursor: default;">&lt;</a></li>
+                    
+                                        <li><span>
+                            <a href="http://app.dropshe.com/order/drop/?page=1" class="active">1</a>
+                        </span></li>
+                    
+                                        <li><a class="next" style="color: #b5b5b5;cursor: default;">&gt;</a></li>
+                    
+                    <li><a href="http://app.dropshe.com/order/drop/?page=1" class="next">&gt;&gt;</a></li>
+                </ul>
+            </div>
+                    </div>
+
+        <input type="hidden" id="pay-now-order-id">
+        <input type="hidden" id="pay-now-product-id">
+        <input type="hidden" id="pay-now-express-id">
+        <input type="hidden" id="pay-total-data">
+        <div class="drop-foot">Copyright 2019, Dropshe. All rights reserved.</div>
+    </div>
+
+    <div id="paymentMethodEditModal" class="modal modal-fc payment-method-edit">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"><span></span></button>
+                    <h4 class="modal-title">Recharge</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="payment-methods">
+                        <label class="payment-method-item">
+                            <div class="radio1"><input type="radio" name="paymentMethod" value="1"><span class="icon"></span></div>
+                            <img class="payment-icon" src="/static/orders/icon-pme1.png">
+                            <div class="payment-text">
+                                <div class="title">Credit card</div>
+                                <p class="subtitle">end of the number（0983）</p>
+                            </div>
+                        </label>
+                        <label class="payment-method-item">
+                            <div class="radio1"><input type="radio" name="paymentMethod" value="2"><span class="icon"></span></div>
+                            <img class="payment-icon" src="/static/orders/icon-pme2.png">
+                            <div class="payment-text">
+                                <div class="title">Account balances</div>
+                                <p class="subtitle">account balances：$<span id="user-fee"></span> left.</p>
+                            </div>
+                        </label>
+                        <div class="total">Total Pay is<span class="num">$ <span id="total-pay-fee"></span></span></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-bg-main btn-pay-now">Pay Now</button>
+                    <button type="button" class="btn btn-default btn-cancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script type="text/javascript" src="/static/orders/amaran.js"></script>
+<script type="text/javascript" src="/static/orders/select2.min.js"></script>
+<script type="text/javascript" src="/static/orders/order.js"></script>
+<script>
+ $(".showMore").on("click",function(){
+       $(".product_more").each(function(){
+
+        $(this).toggle()
+       })
+    })
+</script>
+<div class="datepicker datepicker-dropdown dropdown-menu"><div class="datepicker-minutes" style="display: none;"><table class=" table-condensed"><thead><tr><th class="prev" style="visibility: visible;"><i class="fa fa-chevron-left fi-arrow-left"></i></th><th colspan="5" class="date-switch">15 January 2020</th><th class="next" style="visibility: visible;"><i class="fa fa-chevron-right fi-arrow-right"></i></th></tr></thead><tbody><tr><td colspan="7"><span class="minute active">0:00</span><span class="minute">0:05</span><span class="minute">0:10</span><span class="minute">0:15</span><span class="minute">0:20</span><span class="minute">0:25</span><span class="minute">0:30</span><span class="minute">0:35</span><span class="minute">0:40</span><span class="minute">0:45</span><span class="minute">0:50</span><span class="minute">0:55</span></td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr></tfoot></table></div><div class="datepicker-hours" style="display: none;"><table class=" table-condensed"><thead><tr><th class="prev" style="visibility: visible;"><i class="fa fa-chevron-left fi-arrow-left"></i></th><th colspan="5" class="date-switch">15 January 2020</th><th class="next" style="visibility: visible;"><i class="fa fa-chevron-right fi-arrow-right"></i></th></tr></thead><tbody><tr><td colspan="7"><span class="hour active">0:00</span><span class="hour">1:00</span><span class="hour">2:00</span><span class="hour">3:00</span><span class="hour">4:00</span><span class="hour">5:00</span><span class="hour">6:00</span><span class="hour">7:00</span><span class="hour">8:00</span><span class="hour">9:00</span><span class="hour">10:00</span><span class="hour">11:00</span><span class="hour">12:00</span><span class="hour">13:00</span><span class="hour">14:00</span><span class="hour">15:00</span><span class="hour">16:00</span><span class="hour">17:00</span><span class="hour">18:00</span><span class="hour">19:00</span><span class="hour">20:00</span><span class="hour">21:00</span><span class="hour">22:00</span><span class="hour">23:00</span></td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr></tfoot></table></div><div class="datepicker-days" style="display: block;"><table class=" table-condensed"><thead><tr><th class="prev" style="visibility: visible;"><i class="fa fa-chevron-left fi-arrow-left"></i></th><th colspan="5" class="date-switch">January 2020</th><th class="next" style="visibility: visible;"><i class="fa fa-chevron-right fi-arrow-right"></i></th></tr><tr><th class="dow">Su</th><th class="dow">Mo</th><th class="dow">Tu</th><th class="dow">We</th><th class="dow">Th</th><th class="dow">Fr</th><th class="dow">Sa</th></tr></thead><tbody><tr><td class="day   old">29</td><td class="day   old">30</td><td class="day   old">31</td><td class="day  ">1</td><td class="day  ">2</td><td class="day  ">3</td><td class="day  ">4</td></tr><tr><td class="day  ">5</td><td class="day  ">6</td><td class="day  ">7</td><td class="day  ">8</td><td class="day  ">9</td><td class="day  ">10</td><td class="day  ">11</td></tr><tr><td class="day  ">12</td><td class="day  ">13</td><td class="day  ">14</td><td class="day   active">15</td><td class="day  ">16</td><td class="day  ">17</td><td class="day  ">18</td></tr><tr><td class="day  ">19</td><td class="day  ">20</td><td class="day  ">21</td><td class="day  ">22</td><td class="day  ">23</td><td class="day  ">24</td><td class="day  ">25</td></tr><tr><td class="day  ">26</td><td class="day  ">27</td><td class="day  ">28</td><td class="day  ">29</td><td class="day  ">30</td><td class="day  ">31</td><td class="day   new">1</td></tr><tr><td class="day   new">2</td><td class="day   new">3</td><td class="day   new">4</td><td class="day   new">5</td><td class="day   new">6</td><td class="day   new">7</td><td class="day   new">8</td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr></tfoot></table></div><div class="datepicker-months" style="display: none;"><table class="table-condensed"><thead><tr><th class="prev" style="visibility: visible;"><i class="fa fa-chevron-left fi-arrow-left"></i></th><th colspan="5" class="date-switch">2020</th><th class="next" style="visibility: visible;"><i class="fa fa-chevron-right fi-arrow-right"></i></th></tr></thead><tbody><tr><td colspan="7"><span class="month active">Jan</span><span class="month">Feb</span><span class="month">Mar</span><span class="month">Apr</span><span class="month">May</span><span class="month">Jun</span><span class="month">Jul</span><span class="month">Aug</span><span class="month">Sep</span><span class="month">Oct</span><span class="month">Nov</span><span class="month">Dec</span></td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr></tfoot></table></div><div class="datepicker-years" style="display: none;"><table class="table-condensed"><thead><tr><th class="prev" style="visibility: visible;"><i class="fa fa-chevron-left fi-arrow-left"></i></th><th colspan="5" class="date-switch">2020-2029</th><th class="next" style="visibility: visible;"><i class="fa fa-chevron-right fi-arrow-right"></i></th></tr></thead><tbody><tr><td colspan="7"><span class="year old">2019</span><span class="year active">2020</span><span class="year">2021</span><span class="year">2022</span><span class="year">2023</span><span class="year">2024</span><span class="year">2025</span><span class="year">2026</span><span class="year">2027</span><span class="year">2028</span><span class="year">2029</span><span class="year old">2030</span></td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr></tfoot></table></div><a class="button datepicker-close tiny alert right" style="width: auto; display: none;"><i class="fa fa-remove fa-times fi-x"></i></a></div><div class="datepicker datepicker-dropdown dropdown-menu"><div class="datepicker-minutes" style="display: none;"><table class=" table-condensed"><thead><tr><th class="prev" style="visibility: visible;"><i class="fa fa-chevron-left fi-arrow-left"></i></th><th colspan="5" class="date-switch">15 January 2020</th><th class="next" style="visibility: visible;"><i class="fa fa-chevron-right fi-arrow-right"></i></th></tr></thead><tbody><tr><td colspan="7"><span class="minute active">0:00</span><span class="minute">0:05</span><span class="minute">0:10</span><span class="minute">0:15</span><span class="minute">0:20</span><span class="minute">0:25</span><span class="minute">0:30</span><span class="minute">0:35</span><span class="minute">0:40</span><span class="minute">0:45</span><span class="minute">0:50</span><span class="minute">0:55</span></td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr></tfoot></table></div><div class="datepicker-hours" style="display: none;"><table class=" table-condensed"><thead><tr><th class="prev" style="visibility: visible;"><i class="fa fa-chevron-left fi-arrow-left"></i></th><th colspan="5" class="date-switch">15 January 2020</th><th class="next" style="visibility: visible;"><i class="fa fa-chevron-right fi-arrow-right"></i></th></tr></thead><tbody><tr><td colspan="7"><span class="hour active">0:00</span><span class="hour">1:00</span><span class="hour">2:00</span><span class="hour">3:00</span><span class="hour">4:00</span><span class="hour">5:00</span><span class="hour">6:00</span><span class="hour">7:00</span><span class="hour">8:00</span><span class="hour">9:00</span><span class="hour">10:00</span><span class="hour">11:00</span><span class="hour">12:00</span><span class="hour">13:00</span><span class="hour">14:00</span><span class="hour">15:00</span><span class="hour">16:00</span><span class="hour">17:00</span><span class="hour">18:00</span><span class="hour">19:00</span><span class="hour">20:00</span><span class="hour">21:00</span><span class="hour">22:00</span><span class="hour">23:00</span></td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr></tfoot></table></div><div class="datepicker-days" style="display: block;"><table class=" table-condensed"><thead><tr><th class="prev" style="visibility: visible;"><i class="fa fa-chevron-left fi-arrow-left"></i></th><th colspan="5" class="date-switch">January 2020</th><th class="next" style="visibility: visible;"><i class="fa fa-chevron-right fi-arrow-right"></i></th></tr><tr><th class="dow">Su</th><th class="dow">Mo</th><th class="dow">Tu</th><th class="dow">We</th><th class="dow">Th</th><th class="dow">Fr</th><th class="dow">Sa</th></tr></thead><tbody><tr><td class="day   old">29</td><td class="day   old">30</td><td class="day   old">31</td><td class="day  ">1</td><td class="day  ">2</td><td class="day  ">3</td><td class="day  ">4</td></tr><tr><td class="day  ">5</td><td class="day  ">6</td><td class="day  ">7</td><td class="day  ">8</td><td class="day  ">9</td><td class="day  ">10</td><td class="day  ">11</td></tr><tr><td class="day  ">12</td><td class="day  ">13</td><td class="day  ">14</td><td class="day   active">15</td><td class="day  ">16</td><td class="day  ">17</td><td class="day  ">18</td></tr><tr><td class="day  ">19</td><td class="day  ">20</td><td class="day  ">21</td><td class="day  ">22</td><td class="day  ">23</td><td class="day  ">24</td><td class="day  ">25</td></tr><tr><td class="day  ">26</td><td class="day  ">27</td><td class="day  ">28</td><td class="day  ">29</td><td class="day  ">30</td><td class="day  ">31</td><td class="day   new">1</td></tr><tr><td class="day   new">2</td><td class="day   new">3</td><td class="day   new">4</td><td class="day   new">5</td><td class="day   new">6</td><td class="day   new">7</td><td class="day   new">8</td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr></tfoot></table></div><div class="datepicker-months" style="display: none;"><table class="table-condensed"><thead><tr><th class="prev" style="visibility: visible;"><i class="fa fa-chevron-left fi-arrow-left"></i></th><th colspan="5" class="date-switch">2020</th><th class="next" style="visibility: visible;"><i class="fa fa-chevron-right fi-arrow-right"></i></th></tr></thead><tbody><tr><td colspan="7"><span class="month active">Jan</span><span class="month">Feb</span><span class="month">Mar</span><span class="month">Apr</span><span class="month">May</span><span class="month">Jun</span><span class="month">Jul</span><span class="month">Aug</span><span class="month">Sep</span><span class="month">Oct</span><span class="month">Nov</span><span class="month">Dec</span></td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr></tfoot></table></div><div class="datepicker-years" style="display: none;"><table class="table-condensed"><thead><tr><th class="prev" style="visibility: visible;"><i class="fa fa-chevron-left fi-arrow-left"></i></th><th colspan="5" class="date-switch">2020-2029</th><th class="next" style="visibility: visible;"><i class="fa fa-chevron-right fi-arrow-right"></i></th></tr></thead><tbody><tr><td colspan="7"><span class="year old">2019</span><span class="year active">2020</span><span class="year">2021</span><span class="year">2022</span><span class="year">2023</span><span class="year">2024</span><span class="year">2025</span><span class="year">2026</span><span class="year">2027</span><span class="year">2028</span><span class="year">2029</span><span class="year old">2030</span></td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr></tfoot></table></div><a class="button datepicker-close tiny alert right" style="width: auto; display: none;"><i class="fa fa-remove fa-times fi-x"></i></a></div></body></html>

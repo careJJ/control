@@ -7,10 +7,7 @@ import (
 	"github.com/go-shopify-master/shopify"
 	"io/ioutil"
 	"net/http"
-	"reflect"
 	"time"
-
-	//"context"
 )
 
 type ProductInfo struct {
@@ -65,18 +62,19 @@ type Products struct {
 	Variants []Variants `json:"variants"`
 	Images   []Images   `json:"images"`
 }
+
 //用于接受product信息的表
 type ProductMatch struct {
 	ProductId int64
-	Title string
-	Variant []Variant
-	Image	[]Image
+	Title     string
+	Variant   []Variant
+	Image     []Image
 }
 
 //跟ProductMatch一对多，一个product_id对应多个variant
-type Variant    struct{
-	Id int64
-	Sku string
+type Variant struct {
+	Id    int64
+	Sku   string
 	Price string
 	Title string
 }
@@ -85,7 +83,6 @@ type Variant    struct{
 type Image struct {
 	Src string
 }
-
 
 type OrderInfo struct {
 	Orders []Orders `json:"orders"`
@@ -183,17 +180,16 @@ type Orders struct {
 }
 
 const (
-	GetOrderId = "admin/api/2019-04/orders.json?fields=id"
-	GetOrderInfo = "admin/api/2019-04/orders.json?fields=id,name,created_at,financial-status,total_price,email,line_items,shipping_address"
+	GetOrderId    = "admin/api/2019-04/orders.json?fields=id"
+	GetOrderInfo  = "admin/api/2019-04/orders.json?fields=id,name,created_at,financial-status,total_price,email,line_items,shipping_address"
 	GetProduct_id = "admin/api/2019-04/products.json?fields=id"
-	produtid ="admin/api/2019-04/products.json?ids="
-	GetProuctImg = ""
-
+	produtid      = "admin/api/2019-04/products.json?ids="
+	GetProuctImg  = ""
 )
 
 //对接shopify
 //返回链接的套接字
-func LinkStore(storename ,password string) *shopify.Client {
+func LinkStore(storename, password string) *shopify.Client {
 
 	client, err := shopify.NewClient(nil, shopify.ShopURL("https://"+storename+".myshopify.com/admin"), shopify.Token(password))
 
@@ -221,9 +217,9 @@ func LinkStore(storename ,password string) *shopify.Client {
 //}
 
 //返回order id切片的方法
-func GetOrderid(name,apikey,secret string)  []string{
-	url:="https://"+apikey+":"+secret+"@"+name+".myshopify.com/"
-	idurl := url+GetOrderId
+func GetOrderid(name, apikey, secret string) []string {
+	url := "https://" + apikey + ":" + secret + "@" + name + ".myshopify.com/"
+	idurl := url + GetOrderId
 	resp, err := http.Get(idurl)
 	if err != nil {
 		beego.Error(err)
@@ -249,12 +245,11 @@ func GetOrderid(name,apikey,secret string)  []string{
 	return ids
 }
 
-
 //获取Beachmolly所需订单信息json   name,created_at,financial-status,total_price,email,fulfillment,sku,quantity,amount,shipping_address
 //获得完整的json直接穿前端，再根据product_id查表productMatch得到图片
-func GetOrderJson(name,apikey,secret string)(str string) {
-	url:="https://"+apikey+":"+secret+"@"+name+".myshopify.com/"
-	infoUrl := url+GetOrderInfo
+func GetOrderJson(name, apikey, secret string) (str string) {
+	url := "https://" + apikey + ":" + secret + "@" + name + ".myshopify.com/"
+	infoUrl := url + GetOrderInfo
 	resp, err := http.Get(infoUrl)
 	if err != nil {
 		beego.Error(err)
@@ -280,70 +275,48 @@ func GetOrderJson(name,apikey,secret string)(str string) {
 	return
 }
 
-func GetOrderStruct(name,apikey,secret string,i int)(Orders,ShippingAddress,[]LineItems){
-	ids:=GetOrderid(name,apikey,secret)
-
-	O:=OrderInfo{}
-	o1:=Orders{}
-	l1:=[]LineItems{}
-	l:=LineItems{}
-	ship:=ShippingAddress{}
-	s1:=ShippingAddress{}
-	for i:=0;i<len(ids);i++{
-		url:="https://"+apikey+":"+secret+"@"+name+".myshopify.com/"
-		orderurl := url+GetOrderInfo+"&ids="+ids[i]
-		resp, err := http.Get(orderurl)
-		if err != nil {
-			beego.Error(err)
-		}
-		defer resp.Body.Close()
-
-		body, err := ioutil.ReadAll(resp.Body)
-		if err != nil {
-
-		}
-		if err := json.Unmarshal(body, &O);
-			err != nil {
-			fmt.Println(err)
-		}
-		o1=O.Orders[0]
-		reVal := reflect.ValueOf(o1)
-		iVal := reVal.Interface()
-
-
-		if order, ok := iVal.(Orders); ok {
-			l1=order.LineItems
-			ship=order.ShippingAddress
-		}
-		reVal1 := reflect.ValueOf(l1[0:])
-		iVal1 := reVal1.Interface()
-		line:=iVal1.([]LineItems)
-		for c:=0;c<len(line);c++{
-
-			l.Sku=line[c].Sku
-			l.Title=line[c].Title
-			l.ID=line[c].ProductID
-			l.Price=line[c].Price
-			l.VariantID=line[c].VariantID
-			l.Quantity=line[c].Quantity
-			l1 = append(l1, l)
-		}
-
-		reVal2:=reflect.ValueOf(ship)
-		ival2:=reVal2.Interface()
-		s1:=ival2.(ShippingAddress)
-
+//也许要检查一下reflect.Valueof 在使用之前返回   这种情况，将得到一个零值，因为反射不能看到未导出的函数
+func GetOrderStruct(name, apikey, secret string, i int) (Orders, ShippingAddress, []LineItems) {
+	ids := GetOrderid(name, apikey, secret)
+	O := OrderInfo{}
+	o1 := Orders{}
+	l1 := []LineItems{}
+	l := LineItems{}
+	//ship := ShippingAddress{}
+	s1 := ShippingAddress{}
+	url := "https://" + apikey + ":" + secret + "@" + name + ".myshopify.com/"
+	orderurl := url + GetOrderInfo + "&ids=" + ids[i]
+	resp, err := http.Get(orderurl)
+	if err != nil {
+		beego.Error(err)
 	}
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+	}
+	if err := json.Unmarshal(body, &O);
+		err != nil {
+		fmt.Println(err)
+	}
+	o1 = O.Orders[0]
+	for _, b := range o1.LineItems {
 
-	return o1,s1,l1
+		l.Sku = b.Sku
+		l.Title = b.Title
+		l.ID = b.ProductID
+		l.Price = b.Price
+		l.VariantID = b.VariantID
+		l.Quantity = b.Quantity
+		l1 = append(l1, l)
+	}
+	s1 = o1.ShippingAddress
+	return o1, s1, l1
 }
 
-
-
 //获取product_id的切片
-func GetProductId(name,apikey,secret string) []string {
-	url:="https://"+apikey+":"+secret+"@"+name+".myshopify.com/"
-	productIDurl := url+GetProduct_id
+func GetProductId(name, apikey, secret string) []string {
+	url := "https://" + apikey + ":" + secret + "@" + name + ".myshopify.com/"
+	productIDurl := url + GetProduct_id
 
 	resp, err := http.Get(productIDurl)
 	if err != nil {
@@ -368,7 +341,6 @@ func GetProductId(name,apikey,secret string) []string {
 	for _, order := range orders {
 		id := order["id"]
 		ids = append(ids, fmt.Sprintf("%d", id))
-
 	}
 	//返回图片id的切片
 	return ids
@@ -391,58 +363,20 @@ func GetProductId(name,apikey,secret string) []string {
 //	}
 //}
 
-//获取BM产品图片的方法
-
-//func GetBmSrc(name,apikey,secret string,i int) ( []string) {
-//	pid := GetBMProductJson()
-//	//len := len(pid)
-//	//fmt.Println(len)
-//	beachmollyIDurl := "https://3b628626ca7a8457fa18aef8c304bb3e:8b2405755ddb36e3bd784ebc72e2fc99@beachmolly.myshopify.com/admin/api/2020-01/products/" + pid[i] + "/images.json?fields=src"
-//	fmt.Println(pid[i])
-//	//fmt.Println(beachmollyIDurl)
-//	resp, err := http.Get(beachmollyIDurl)
-//	if err != nil {
-//		beego.Error(err)
-//	}
-//	defer resp.Body.Close()
-//	body, err := ioutil.ReadAll(resp.Body)
-//	if err != nil {
-//		beego.Error(err)
-//	}
-//	var J map[string][]map[string]string
-//
-//	if err := json.Unmarshal(body, &J);
-//		err != nil {
-//		fmt.Println(err)
-//	}
-//	//fmt.Println(J)
-//	images := J["images"]
-//	var srcs []string
-//	for _, image := range images {
-//		src := image["src"]
-//		srcs = append(srcs, fmt.Sprintf("%s", src))
-//		//fmt.Println(strings.Join(srcs, " "))
-//	}
-//	//fmt.Println(srcs)
-//	return srcs
-//}
-
 //获得ProductMatch结构体
-
-func GetProductMatch(name,apikey,secret string,i int)(int64,string,[]Variant, []Image) {
+func GetProductMatch(name, apikey, secret string, i int) (int64, string, []Variant, []Image) {
 	///admin/api/2020-01/products/4468589985930/images.json?fields=src
-	pid := GetProductId(name,apikey,secret)
-	url:="https://"+apikey+":"+secret+"@"+name+".myshopify.com/"
-	productinfo:=ProductInfo{}
-	a:=Products{}
+	pid := GetProductId(name, apikey, secret)
+	url := "https://" + apikey + ":" + secret + "@" + name + ".myshopify.com/"
+	productinfo := ProductInfo{}
+	a := Products{}
 	//p:=ProductMatch{}
-	d:=Variant{}
-	imgs:=Image{}
-	d1:=[]Variant{}
-	imgs1:=[]Image{}
-	purl := url+produtid + pid[i] + "&fields=id,title,variants,images"
-	//fmt.Println(pid[i])
-	//fmt.Println(beachmollyIDurl)
+	d := Variant{}
+	imgs := Image{}
+	d1 := []Variant{}
+	imgs1 := []Image{}
+	purl := url + produtid + pid[i] + "&fields=id,title,variants,images"
+
 	resp, err := http.Get(purl)
 	if err != nil {
 		beego.Error(err)
@@ -456,58 +390,19 @@ func GetProductMatch(name,apikey,secret string,i int)(int64,string,[]Variant, []
 		err != nil {
 		fmt.Println(err)
 	}
-	a=productinfo.Products[0]
-
-	reVal := reflect.ValueOf(a)
-	iVal := reVal.Interface()
-	v:=[]Variants{}
-	m:=[]Images{}
-	if product,ok:=iVal.(Products);ok{
-		v=product.Variants
-	}
-	if product,ok:=iVal.(Products);ok{
-		m=product.Images
-	}
-	reVal1 := reflect.ValueOf(v[0:])
-	iVal1 := reVal1.Interface()
-	variant:=iVal1.([]Variants)
-	reVal2:=reflect.ValueOf(m[0:])
-	iVal2:=reVal2.Interface()
-	img:=iVal2.([]Images)
-
-	for c:=0;c<len(variant);c++{
-		//需要插表数据
-		d.Sku=variant[c].Sku
-		d.Price=variant[c].Price
-		d.Id=variant[c].ID
-		d.Title	=variant[c].Title
-		d1=append(d1,d)
-	}
-	for e:=0;e<len(img);e++{
-		imgs.Src=img[e].Src
-		//p.Image=append(p.Image,imgs)
-		imgs1=append(imgs1,imgs)
+	a = productinfo.Products[0]
+	for _, b := range a.Variants {
+		d.Sku = b.Sku
+		d.Id = b.ID
+		d.Price = b.Price
+		d1 = append(d1, d)
+		//fmt.Println(reflect.TypeOf(b))
 	}
 
-	return a.ID,a.Title,d1,imgs1
+	for _, c := range a.Images {
+		imgs.Src = c.Src
+		imgs1 = append(imgs1, imgs)
+	}
+	return a.ID, a.Title, d1, imgs1
+
 }
-
-
-//获取匹配SKU用的产品表 处理数据，赋值
-func HandlerProductMatch(name,apikey,secret string){
-	a:=Products{}
-	d1:=[]Variant{}
-	imgs1:=[]Image{}
-	pid := GetProductId(name,apikey,secret)
-	p:=ProductMatch{}
-	for i:=0;i<len(pid);i++{
-		a.ID,a.Title,d1,imgs1 =GetProductMatch(name,apikey,secret,i)
-		p.ProductId=a.ID
-		p.Title=a.Title
-		p.Variant=d1
-		p.Image=imgs1
-	}
-}
-
-
-

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://app.dropshe.com/register -->
+<html class="js login-bg sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers" lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<title>Register - Dropshe</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="http://app.dropshe.com/static/home/site.webmanifest">
+<link rel="apple-touch-icon" href="http://app.dropshe.com/static/home/icon.png">
+<link rel="shortcut icon" type="image/png" href="http://app.dropshe.com/static/home/favicon.ico">
+<!-- Place favicon.ico in the root directory -->
+
+<link rel="stylesheet" href="./Register/normalize.css">
+<link rel="stylesheet" href="./Register/main.css">
+<link rel="stylesheet" href="./Register/style.css">
+<link href="./Register/font-awesome.min.css" rel="stylesheet">
+
+<!-- 提示插件 -->
+<link rel="stylesheet" type="text/css" href="./Register/animate.css">
+<link rel="stylesheet" href="./Register/noticejs.css">
+<script type="text/javascript" async="" src="./Register/recaptcha__zh_cn.js"></script><script src="./Register/notice.js"></script>
+
+<script src="./Register/modernizr-3.7.1.min.js"></script>
+<script src="./Register/jquery-3.4.1.min.js"></script>
+<script src="./Register/plugins.js"></script>
+<script src="./Register/main.js"></script>
+<script src="./Register/common.js"></script>
+
+
+		<link rel="stylesheet" type="text/css" href="./Register/common.css">
+
+		<meta name="theme-color" content="#fafafa">
+	<style>
+    .g-recaptcha {
+		margin-left: -25px;
+        transform:scale(1.00);
+    }
+</style></head>
+
+	<body>
+		<!--[if IE]>
+	    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+	  	<![endif]
+
+		<!-- Add your site or application content here -->
+		<div class="login register" id="app">
+			<div class="login-logo">
+				<img src="./Register/logo.svg">
+			</div>
+			<div class="login-content">
+				<h1 class="title">Create your account</h1>
+				<form class="login-form">
+					<div class="login-input has-icon">
+						<input type="email" name="email" class="form-control" placeholder="Email">
+<!--						<span class="icon icon-edit"></span>-->
+					</div>
+					<!--<div class="login-input has-icon">
+						<input type="text" name="username" class="form-control" placeholder="Name" />
+					</div>-->
+
+                    <div class="login-input has-icon">
+                        <input type="text" name="first_name" class="form-control" v-model="first_name" placeholder="First name">
+<!--                        <span class="icon icon-user"></span>-->
+                    </div>
+
+                    <div class="login-input has-icon">
+                        <input type="text" name="last_name" class="form-control" v-model="last_name" placeholder="Last name">
+<!--                        <span class="icon icon-user"></span>-->
+                    </div>
+
+<!--                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <div class="layui-input-inline" style="width: 100px;">
+                                <input type="text" name="first_name" placeholder="first name" v-model="first_name" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid">-</div>
+                            <div class="layui-input-inline" style="width: 100px;">
+                                <input type="text" name="last_name" placeholder="last name" v-model="last_name" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </div>-->
+
+					<div class="login-input has-icon">
+						<input type="password" name="password" class="form-control" v-model="password" placeholder="Password">
+<!--						<span class="icon icon-pw"></span>-->
+					</div>
+                    <input type="hidden" id="token" value="">
+                    <!-- <div class="g-recaptcha" data-callback="robotVerified" data-sitekey="6LesU7EUAAAAALjQQxXb7lX23lRAlI52HjFb_WU8"><div style="width: 304px; height: 78px;"><div><iframe src="./Register/anchor.html" width="304" height="78" role="presentation" name="a-nbv0juk90q23" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div> -->
+                    <br>
+                    <input type="hidden" name="google" value="">
+
+					<button type="button" class="btn btn-block btn-bg-main login-button" id="sign_up">Register</button>
+
+					<div class="login-text">OR</div>
+					<a href="http://app.dropshe.com/login/oauth" class="btn btn-block secondary-button"><img class="icon" src="./Register/icon-google.png">Log in with Google Account</a>
+					<div class="login-foot">Already have an account?
+						<a class="action" href="http://app.dropshe.com/login">Login</a>
+					</div>
+				</form>
+			</div>
+		</div>
+
+
+	
+    <!--配置国内可以使用-->
+    <!--<script src="https://www.google.com/recaptcha/api.js" ></script>-->
+    <script src="./Register/api.js"></script>
+
+
+    <script>
+        //验证通过可以返回token，不通过则为空
+        function robotVerified(data){
+            console.log(data);
+            if (data !== undefined ) {
+                $('#token').val(data);
+            }
+        }
+		//注册事件
+		$('.login-button').click(function() {
+
+			$("#sign_up").addClass("btn-loading");
+			$("#sign_up").attr('disabled',true);
+			$.ajax({
+				type:"post",
+				url: "/register/index/index",
+				data: {
+					email:$("input[name='email']").val(),
+					username:$("input[name='username']").val(),
+					password:$("input[name='password']").val(),
+					first_name:$("input[name='first_name']").val(),
+					last_name:$("input[name='last_name']").val(),
+					tokens: $('#token').val()
+				},
+				success: function(data){
+					// console.log(data);
+					if(data.code == 0){
+						$("#sign_up").removeClass("btn-loading");
+						$("#sign_up").attr('disabled',false);
+						window.errors(data.msg,data.input_name);
+					}else {
+						setTimeout(function () {
+							window.location.href="http://app.dropshe.com/verfiy_email?dJBEskFH2ddBN3dfdwsJCGdslfdWfAE="+data.data;
+						},1000);
+					}
+				}});
+		});
+
+    </script>
+
+<div style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 3px; position: absolute; transition: visibility 0s linear 0.3s, opacity 0.3s linear; opacity: 0; visibility: hidden; z-index: 2000000000; left: 0px; top: -10000px;"><div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.05;"></div><div class="g-recaptcha-bubble-arrow" style="border: 11px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -11px; z-index: 2000000000;"></div><div class="g-recaptcha-bubble-arrow" style="border: 10px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -10px; z-index: 2000000000;"></div><div style="z-index: 2000000000; position: relative;"><iframe title="recaptcha 验证" src="./Register/bframe.html" name="c-nbv0juk90q23" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" style="width: 100%; height: 100%;"></iframe></div></div></body></html>

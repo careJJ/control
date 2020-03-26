@@ -6,7 +6,6 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 
-	"context"
 	"strings"
 	"time"
 )
@@ -18,45 +17,46 @@ type CoreController struct {
 //展示商店页面
 func (this *CoreController) ShowStore() {
 	//给查询对象赋值
-	email := this.GetSession("email")
-	if email == "" {
+	id := this.GetSession("id")
+	beego.Alert("Show Store:",id)
+	if id == nil{
+		beego.Error("用户未登录")
 		this.TplName = "login.html"
 		return
 	}
+	o:=orm.NewOrm()
 	var user models.User
-	user.Email = email.(string)
-
-	//一对一查店铺
-	o := orm.NewOrm()
+	user.Id=id.(int)
+	o.Read(&user,"Id")
 	var store models.ShopifyStore
+	store.Email=user.Email
 	//一对一查询，user
 	//在User表中给store添加rel(one)，就表示跟store建立一对一关系（ 一个用户对应一个店铺；一个店铺对应一个用户），user是子表，user表中自动生成了store_id字段，store表中的反向关系可以省略。
 	//一：可以在查询了子表user,o.Read(user)后，直接查询o.Read(user.Store)。
 	//二：级联查询（主流方法）：user=&User{},O.QueryTable("user").Filter("Id", 1).RelatedSel().One(user),这样查询出user表中id为1的所有store数据，可以直接得到user.store。
 	//三：reverse查询，通过子表条件查询主表，此时并没有获取另一个表的数据。store:=store{},O.QueryTable("profile").Filter("User__Id", 1).One(&store)。
 	// 或者store := []*Store{}，O.QueryTable("store").Filter("User__Name", "ming").One(&stores)，for _, a := range stores，此处的a就是名字是ming的store。
-
-	o.QueryTable("User").Filter("Email", user.Email).RelatedSel().One(user)
-
-	name := user.ShopifyStore.Name
-	store.Name = name
+	o.Read(&user,"Email")
+	//o.QueryTable("User").Filter("Email", user.Email).RelatedSel().One(user)
+	beego.Alert(user.Email)
+	o.Read(&store,"Email")
+	name := store.Name
+	this.Data["user"]=user
+	this.Data["store"]=store
+	beego.Alert("store name:",name)
 	if name == "" {
 		beego.Error("请绑定商店")
-		return
+	//this.Data["errno"]=0
 		this.Redirect("/stores/add", 302)
+		beego.Alert("store  2")
+		//return
 	}
 	if name != "" {
+		beego.Alert("store 3")
+		this.Data["store"]=store
 
-		t := store.CreateTime
-		psync := store.ProductSync
-		osync := store.OrderSync
-
-		this.Data["CreateTime"] = t
-		this.Data["Product Sync"] = psync
-		this.Data["Order Sync"] = osync
-		this.Data["Status"] = "Active"
 	}
-	this.TplName = "stores.html"
+	this.TplName = "Stores.html"
 
 }
 
@@ -67,98 +67,118 @@ func (this *CoreController) HandleStore() {
 
 //添加商店的操作
 func (this *CoreController) AddStore() {
-
+	beego.Alert("ADD store 1")
+	this.TplName="StoresAdd.html"
 	//给查询对象赋值
-	email := this.GetSession("email")
-	if email == "" {
+	id := this.GetSession("id")
+	beego.Alert("ADD Store:",id)
+	if id == nil{
 		beego.Error("用户未登录")
 		this.TplName = "login.html"
 		return
 	}
-	o := orm.NewOrm()
+	o:=orm.NewOrm()
 	var user models.User
-	user.Email=email.(string)
-	o.Read(&user)
+	user.Id=id.(int)
+	o.Read(&user,"Id")
 	//跟店铺建立一对一关系
-
+	this.Data["user"]=user
 	var store models.ShopifyStore
-	store.User.Id=user.Id
-	store.Email = email.(string)
-	name := this.GetString("name")
+	//store.User.Id=user.Id
+	store.Email =user.Email
+	o.Read(&store,"Email")
+	name := this.GetString("shop_url")
 	//暂时定为password
-	password := this.GetString("password")
-	apikey := this.GetString("Api key")
+	password := this.GetString("Password")
+	apikey := this.GetString("APIKEY")
+	beego.Alert("get 2")
 	//判定店铺是否已经存在
-	qs := o.QueryTable("ShopifyStore").Filter("Name", name).Exist()
-	if qs == true {
-		beego.Error("该店铺已存在")
-		this.Redirect("/stores/add", 302)
-	}
+	//qs := o.QueryTable("ShopifyStore").Filter("Name", name).Exist()
+	//if qs == true {
+	//	beego.Error("该店铺已存在")
+	//	this.Redirect("/stores/add", 302)
+	//}
+	beego.Alert("name:",name)
+
+	beego.Alert("apikey:",apikey)
+	beego.Alert("password:",password)
+	beego.Alert("exist 3")
 	//创建时间  店铺的添加时间
 	loc, _ := time.LoadLocation("America/Los_Angeles")
 	t := (time.Now().In(loc))
-	store.CreateTime = t.String()
-
+	store.CreateTime = t
 	//传入店铺名字和password，之前应该先出一份安全声明。
-
-	client := util.LinkStore(name, password)
-	s, _, err := client.Shop.Get(context.Background())
-	if err != nil {
-		beego.Error("连接shopify店铺失败")
+	//client := util.LinkStore(name, password)
+	//s, _, err := client.Shop.Get(context.Background())
+	//if err != nil {
+	//	beego.Error("连接shopify店铺失败")
+	//}
+	if name!=""||password!=""||apikey!=""{
+		//beego.Alert("asdasdasd",name,password,apikey)
+		beego.Alert("nil 4")
+		store.Name = name
+		store.Secret = password
+		store.ApiKey = apikey
+		_,err:=o.Update(&store,"Name","ApiKey","Secret","CreateTime")
+		if err!=nil {
+			beego.Error(err)
+			return
+		}
+		user.StoreName=name
+		o.Update(&user,"StoreName")
+		beego.Alert("insert 4")
 	}
-	store.Name = s.Name
-	store.Secret = password
-	store.ApiKey = apikey
-	o.Insert(&store)
 
-	this.Redirect("/stores", 302)
+	beego.Alert("finish")
+	//this.Redirect("/stores", 302)
 }
 
 //展示一键获取订单的页面
 func (this *CoreController) ShowOrder() {
-	this.TplName = "order.html"
+
+	this.TplName = "orders.html"
 }
 
 //一键同步订单
 func (this *CoreController) HandleOrder() {
-	//获取店铺，查店铺信息
-	email := this.GetSession("email")
+	id := this.GetSession("id")
+	beego.Alert("Order:",id)
+	if id == nil{
+		beego.Error("用户未登录")
+		this.TplName = "login.html"
+		return
+	}
+	o:=orm.NewOrm()
 	var user models.User
-	user.Email = email.(string)
-	//判断是否已经绑定店铺，若未绑定，则跳转到添加店铺页面
-	o := orm.NewOrm()
+	user.Id=id.(int)
+	o.Read(&user,"Id")
+	//跟店铺建立一对一关系
+	this.Data["user"]=user
+	var store models.ShopifyStore
+	store.Email=user.Email
+	o.Read(&store,"Email")
 	//o.Read(&user.ShopifyStore)
-	o.QueryTable("User").Filter("Email", email).RelatedSel().One(user)
 	//创建json的容器
 	resp := make(map[string]interface{})
-	if user.ShopifyStore.Name == "" {
-		this.Redirect("/stores/add", 302)
-	}
-	//if user.ShopifyStore.Name=="beachmolly mygymgirl"	||user.ShopifyStore.Name=="mygymgirl beachmolly "{
-	//	//得到beachmolly的所有订单相关json
-	//	beachOrderJson:=util.GetBeachmollyOrderInfo()
-	//	//得到Mygymgirl的所有订单相关json
-	//	mygymOrderJson:=util.GetMygymgirlOrderInfo()
-	//	resp["order"]=beachOrderJson+mygymOrderJson
-	name := user.ShopifyStore.Name
-	apikey := user.ShopifyStore.ApiKey
-	secret := user.ShopifyStore.Secret
+	defer RespFunc(&this.Controller,resp)
+
 	//得到所有订单id
-	orderid := util.GetOrderid(name, apikey, secret)
+	orderid := util.GetOrderid(store.Name, store.ApiKey, store.Secret)
 	//直接获取所需订单所有信息  返回json字符串
-	orderjson := util.GetOrderJson(name, apikey, secret)
+	orderjson := util.GetOrderJson(store.Name, store.ApiKey, store.Secret)
 	//如果不行就定义行容器，拼接order信息再发送
 	resp["order"] = orderjson
 
 	//Order存库操作
 	var order models.Order
-	var lineitem models.LineItems
+	var lineitem []models.LineItems
+
 	//var ship models.ShippingAddress
 	//o1:=util.Orders{}
 	//l1:=[]util.LineItems{}
 	//s1:=util.ShippingAddress{}
 	for f := 0; f < len(orderid); f++ {
-		o1, s1, l1 := util.GetOrderStruct(name, apikey, secret, f)
+		o1, s1, l1 := util.GetOrderStruct(store.Name, store.ApiKey, store.Secret,f)
 		//order赋值
 		order.Id = o1.ID
 		order.Name = o1.Name
@@ -172,7 +192,8 @@ func (this *CoreController) HandleOrder() {
 		order.Shipping_address.LastName = s1.LastName
 		order.Shipping_address.FirstName = s1.FirstName
 		order.Shipping_address.Country = s1.Country
-		order.Shipping_address.Company = s1.Company
+		//Company原本是interface
+		order.Shipping_address.Company = s1.Company.(string)
 		order.Shipping_address.Address1 = s1.Address1
 		order.Shipping_address.Address2 = s1.Address2
 		order.Shipping_address.City = s1.City
@@ -186,12 +207,12 @@ func (this *CoreController) HandleOrder() {
 
 		o.QueryTable("LineItems").Filter("Order__Id", order.Id).RelatedSel().All(&lineitem)
 		for g := 0; g < len(l1); g++ {
-			lineitem.Id = l1[g].ID
-			lineitem.Quantity = l1[g].Quantity
-			lineitem.VariantID = l1[g].VariantID
-			lineitem.Price = l1[g].Price
-			lineitem.Title = l1[g].Title
-			lineitem.Sku = l1[g].Sku
+			lineitem[g].Id = l1[g].ID
+			lineitem[g].Quantity = l1[g].Quantity
+			lineitem[g].VariantID = l1[g].VariantID
+			lineitem[g].Price = l1[g].Price
+			lineitem[g].Title = l1[g].Title
+			lineitem[g].Sku = l1[g].Sku
 			o.Insert(&lineitem)
 		}
 
@@ -199,17 +220,17 @@ func (this *CoreController) HandleOrder() {
 
 	//获取产品匹配表ProductMatch
 	var promatch models.ProductMatch
-	var provanriant models.Variant
-	var imgsrc models.ImageSrc
+	var provanriant []models.Variant
+	var imgsrc []models.ImageSrc
 	a := util.Products{}
 	d1 := []util.Variant{}
 	imgs1 := []util.Image{}
-	pid := util.GetProductId(name, apikey, secret)
+	pid := util.GetProductId(store.Name, store.ApiKey, store.Secret)
 	//p:=util.ProductMatch{}
 	//	var imgstr []string
 
 	for i := 0; i < len(pid); i++ {
-		a.ID, a.Title, d1, imgs1 = util.GetProductMatch(name, apikey, secret, i)
+		a.ID, a.Title, d1, imgs1 = util.GetProductMatch(store.Name, store.ApiKey, store.Secret, i)
 		promatch.Id = a.ID
 		promatch.Title = a.Title
 		//先插入id和title，再一对多查表插入
@@ -217,20 +238,20 @@ func (this *CoreController) HandleOrder() {
 		//查表 variant  ProductMatch是主表 variant子表，variant建表时，自动生成ProductMatch_id字段，等于ProductMatch的ProductId
 		o.QueryTable("Variant").Filter("ProductMatch__Id", a.ID).RelatedSel().All(&provanriant)
 		for c := 0; c < len(d1); c++ {
-			provanriant.Id = d1[c].Id
-			provanriant.Sku = d1[c].Sku
-			provanriant.Price = d1[c].Price
-			provanriant.Title = d1[c].Title
+			provanriant[c].Id = d1[c].Id
+			provanriant[c].Sku = d1[c].Sku
+			provanriant[c].Price = d1[c].Price
+			provanriant[c].Title = d1[c].Title
 			o.Insert(&provanriant)
 		}
 		//查表ImageSrc,
 		o.QueryTable("ImageSrc").Filter("ProductMatch__Id", a.ID).RelatedSel().All(&imgsrc)
 		for e := 0; e < len(imgs1); e++ {
 			//img链接
-			imgsrc.Src = imgs1[e].Src
+			imgsrc[e].Src = imgs1[e].Src
 			//img存FDFS
 			fdfssrc := util.FdsUploadImage(&this.Controller, imgs1[e].Src)
-			imgsrc.FdfsSrc = fdfssrc
+			imgsrc[e].FdfsSrc = fdfssrc
 			o.Insert(&imgsrc)
 		}
 	}
@@ -256,7 +277,7 @@ func (this *CoreController) HandleOrder() {
 		t["line_items"] = line
 		//var ship models.ShippingAddress
 		//
-		o.QueryTable("Order").Filter("Order__Id", ordershow[i1].Id).RelatedSel().One(ordershow)
+		o.QueryTable("Order").Filter("Order__Id", ordershow[i1].Id).RelatedSel().All(&ordershow)
 		//City //	Zip //	Province //	Country //	LastName
 		t["City"] = ordershow[i1].Shipping_address.City
 		t["Zip"] = ordershow[i1].Shipping_address.Zip
@@ -323,7 +344,7 @@ func (this *CoreController) ShowSource() {
 	o.Read(&order)
 	var line []models.LineItems
 	var image models.ImageSrc
-	var source models.Sourcing_Demand
+	var source models.SourcingDemand
 	//建立Sourcing_Demand跟Order的一对一关系
 	source.Order.Id=id
 	//根据订单id查订单详细商品
@@ -442,7 +463,7 @@ func (this *CoreController) ShowSourcing() {
 		return
 	}
 	var user models.User
-	var source_demand []models.Sourcing_Demand
+	var source_demand []models.SourcingDemand
 	user.Email = email.(string)
 	userid := user.Id
 
@@ -463,8 +484,6 @@ func (this *CoreController) ShowSourcing() {
 		temp:=make(map[string]interface{})
 		//先判断订单的状态
 
-
-
 		if v.Status == false {
 			temp["Status"] = "Pending review"
 			//关闭支付按钮
@@ -472,7 +491,7 @@ func (this *CoreController) ShowSourcing() {
 		}
 		if v.Status == true {
 			temp["Status"] = "pending payment"
-			//关闭支付按钮
+			//开启支付按钮
 			temp["pay"] = true
 		}
 		temp["Id"]=v.Id
@@ -526,35 +545,7 @@ func (this *CoreController) DeleteSouring() {
 
 }
 
-//支付  sku的匹配后
-func (this *CoreController) PaySoucing() {
-	//获取订单的状态，状态待支付传true给前端用来开放按钮
-	email := this.GetSession("email")
-	if email == "" {
-		beego.Error("用户未登录")
-		this.TplName = "login.html"
-		return
-	}
-	var user models.User
-	user.Email = email.(string)
-	//uid:=user.Id
-	id, err := this.GetInt("Id")
-	if err != nil {
-		beego.Error("获取sourcing id失败")
-		this.Redirect("/Sourcing", 302)
-		return
-	}
-	o := orm.NewOrm()
-	var source models.Sourcing
-	//o.QueryTable("source").Filter("User__id",uid).All(&source)
-	source.Id = id
-	//检验status是否可以支付
-	if source.Status == true {
-		//添加到购物车
 
-	}
-
-}
 
 //搜索  按订单名字搜索
 

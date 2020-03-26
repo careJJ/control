@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://app.dropshe.com/accout/general -->
+<html class="js sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers"
+      lang="">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Account Settings - Dropshe</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="/static/home/site.webmanifest">
+    <link rel="apple-touch-icon" href="/static/home/icon.png">
+    <link rel="shortcut icon" type="image/png" href="/static/home/favicon.ico">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="/static/Account/normalize.css">
+    <link rel="stylesheet" href="/static/Account/main.css">
+    <link rel="stylesheet" href="/static/Account/style.css">
+    <link href="/static/Account/font-awesome.min.css" rel="stylesheet">
+
+    <!-- 提示插件 -->
+    <link rel="stylesheet" type="text/css" href="/static/Account/animate.css">
+    <link rel="stylesheet" href="/static/Account/noticejs.css">
+    <script type="text/javascript" async="" src="/static/Account/p6b7wznf"></script>
+    <script src="/static/Account/notice.js"></script>
+
+    <script src="/static/Account/modernizr-3.7.1.min.js"></script>
+    <script src="/static/Account/jquery-3.4.1.min.js"></script>
+    <script src="/static/Account/plugins.js"></script>
+    <script src="/static/Account/main.js"></script>
+    <script src="/static/Account/common.js"></script>
+
+    <!--<link rel="stylesheet/less" href="/static/home/less/style.less" />
+    <script type="text/javascript" src="/static/home/js/less.min.js"></script>-->
+    <!--引入CSS-->
+    <link rel="stylesheet" type="text/css" href="/static/Account/webuploader.css">
+
+    <!--引入JS-->
+    <!--    <script type="text/javascript" src="/static/webuploader/webuploader.js"></script>-->
+    <script type="text/javascript" src="/static/Account/webuploader.min.js"></script>
+    <meta name="theme-color" content="#fafafa">
+    <style>
+        .changs_img :hover {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        window.intercomSettings = {
+            app_id: "p6b7wznf",
+            name: "Aierce Zheng", // Full name
+            email: "udbmnmidtf@gmail.com", // Email address
+            created_at: "2020-03-13 13:12:54" // Signup date as a Unix timestamp
+        };
+    </script>
+    <script>
+        (function () {
+            var w = window;
+            var ic = w.Intercom;
+            if (typeof ic === "function") {
+                ic('reattach_activator');
+                ic('update', w.intercomSettings);
+            } else {
+                var d = document;
+                var i = function () {
+                    i.c(arguments);
+                };
+                i.q = [];
+                i.c = function (args) {
+                    i.q.push(args);
+                };
+                w.Intercom = i;
+                var l = function () {
+                    var s = d.createElement('script');
+                    s.type = 'text/javascript';
+                    s.async = true;
+                    s.src = 'https://widget.intercom.io/widget/p6b7wznf';
+                    var x = d.getElementsByTagName('script')[0];
+                    x.parentNode.insertBefore(s, x);
+                };
+                if (w.attachEvent) {
+                    w.attachEvent('onload', l);
+                } else {
+                    w.addEventListener('load', l, false);
+                }
+            }
+        })();
+    </script>
+</head>
+
+
+<body>
+<!--[if IE]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<div class="drop-header">
+    <div class="logo-box">
+        <a href="/dashboard"><img src="/static/Account/logo.svg"></a>
+    </div>
+    <div class="head-nav">
+        <ul class="nav-list">
+            <li class="nav-item ">
+                <a href="/dashboard"><span class="tit">Dashboard</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/sourcing"><span class="tit">Sourcing</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/hub"><span class="tit">HUB</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/product"><span class="tit">Products</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/order/drop"><span class="tit">Orders</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/stores"><span class="tit">Stores</span></a>
+            </li>
+        </ul>
+    </div>
+    <div class="head-right">
+        <a class="notification-link" href="/notification">
+            <i class="icon icon-notification"></i>
+        </a>
+        <div class="user dropdown">
+            <a class="dropdown-hd" href="javascript:void(0);">
+
+
+                <img src="/static/Account/default.jpg" class="img">
+                <span class="user-name">{{.user.FirstName}}  {{.user.LastName}}</span>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="/account/general"><i class="icon"></i>Settings</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="icon icon-help"></i>Help Center</a>
+                </li>
+                <li>
+                    <a href="/tickets"><i class="icon icon-ticket"></i>Ticket</a>
+                </li>
+                <li>
+                    <a href="/login/index/logout"><i class="icon icon-logout"></i>Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="drop-main" id="app">
+
+    <div class="drop-content">
+        <div class="wrapper main-box">
+            <div class="main-title">Account Settings</div>
+            <div id="myTab" class="main-cont tab">
+                <div class="tab-nav">
+                    <div class="tab-nav-list">
+                        <a class="tab-nav-item actived" href="/account/general">General</a>
+                        <a class="tab-nav-item" href="/account/password">Email &amp;
+                            Password</a>
+                        <a class="tab-nav-item" href="/account/billing">Billing</a>
+                        <a class="tab-nav-item" href="/account/payment">Payment Methods</a>
+                        <a class="tab-nav-item" href="/account/invoices">Invoices</a>
+                    </div>
+                </div>
+
+
+                <!--上传结构部分-->
+                <form id="upload" enctype="multipart/form-data" method="post">
+                    <input type="file" name="file" id="pic" style="display: none;">
+                    <!--            <input type="button" value="提交" click="uploadImg"> -->
+                </form>
+
+                <div class="tab-content">
+                    <div class="tab-pane actived">
+                        <form class="setting-form">
+                            <div class="set-genereal clearfix">
+                                <div class="avatar changs_img">
+
+                                    <img src="/static/Account/15@4x-8.png" onclick="changeImg()" id="user_img">
+                                </div>
+                                <!--                                上传头像-->
+               <!--                 <input type="file" name="file" accept="image" id="watch" v-model="upd_img"
+                                       value={{.user.Image}}>     -->
+                                <div class="form-cont">
+                                    <div class="form-group">
+                                        <label class="tit">Frist name</label>
+                                        <input type="text" class="form-control" placeholder="" name="frist_name"
+                                               value={{.user.FirstName}}>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="tit">Last name</label>
+                                        <input type="text" class="form-control" placeholder="" name="last_name"
+                                               value={{.user.LastName}}>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="tit">Time Zone</label>
+                                        <select class="form-control js-example-basic-single" name="time_zone">
+
+                                            <option value="Africa/Abidjan">Africa/Abidjan</option>
+                                            <option value="America/Adak">America/Adak</option>
+                                            <option value="Antarctica/Casey">Antarctica/Casey</option>
+                                            <option value="Arctic/Longyearbyen">Arctic/Longyearbyen</option>
+                                            <option value="Asia/Aden">Asia/Aden</option>
+                                            <option value="Atlantic/Azores">Atlantic/Azores</option>
+                                            <option value="Australia/ACT">Australia/ACT</option>
+                                            <option value="Europe/Amsterdam">Europe/Amsterdam</option>
+                                            <option value="Indian/Antananarivo">Indian/Antananarivo</option>
+                                            <option value="Pacific/Apia">Pacific/Apia</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="tit">Country</label>
+                                        <select class="form-control js-example-basic-single" name="country">
+                                            <option value="94">United States of America</option>
+                                            <option value="115">Andorra</option>
+                                            <option value="92">United Arab Emirates</option>
+                                            <option value="116">Afghanistan</option>
+                                            <option value="117">Antigua and barbuda.</option>
+                                            <option value="118">Anguilla island</option>
+                                            <option value="119">Albania</option>
+                                            <option value="120">Armenia</option>
+                                            <option value="121">Netherlands Antilles.</option>
+                                            <option value="122">Angola</option>
+                                            <option value="123">French south and Antarctic territory.</option>
+                                            <option value="1">Argentina</option>
+                                            <option value="124">Eastern Samoa (United States)</option>
+                                            <option value="3">Austria</option>
+                                            <option value="2">Australia</option>
+                                            <option value="104">Aruba</option>
+                                            <option value="4">Azerbaijan</option>
+                                            <option value="125">Bosnia and herzegovina.</option>
+                                            <option value="126">Barbados</option>
+                                            <option value="6">Bangladesh</option>
+                                            <option value="8">Belgium</option>
+                                            <option value="12">Burkinafaso</option>
+                                            <option value="11">Bulgaria</option>
+                                            <option value="5">Bahrain</option>
+                                            <option value="127">Burundi</option>
+                                            <option value="128">benin</option>
+                                            <option value="129">Bermuda islands</option>
+                                            <option value="130">brunei</option>
+                                            <option value="131">Bolivia</option>
+                                            <option value="10">Brazil</option>
+                                            <option value="132">The Bahamas</option>
+                                            <option value="133">Bhutan</option>
+                                            <option value="9">Botswana</option>
+                                            <option value="7">Belarus</option>
+                                            <option value="134">Belize</option>
+                                            <option value="13">Canada</option>
+                                            <option value="135">Cocos island</option>
+                                            <option value="21">Democratic Republic of the Congo</option>
+                                            <option value="136">The central African</option>
+                                            <option value="102">Congo(Rep)</option>
+                                            <option value="85">Switzerland</option>
+                                            <option value="41">Ivory Coast</option>
+                                            <option value="137">Cork islands (new)</option>
+                                            <option value="138">Chile</option>
+                                            <option value="139">Cameroon</option>
+                                            <option value="240">China</option>
+                                            <option value="16">Colombia</option>
+                                            <option value="140">Costa rica</option>
+                                            <option value="18">Cuba</option>
+                                            <option value="141">Cape Verde,</option>
+                                            <option value="142">The Christmas island</option>
+                                            <option value="19">Cyprus</option>
+                                            <option value="20">Czech Rep.</option>
+                                            <option value="30">Germany</option>
+                                            <option value="143">New caledonian islands</option>
+                                            <option value="23">Djibouti</option>
+                                            <option value="22">Denmark</option>
+                                            <option value="144">The commonwealth of dominica</option>
+                                            <option value="105">Dominican Republic</option>
+                                            <option value="145">Algeria</option>
+                                            <option value="146">Ecuador</option>
+                                            <option value="25">Estonia</option>
+                                            <option value="24">Egypt</option>
+                                            <option value="147">The western Sahara</option>
+                                            <option value="148">eritrea</option>
+                                            <option value="82">Spain</option>
+                                            <option value="26">Ethiopia</option>
+                                            <option value="27">Finland</option>
+                                            <option value="149">Fiji</option>
+                                            <option value="150">Falkland islands</option>
+                                            <option value="151">Micronesia (us)</option>
+                                            <option value="152">Faroe islands (Dan)</option>
+                                            <option value="28">France</option>
+                                            <option value="29">Gabon</option>
+                                            <option value="93">United Kingdom</option>
+                                            <option value="153">grenada</option>
+                                            <option value="154">Georgia</option>
+                                            <option value="155">French Guiana.</option>
+                                            <option value="31">Ghana</option>
+                                            <option value="106">Gibraltar</option>
+                                            <option value="156">Greenland</option>
+                                            <option value="157">The Gambia</option>
+                                            <option value="33">Guinea</option>
+                                            <option value="158">Guadeloupe island</option>
+                                            <option value="159">Equatorial guinea.</option>
+                                            <option value="32">Greece</option>
+                                            <option value="160">Guatemala</option>
+                                            <option value="161">Guam (United States)</option>
+                                            <option value="162">Guinea-bissau.</option>
+                                            <option value="34">Guyana</option>
+                                            <option value="98">Hong Kong</option>
+                                            <option value="163">Hurd and McDonald islands.</option>
+                                            <option value="164">Honduras</option>
+                                            <option value="17">Croatia</option>
+                                            <option value="165">In Haiti,</option>
+                                            <option value="35">HunGary</option>
+                                            <option value="37">Indonesia</option>
+                                            <option value="38">Ireland</option>
+                                            <option value="39">Israel</option>
+                                            <option value="36">India</option>
+                                            <option value="166">British Indian Ocean territory.</option>
+                                            <option value="103">Iraq</option>
+                                            <option value="101">Iran</option>
+                                            <option value="107">Iceland</option>
+                                            <option value="40">Italy</option>
+                                            <option value="108">Jersey</option>
+                                            <option value="167">Jamaica</option>
+                                            <option value="168">Canary islands</option>
+                                            <option value="43">Jordan</option>
+                                            <option value="42">Japan</option>
+                                            <option value="45">Kenya</option>
+                                            <option value="169">kyrgyzstan</option>
+                                            <option value="100">Cambodia</option>
+                                            <option value="170">Kiribati</option>
+                                            <option value="171">The comoros</option>
+                                            <option value="172">Saint Christopher and nevis.</option>
+                                            <option value="63">North Korea</option>
+                                            <option value="81">korea</option>
+                                            <option value="46">Kuwait</option>
+                                            <option value="14">Cayman Islands</option>
+                                            <option value="44">Kazakhstan</option>
+                                            <option value="47">Laos</option>
+                                            <option value="109">Lebanon</option>
+                                            <option value="173">St. Lucia</option>
+                                            <option value="174">Liechtenstein.</option>
+                                            <option value="83">Sri Lanka</option>
+                                            <option value="175">Liberia</option>
+                                            <option value="176">lesotho</option>
+                                            <option value="110">Lithuania</option>
+                                            <option value="49">Luxembourg</option>
+                                            <option value="48">Latvia</option>
+                                            <option value="177">Libya</option>
+                                            <option value="56">Morocco</option>
+                                            <option value="178">Monaco</option>
+                                            <option value="179">moldova</option>
+                                            <option value="180">Montenegro</option>
+                                            <option value="50">Madagascar</option>
+                                            <option value="181">Marshall islands.</option>
+                                            <option value="182">Macedonia</option>
+                                            <option value="52">Mali</option>
+                                            <option value="183">myanmar</option>
+                                            <option value="55">Mongolia</option>
+                                            <option value="99">Macau</option>
+                                            <option value="184">Mariana islands.</option>
+                                            <option value="185">Martinique</option>
+                                            <option value="186">Mauritania.</option>
+                                            <option value="187">Montserrat island</option>
+                                            <option value="53">Malta</option>
+                                            <option value="111">Mauritius</option>
+                                            <option value="188">The maldives</option>
+                                            <option value="189">Malawi</option>
+                                            <option value="54">Mexico</option>
+                                            <option value="51">Malaysia</option>
+                                            <option value="57">Mozambique</option>
+                                            <option value="190">namibia</option>
+                                            <option value="61">Niger</option>
+                                            <option value="191">Norfolk island (Australia)</option>
+                                            <option value="62">Nigeria</option>
+                                            <option value="192">Nicaragua</option>
+                                            <option value="59">Netherlands</option>
+                                            <option value="64">Norway</option>
+                                            <option value="58">Nepal</option>
+                                            <option value="193">nauru</option>
+                                            <option value="194">Niue (new)</option>
+                                            <option value="60">New Zealand</option>
+                                            <option value="65">Oman</option>
+                                            <option value="67">Panama</option>
+                                            <option value="69">Peru</option>
+                                            <option value="195">French Polynesia.</option>
+                                            <option value="68">Papua New Guinea</option>
+                                            <option value="70">Philippines</option>
+                                            <option value="66">Pakistan</option>
+                                            <option value="71">Poland</option>
+                                            <option value="196">Saint Pierre island and miquelon.</option>
+                                            <option value="197">Pitcairn islands</option>
+                                            <option value="198">Puerto Rico (us)</option>
+                                            <option value="199">The Palestinian</option>
+                                            <option value="72">Portugal</option>
+                                            <option value="200">Palau (USA)</option>
+                                            <option value="201">Paraguay</option>
+                                            <option value="73">Qatar</option>
+                                            <option value="202">Reunion island</option>
+                                            <option value="74">Romania</option>
+                                            <option value="112">Serbia (Rep.)</option>
+                                            <option value="75">Russian Federation</option>
+                                            <option value="76">Rwanda</option>
+                                            <option value="77">Saudi Arabia</option>
+                                            <option value="203">Solomon islands</option>
+                                            <option value="204">The seychelles</option>
+                                            <option value="205">Sudan</option>
+                                            <option value="84">Sweden</option>
+                                            <option value="79">Singapore</option>
+                                            <option value="206">St Helena</option>
+                                            <option value="113">Slovenia</option>
+                                            <option value="207">Svalbard (Norway)</option>
+                                            <option value="114">Slovakia</option>
+                                            <option value="208">Sierra leone</option>
+                                            <option value="209">SAN marino</option>
+                                            <option value="78">Senegal</option>
+                                            <option value="210">somalia</option>
+                                            <option value="211">suriname</option>
+                                            <option value="212">SAO tome and principe.</option>
+                                            <option value="213">El Salvador</option>
+                                            <option value="86">Syria</option>
+                                            <option value="214">Swaziland</option>
+                                            <option value="215">Turks and caicos islands</option>
+                                            <option value="15">Chad</option>
+                                            <option value="216">Togo</option>
+                                            <option value="87">Thailand</option>
+                                            <option value="217">tajikistan</option>
+                                            <option value="218">Tokelau islands (new)</option>
+                                            <option value="219">East timor</option>
+                                            <option value="220">turkmenistan</option>
+                                            <option value="88">Tunisia</option>
+                                            <option value="221">tonga</option>
+                                            <option value="89">Turkey</option>
+                                            <option value="222">Trinidad and Tobago.</option>
+                                            <option value="223">tuvalu</option>
+                                            <option value="97">Taiwan</option>
+                                            <option value="224">In Tanzania,</option>
+                                            <option value="91">Ukraine</option>
+                                            <option value="90">Uganda</option>
+                                            <option value="225">Small islands outside the United States.</option>
+                                            <option value="94">United States of America</option>
+                                            <option value="226">Uruguay</option>
+                                            <option value="95">Uzbekistan</option>
+                                            <option value="227">The Vatican</option>
+                                            <option value="228">Saint Vincent island</option>
+                                            <option value="229">venezuela</option>
+                                            <option value="230">Virgin islands</option>
+                                            <option value="231">Virgin islands (United States)</option>
+                                            <option value="96">Vietnam</option>
+                                            <option value="232">vanuatu</option>
+                                            <option value="233">Varys and the Fuji islands</option>
+                                            <option value="234">Western Samoa</option>
+                                            <option value="235">yemen</option>
+                                            <option value="236">mayotte</option>
+                                            <option value="237">Ascension island</option>
+                                            <option value="80">South Africa</option>
+                                            <option value="238">In Zambia,</option>
+                                            <option value="239">Zimbabwe</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="tit">Language</label>
+                                        <select class="form-control js-example-basic-single" name="language">
+                                            <option value="0">English</option>
+                                        </select>
+                                    </div>
+                                    <input type="hidden" name="bool">
+                                </div>
+                            </div>
+
+                            <div class="btn-box">
+                                <button type="button" class="btn btn-bg-main btn-big" id="save-btn" onclick="saves(41)">
+                                    Save
+                                </button>
+                                <button type="button" class="btn btn-bd-main btn-big">Cancel</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/Account/select2.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.js-example-basic-single').select2({
+            minimumResultsForSearch: -1
+        });
+    });
+</script>
+
+<script>
+    //图片上传功能
+    function changeImg() {
+        $("#pic").click();
+    }
+
+    $('#pic').change(function () {
+        var form = document.getElementById('upload'),
+            formData = new FormData(form)
+        var _this = this;
+        $.ajax({
+            url: "account/image",
+            type: "post",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (res) {
+                res = JSON.parse(res);
+                var path = '/upload/' + res.path;
+                // console.log(path);
+                $('#user_img').attr('src', path);
+                $('.img').attr('src', path);
+            },
+            error: function (err) {
+                alert("网络连接失败,稍后重试", err);
+            }
+        })
+    });
+
+    //修改数据操作
+    function saves(id) {
+        // $("#save-btn").addClass("btn-loading");
+        // $("#save-btn").attr('disabled', true);
+        $.ajax({
+            type: "post",
+            url: "/account/general",
+            data: {
+                // id:id,
+                frist_name: $("input[name='frist_name']").val(),
+                last_name: $("input[name='last_name']").val(),
+                time_zone: $("select[name='time_zone']").val(),
+                country: $("select[name='country']").val(),
+                language: $("select[name='language']").val()
+            },
+            success: function (data) {
+                if (data.errno == 0) {
+                    setTimeout(function () {
+                        $("#save-btn").removeClass("btn-loading");
+                        $("#save-btn").attr('disabled', false);
+                        // window.location.reload();
+                        window.location.href = "/stores"
+                    }, 2000);
+                }
+                if(data.errno==1){
+                    alert(data.errmsg);
+                }
+            }
+        });
+    }
+
+</script>
+
+
+<iframe id="intercom-frame"
+        style="position: absolute !important; opacity: 0 !important; width: 1px !important; height: 1px !important; top: 0 !important; left: 0 !important; border: none !important; display: block !important; z-index: -1 !important;"
+        aria-hidden="true" tabindex="-1" title="Intercom" src="/static/Account/saved_resource.html"></iframe>
+<div id="intercom-container" class="intercom-namespace">
+    <style>html.intercom-mobile-messenger-active, html.intercom-mobile-messenger-active > body, html.intercom-modal-open, #intercom-container-body {
+            overflow: hidden !important;
+        }
+
+        html.intercom-mobile-messenger-active, html.intercom-mobile-messenger-active > body {
+            position: static !important;
+        }
+
+        html.intercom-mobile-messenger-active > body {
+            height: 0 !important;
+            margin: 0 !important;
+        }
+
+        iframe#intercom-frame {
+            position: absolute !important;
+            opacity: 0 !important;
+            width: 1px !important;
+            height: 1px !important;
+            top: 0 !important;
+            left: 0 !important;
+            border: none !important;
+            display: block !important;
+            z-index: -1 !important;
+        }</style>
+    <div class="intercom-app" aria-live="polite">
+        <div id="intercom-modal-container"></div>
+    </div>
+</div>
+<div id="intercom-css-container">
+    <style data-emotion="intercom-global"></style>
+</div>
+</body>
+</html>

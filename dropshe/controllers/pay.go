@@ -1,18 +1,22 @@
 package controllers
 
 import (
-	"encoding/json"
-	"fmt"
-	"github.com/aliyun/alibaba-cloud-sdk-go/sdk"
-	"github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
+	//"encoding/json"
+	//"fmt"
+	//"github.com/aliyun/alibaba-cloud-sdk-go/sdk"
+	//"github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 	"github.com/astaxie/beego"
-	"math/rand"
-	"regexp"
-	"time"
-	//"github.com/astaxie/beego/utils"
+	//"github.com/astaxie/beego/orm"
+	//"math/rand"
+	//"os"
+	//"regexp"
+	//"time"
+	////"github.com/astaxie/beego/utils"
+	//"github.com/plutov/paypal"
+	//"dropshe/models"
 )
 
-type PayControllers struct {
+type PayController struct {
 	beego.Controller
 }
 
@@ -70,87 +74,140 @@ func CheckImages(this *beego.Controller) {
  */
 
 //交易短信验证  缺前端的ajax
-func (this *PayControllers) HandleSenMsg() {
-	//接受数据
+//func (this *PayController) HandleSenMsg() {
+//	//接受数据
+//
+//	countrycode := this.GetString("Country Code")
+//	phone := this.GetString("Phone")
+//	mixphone := "+" + countrycode + phone
+//	resp := make(map[string]interface{})
+//
+//	defer RespFunc(&this.Controller, resp)
+//	//返回json格式数据
+//	//校验数据
+//	if countrycode == "" || phone == "" {
+//		beego.Error("获取电话号码失败")
+//		//2.给容器赋值
+//		resp["errno"] = 1
+//		resp["errmsg"] = "获取电话号码错误"
+//		return
+//	}
+//	//检查电话号码格式是否正确
+//	reg, _ := regexp.Compile(`\+(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|
+//2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|
+//4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}$`)
+//	result := reg.FindString(mixphone)
+//	if result == "" {
+//		beego.Error("电话号码格式错误")
+//		//2.给容器赋值
+//		resp["errno"] = 2
+//		resp["errmsg"] = "电话号码格式错误"
+//		return
+//	}
+//	//发送短信   SDK调用
+//	client, err := sdk.NewClientWithAccessKey("cn-hangzhou", "LTAIu4sh9mfgqjjr", "sTPSi0Ybj0oFyqDTjQyQNqdq9I9akE")
+//	if err != nil {
+//		beego.Error("电话号码格式错误")
+//		//2.给容器赋值
+//		resp["errno"] = 3
+//		resp["errmsg"] = "初始化短信错误"
+//		return
+//	}
+//	//生成6位数随机数
+//	rnd := rand.New(rand.NewSource(time.Now().UnixNano()))
+//	//验证码
+//	vcode := fmt.Sprintf("%06d", rnd.Int31n(1000000))
+//	//阿里云短息服务
+//	request := requests.NewCommonRequest()
+//	request.Method = "POST"
+//	request.Scheme = "https" // https | http
+//	request.Domain = "dysmsapi.aliyuncs.com"
+//	request.Version = "2017-05-25"
+//	request.ApiName = "SendSms"
+//	request.QueryParams["RegionId"] = "cn-hangzhou"
+//	request.QueryParams["PhoneNumbers"] = phone
+//	request.QueryParams["SignName"] = "dropshe"
+//	request.QueryParams["TemplateCode"] = "SMS_164275022"
+//	request.QueryParams["TemplateParam"] = "{\"code\":" + vcode + "}"
+//
+//	response, err := client.ProcessCommonRequest(request)
+//	if err != nil {
+//		beego.Error("电话号码格式错误")
+//		//2.给容器赋值
+//		resp["errno"] = 4
+//		resp["errmsg"] = "短信发送失败"
+//		return
+//	}
+//	//json数据解析
+//	var message Message
+//	json.Unmarshal(response.GetHttpContentBytes(), &message)
+//	if message.Message != "OK" {
+//		beego.Error("电话号码格式错误")
+//		//2.给容器赋值
+//		resp["errno"] = 6
+//		resp["errmsg"] = message.Message
+//		return
+//	}
+//
+//	resp["errno"] = 5
+//	resp["errmsg"] = "发送成功"
+//	resp["code"] = vcode
+//}
 
-	countrycode := this.GetString("Country Code")
-	phone := this.GetString("Phone")
-	mixphone := "+" + countrycode + phone
-	resp := make(map[string]interface{})
-
-	defer RespFunc(&this.Controller, resp)
-	//返回json格式数据
-	//校验数据
-	if countrycode == "" || phone == "" {
-		beego.Error("获取电话号码失败")
-		//2.给容器赋值
-		resp["errno"] = 1
-		resp["errmsg"] = "获取电话号码错误"
-		return
-	}
-	//检查电话号码格式是否正确
-	reg, _ := regexp.Compile(`\+(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|
-2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|
-4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}$`)
-	result := reg.FindString(mixphone)
-	if result == "" {
-		beego.Error("电话号码格式错误")
-		//2.给容器赋值
-		resp["errno"] = 2
-		resp["errmsg"] = "电话号码格式错误"
-		return
-	}
-	//发送短信   SDK调用
-	client, err := sdk.NewClientWithAccessKey("cn-hangzhou", "LTAIu4sh9mfgqjjr", "sTPSi0Ybj0oFyqDTjQyQNqdq9I9akE")
-	if err != nil {
-		beego.Error("电话号码格式错误")
-		//2.给容器赋值
-		resp["errno"] = 3
-		resp["errmsg"] = "初始化短信错误"
-		return
-	}
-	//生成6位数随机数
-	rnd := rand.New(rand.NewSource(time.Now().UnixNano()))
-	//验证码
-	vcode := fmt.Sprintf("%06d", rnd.Int31n(1000000))
-	//阿里云短息服务
-	request := requests.NewCommonRequest()
-	request.Method = "POST"
-	request.Scheme = "https" // https | http
-	request.Domain = "dysmsapi.aliyuncs.com"
-	request.Version = "2017-05-25"
-	request.ApiName = "SendSms"
-	request.QueryParams["RegionId"] = "cn-hangzhou"
-	request.QueryParams["PhoneNumbers"] = phone
-	request.QueryParams["SignName"] = "dropshe"
-	request.QueryParams["TemplateCode"] = "SMS_164275022"
-	request.QueryParams["TemplateParam"] = "{\"code\":" + vcode + "}"
-
-	response, err := client.ProcessCommonRequest(request)
-	if err != nil {
-		beego.Error("电话号码格式错误")
-		//2.给容器赋值
-		resp["errno"] = 4
-		resp["errmsg"] = "短信发送失败"
-		return
-	}
-	//json数据解析
-	var message Message
-	json.Unmarshal(response.GetHttpContentBytes(), &message)
-	if message.Message != "OK" {
-		beego.Error("电话号码格式错误")
-		//2.给容器赋值
-		resp["errno"] = 6
-		resp["errmsg"] = message.Message
-		return
-	}
-
-	resp["errno"] = 5
-	resp["errmsg"] = "发送成功"
-	resp["code"] = vcode
-}
+//NewClient-> NewRequest-> SendWithAuth
+//func (this *PayController)HandlePayPal(){
+//	c,err:=paypal.NewClient("","",paypal.APIBaseLive)
+//	if err!=nil{
+//		beego.Error(err)
+//		this.Redirect("/pay",302)
+//		return
+//	}
+//
+//	c.SetLog(os.Stdout) // Set log to terminal stdout
+//
+//	accessToken, err := c.GetAccessToken()
+//
+//}
 
 
+
+//支付  sku的匹配后
+//func (this *PayController) ShowPayment() {
+//	//获取订单的状态，状态待支付传true给前端用来开放按钮
+//	email := this.GetSession("email")
+//	if email == "" {
+//		beego.Error("用户未登录")
+//		this.TplName = "login.html"
+//		return
+//	}
+//	var user models.User
+//	user.Email = email.(string)
+//	//uid:=user.Id
+//	//根据点击的id获取该订单的支付数据
+//	id, err := this.GetInt("Id")
+//	if err != nil {
+//		beego.Error("获取sourcing id失败")
+//		this.Redirect("/Sourcing", 302)
+//		return
+//	}
+//	//获取所有status为true的采购单，点亮支付按钮
+//	o := orm.NewOrm()
+//	var source models.Sourcing
+//	//o.QueryTable("source").Filter("User__id",uid).All(&source)
+//	source.Id = id
+//	//检验status是否可以支付
+//	if source.Status == false {
+//		beego.Error("该订单还未审核完毕")
+//		this.Redirect("/Sourcing",302)
+//		return
+//	}else {
+//
+//	}
+//
+//}
+
+
+//支付完毕的
 
 
 
