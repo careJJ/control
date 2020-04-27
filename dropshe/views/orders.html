@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://app.dropshe.com/order/drop -->
+<html class="js sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers"
+      lang="">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Stores orders - Dropshe</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="/static/home/site.webmanifest">
+    <link rel="apple-touch-icon" href="/static/home/icon.png">
+    <link rel="shortcut icon" type="image/png" href="/static/home/favicon.ico">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="/static/orders/normalize.css">
+    <link rel="stylesheet" href="/static/orders/main.css">
+    <link rel="stylesheet" href="/static/orders/style.css">
+    <link href="/static/orders/font-awesome.min.css" rel="stylesheet">
+
+    <!-- 提示插件 -->
+    <link rel="stylesheet" type="text/css" href="/static/orders/animate.css">
+    <link rel="stylesheet" href="/static/orders/noticejs.css">
+    <script src="/static/orders/notice.js"></script>
+
+    <script src="/static/orders/modernizr-3.7.1.min.js"></script>
+    <script src="/static/orders/jquery-3.4.1.min.js"></script>
+    <script src="/static/orders/plugins.js"></script>
+    <script src="/static/orders/main.js"></script>
+    <script src="/static/orders/common.js"></script>
+
+    <link rel="stylesheet" href="/static/orders/foundation-datepicker.min.css">
+    <link rel="stylesheet" href="/static/orders/amaran.min.css">
+    <script type="text/javascript" src="/static/orders/foundation-datepicker.min.js"></script>
+    <script src="/static/orders/moment.js"></script>
+
+
+    <style>
+        .toolbar {
+            margin-bottom: 35px;
+        }
+    </style>
+    <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+<!--[if IE]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<!-- Add your site or application content here -->
+<div class="drop-header">
+    <div class="logo-box">
+        <a href="/dashboard"><img src="/static/orders/logo.svg"></a>
+    </div>
+    <div class="head-nav">
+        <ul class="nav-list">
+            <li class="nav-item ">
+                <a href="/dashboard"><span class="tit">Dashboard</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/sourcing"><span class="tit">Sourcing</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/hub"><span class="tit">HUB</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/product"><span class="tit">Products</span></a>
+            </li>
+            <li class="nav-item active">
+                <a href="/order/drop"><span class="tit">Orders</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/stores"><span class="tit">Stores</span></a>
+            </li>
+        </ul>
+    </div>
+    <div class="head-right">
+        <a class="notification-link" href="/notification">
+            <i class="icon icon-notification"></i>
+        </a>
+        <div class="user dropdown">
+            <a class="dropdown-hd" href="javascript:void(0);">
+
+
+                <img src="/static/orders/default.jpg" class="img">
+                <span class="user-name">{{.user.FirstName}}  {{.user.LastName}}</span>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="/account/general"><i class="icon"></i>Settings</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="icon icon-help"></i>Help Center</a>
+                </li>
+                <li>
+                    <a href="/tickets"><i class="icon icon-ticket"></i>Ticket</a>
+                </li>
+                <li>
+                    <a href="/logout"><i class="icon icon-logout"></i>Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="drop-main">
+    <div class="drop-content"><!DOCTYPE html>
+        <!-- saved from url=(0033)http://app.dropshe.com/order/drop -->
+        <html class="js sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers"
+              lang="">
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+            <title>Stores orders - Dropshe</title>
+            <meta name="description" content="">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <link rel="manifest" href="/static/home/site.webmanifest">
+            <link rel="apple-touch-icon" href="/static/home/icon.png">
+            <link rel="shortcut icon" type="image/png" href="/static/home/favicon.ico">
+            <!-- Place favicon.ico in the root directory -->
+
+            <link rel="stylesheet" href="/static/orders/normalize.css">
+            <link rel="stylesheet" href="/static/orders/main.css">
+            <link rel="stylesheet" href="/static/orders/style.css">
+            <link href="/static/orders/font-awesome.min.css" rel="stylesheet">
+
+            <!-- 提示插件 -->
+            <link rel="stylesheet" type="text/css" href="/static/orders/animate.css">
+            <link rel="stylesheet" href="/static/orders/noticejs.css">
+            <script src="/static/orders/notice.js"></script>
+
+            <script src="/static/orders/modernizr-3.7.1.min.js"></script>
+            <script src="/static/orders/jquery-3.4.1.min.js"></script>
+            <script src="/static/orders/plugins.js"></script>
+            <script src="/static/orders/main.js"></script>
+            <script src="/static/orders/common.js"></script>
+
+            <link rel="stylesheet" href="/static/orders/foundation-datepicker.min.css">
+            <link rel="stylesheet" href="/static/orders/amaran.min.css">
+            <script type="text/javascript" src="/static/orders/foundation-datepicker.min.js"></script>
+            <script src="/static/orders/moment.js"></script>
+
+
+            <style>
+                .toolbar {
+                    margin-bottom: 35px;
+                }
+            </style>
+            <meta name="theme-color" content="#fafafa">
+        </head>
+
+        <body>
+        <!--[if IE]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a
+                href="https://browsehappy.com/">upgrade
+            your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <!-- Add your site or application content here -->
+        <div class="drop-header">
+            <div class="logo-box">
+                <a href="/dashboard"><img src="/static/orders/logo.svg"></a>
+            </div>
+            <div class="head-nav">
+                <ul class="nav-list">
+                    <li class="nav-item ">
+                        <a href="/dashboard"><span class="tit">Dashboard</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="/sourcing"><span class="tit">Sourcing</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="/hub"><span class="tit">HUB</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="/product"><span class="tit">Products</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="/order/drop"><span class="tit">Orders</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="/stores"><span class="tit">Stores</span></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="head-right">
+                <a class="notification-link" href="/notification">
+                    <i class="icon icon-notification"></i>
+                </a>
+                <div class="user dropdown">
+                    <a class="dropdown-hd" href="javascript:void(0);">
+
+
+                        <img src="/static/orders/default.jpg" class="img">
+                        <span class="user-name">{{.user.FirstName}}  {{.user.LastName}}</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/account/general"><i class="icon"></i>Settings</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);"><i class="icon icon-help"></i>Help Center</a>
+                        </li>
+                        <li>
+                            <a href="/tickets"><i class="icon icon-ticket"></i>Ticket</a>
+                        </li>
+                        <li>
+                            <a href="/login/index/logout"><i class="icon icon-logout"></i>Log Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="drop-main">
+            <div class="drop-content">
+                <div class="toolbar">
+                    <div class="tool-item serach-box">
+                        <input type="text" name="keywords" class="form-control serach-input" placeholder="Enter here..."
+                               value="" style="color:#000">
+                    </div>
+                    <div class="tool-item datepicker-box">
+                        <input class="form-control datepicker-input tolocaltime" type="text" value="" readonly=""
+                               placeholder="Start time" data="" onchange="datepickerToTimestamp(this,'start_time')">
+                        <input type="hidden" name="start_time" id="start_time" value="">
+                    </div>
+                    <div class="tool-item datepicker-box">
+                        <input class="form-control datepicker-input tolocaltime" type="text" value="" readonly=""
+                               placeholder="End time" data="" onchange="atepickerToTimestamp(this,'end_time')">
+                        <input type="hidden" name="end_time" id="end_time" value="">
+                    </div>
+                    <div class="tool-item" style="width: 160px; ">
+                        <!--<select class="form-control js-example-basic-single" name="search_type">
+                            <option value="title" >Product Title</option>
+                            <option value="sku" >SKU </option>
+                        </select>-->
+                        <!--<input style="width: 160px;" class="btn btn-main sync-btn" value="Sync Orders">-->
+                        <a style="width: 160px;" class="btn btn-main sync-btn" href="/order/drop">Sync Orders</a>
+                    </div>
+                    <div class="tool-item">
+                        <button type="submit" class="btn btn-main serach-btn">Search</button>
+
+                    </div>
+
+                </div>
+                <div style="background: #fff; margin:15px 0; padding:10px 0">
+            <span style="margin-left: 15px; font-size: 18px;font-weight: bold;">
+                Total number of pending orders:&nbsp;&nbsp;&nbsp;&nbsp;{{.ordercount}}
+            </span>
+                </div>
+                {{/*                <div style="background: #fff; margin:15px 0; padding:10px 0">*/}}
+                {{/*            <span style="margin-left: 15px; font-size: 18px;font-weight: bold;">*/}}
+                {{/*                Total number of products：&nbsp;&nbsp;&nbsp;&nbsp;{{.productcount}}*/}}
+                {{/*            </span>*/}}
+                {{/*                </div>*/}}
+                {{range $a,$b:= .orders}}
+                    <div class="order-list">
+                        <div class="order-item">
+
+                            <table class="table">
+
+                                <thead>
+                                <tr class="fontSize">
+                                    <th class="td-id">shopify: {{$b.Name}}                              </th>
+                                    <th class="td-time" colspan="2"><span class="order-time">{{$b.CreatedAt}}</span>
+                                    </th>
+                                    <th class="td-pald">
+                                        <span class="tag tag-sub">Pald</span>
+                                    </th>
+                                    <th colspan="2">
+                                        <span class="tag tag-main">Unfulfilled</span>
+                                    </th>
+                                    <th class="td-mark" colspan="2">
+                                    </th>
+                                    <th colspan="2">
+                                    </th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+
+                                <tr class="tr-customer fontSize">
+                                    <td colspan="3">
+                                        <div class="address">
+                                            <div class="icons">
+                                                <a href="mailto:" class="email"></a>
+                                            </div>
+
+                                            <div class="address-text" style="float: left;">
+                                                {{$b.ShippingAddress.FirstName}}<br>
+                                                {{$b.ShippingAddress.Address1}} <br>
+                                                {{$b.ShippingAddress.City}}<br>
+                                                {{$b.ShippingAddress.Province}}<br>
+                                                {{$b.ShippingAddress.Country}}</div>
+
+                                            <div style="float: right;margin-right: 84px;">
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="td-fare" colspan="1">
+                                        <div class="fare"><span style="color:#ff8500">${{$b.TotalPrice}}</span></div>
+                                        <!--<a href="/order/drop/pay_now/order_id/30">Pay Now</a>-->
+                                    </td>
+                                    <td class="td-fare" colspan="2">
+                                        <div class="fare" style="width: 100px;">{{$b.ShippingLines}}
+                                        </div>
+                                    </td>
+                                    <td class="td-notes">
+                                        <div class="notes-box">
+                                            <h3 class="tit">{{$b.Ordernote}}</h3>
+                                            <div class="text">
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+                                {{range .line_items}}
+                                    <tr class="tr-product fontSize">
+
+
+                                        <td class="td-skumod" colspan="3">
+                                            <div style="float:left;display: inline-block" class="name">Product
+                                                Title:{{.Title}}</div>
+                                            <div style="display: inline-block">Product SKU:{{.Sku}}</div>
+                                        </td>
+
+                                        <td class="td-price" colspan="3">{{.Quantity}}× <span
+                                                    style="color:#ff8500">$ {{.Price}}</span></td>
+
+                                        <td class="td-item" colspan="2">
+                                            <div class="item-box">
+                                                {{/*                                                <img class="img" src={{.image}}>*/}}
+
+                                                <a href="/sourcing/add?product_Id={{.Pid}}&sku={{.Sku}}&store={{.store}}&order_id={{$b.order_id}}&number={{$b.Name}}&j={{.Price}}"
+                                                   target="_blank" style="float: right">
+
+                                                    {{if eq $b.Nameexit false }}
+                                                    {{else if eq .Skuexit  false }}
+                                                        <button class="btn btn-main"
+                                                                style="height: 36px; line-height: 15px; margin-right: 30px;width: 200px"
+                                                                data-order-id="30" >Sourcing Agent
+                                                        </button>
+                                                    {{else}}
+                                                    {{end}}
+                                                </a>
+
+                                                <a href="/sourcing/add?product_Id={{.Pid}}&sku={{.Sku}}&store={{.store}}&order_id={{$b.order_id}}&number={{$b.Name}}&j={{.Price}}"
+                                                   target="_blank" style="float: right">
+
+                                                    {{if eq $b.Nameexit true }}
+
+                                                    {{else if eq .Skuexit true false }}
+                                                        <button class="btn btn-main"
+                                                                style="height: 36px; line-height: 15px; margin-right: 30px;width: 200px"
+                                                                data-order-id="30" >Sourcing Agent
+                                                        </button>
+                                                    {{else}}
+                                                    {{end}}
+                                                </a>
+
+
+
+{{/*                                                <a target="_blank" style="float: right">*/}}
+{{/*                                                    {{if eq $b.Nameexit  true  }}*/}}
+{{/*                                                    {{else if eq .Skuexit true  }}*/}}
+{{/*                                                        <button class="btn btn-main"*/}}
+{{/*                                                                style="height: 36px; line-height: 15px; margin-right: 30px;width: 200px"*/}}
+{{/*                                                                data-order-id="30" >Waiting*/}}
+{{/*                                                        </button>*/}}
+{{/*                                                   {{else}}*/}}
+{{/*                                                    {{end}}*/}}
+{{/*                                                </a>*/}}
+
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+                                {{end}}
+                                </tbody>
+
+                            </table>
+
+
+                        </div>
+                    </div>
+                {{end }}
+                <style>
+
+                    tr.fontSize td {
+                        font-size: 14px !important;
+                    }
+                </style>
+                <div style="text-align: center;">
+                    <ul class="pagination">
+                        <li><a href="/order/drop?pageIndex=1" class="prev">&lt;&lt;</a></li>
+
+                        <li><a class="prev" href="/order/drop?pageIndex={{.prePage}}"
+                               style="color: #b5b5b5;cursor: default;">&lt;</a></li>
+                        {{range $key,$value := .pages}}
+                            <li><span>
+                            <a href="/order/drop?pageIndex={{$value}}" class="active">{{$value}}</a>
+                        </span></li>
+                        {{end}}
+                        <li><a class="next" href="/order/drop?pageIndex={{.nextPage}}">&gt;</a></li>
+
+                        <li><a href="/order/drop?pageIndex={{.pageCount}}" class="next">&gt;&gt;</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <input type="hidden" id="pay-now-order-id">
+            <input type="hidden" id="pay-now-product-id">
+            <input type="hidden" id="pay-now-express-id">
+            <input type="hidden" id="pay-total-data">
+            <div class="drop-foot">Copyright 2019, Dropshe. All rights reserved.</div>
+        </div>
+
+
+        <script type="text/javascript" src="/static/orders/amaran.js"></script>
+        <script type="text/javascript" src="/static/orders/select2.min.js"></script>
+        <script type="text/javascript" src="/static/orders/order.js"></script>
+        <script>
+            $(".showMore").on("click", function () {
+                $(".product_more").each(function () {
+
+                    $(this).toggle()
+                })
+            })
+        </script>
+
+        </body>
+        </html>
+    </div>
+
+    <input type="hidden" id="pay-now-order-id">
+    <input type="hidden" id="pay-now-product-id">
+    <input type="hidden" id="pay-now-express-id">
+    <input type="hidden" id="pay-total-data">
+    <div class="drop-foot">Copyright 2019, Dropshe. All rights reserved.</div>
+</div>
+
+
+<script type="text/javascript" src="/static/orders/amaran.js"></script>
+<script type="text/javascript" src="/static/orders/select2.min.js"></script>
+<script type="text/javascript" src="/static/orders/order.js"></script>
+<script>
+    $(".showMore").on("click", function () {
+        $(".product_more").each(function () {
+
+            $(this).toggle()
+        })
+    })
+</script>
+
+</body>
+</html>

@@ -45,7 +45,7 @@
         <img src="/static/Login/logo.svg" style="width: 330px; height: 65px;">
     </div>
     <div class="login-content">
-        <h1 class="title">Log In</h1>
+        <h1 class="title">Login</h1>
 <!--        <div v-if="tips != ''">
             <p v-text="tips" style="color: #F08118;font-weight: bold;"></p>
         </div>-->
@@ -60,18 +60,20 @@
             </div>
 
             <div class="handle-box clearfix">
-                <a class="reset-pw" href="http://app.dropshe.com/forgot_password">Forgot Password?</a>
+                <a class="reset-pw" href="/forgot_password">Forgot Password?</a>
             </div>
-            <button type="button" class="btn btn-block btn-bg-main login-button">Log In</button>
+            <button type="button" class="btn btn-block btn-bg-main login-button">Login</button>
 
-            <div class="login-text">OR</div>
-            <a href="http://app.dropshe.com/login/oauth" class="btn btn-block secondary-button"><img class="icon" src="/static/Login/icon-google.png">Log in with Google Account</a>
+{{/*            <div class="login-text">OR</div>*/}}
+{{/*            <a href="http://app.dropshe.com/login/oauth" class="btn btn-block secondary-button"><img class="icon" src="/static/Login/icon-google.png">Log in with Google Account</a>*/}}
             <div class="login-foot">Don't have an account?
-                <a class="action" href="http://app.dropshe.com/register">register</a>
+                <a class="action" href="/register">register</a>
             </div>
 
         </form>
+
     </div>
+
 </div>
 
 <script>
@@ -104,22 +106,25 @@
         $(this).attr('disabled',true);
         $.ajax({
             type:"post",
-            url: "/login/index/index",
+            url: "login",
             data: {
                 email: email,
                 password: password,
             },
             success: function(data){
                 // console.log(data);
-                if(data.code == 0){
+                if(data.errno != 0){
                     $(".login-button").removeClass("btn-loading");
                     $(".login-button").attr('disabled',false);
-                    window.errors(data.msg,data.input_name);
+                    console.log(data.errmsg);
+                    // window.errors(data.errmsg);
+                    alert(data.errmsg);
                 } else {
                     setTimeout(function () {
                         $(".login-button").removeClass("btn-loading");
                         $(".login-button").attr('disabled',false);
-                        window.location.href="http://app.dropshe.com/hub";
+                        // console.log(data);
+                        window.location.href="/account/general";
                     },1000);
                 }
             }

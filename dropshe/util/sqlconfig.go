@@ -69,4 +69,5 @@ func RedisOpen(server_name,redis_addr,redis_port,redis_dbnum string)(bm cache.Ca
 
 func init() {
 	InitConfig()
+	InitLogs()
 }

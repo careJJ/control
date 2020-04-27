@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)http://app.dropshe.com/notification -->
+<html class="js sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers" lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Dropshe</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="http://app.dropshe.com/static/home/site.webmanifest">
+<link rel="apple-touch-icon" href="http://app.dropshe.com/static/home/icon.png">
+<link rel="shortcut icon" type="image/png" href="http://app.dropshe.com/static/home/favicon.ico">
+<!-- Place favicon.ico in the root directory -->
+
+<link rel="stylesheet" href="/static/notifications/normalize.css">
+<link rel="stylesheet" href="/static/notifications/main.css">
+<link rel="stylesheet" href="/static/notifications/style.css">
+<link href="/static/notifications/font-awesome.min.css" rel="stylesheet">
+
+<!-- 提示插件 -->
+<link rel="stylesheet" type="text/css" href="/static/notifications/animate.css">
+<link rel="stylesheet" href="/static/notifications/noticejs.css">
+<script src="/static/notifications/notice.js"></script>
+
+<script src="/static/notifications/modernizr-3.7.1.min.js"></script>
+<script src="/static/notifications/jquery-3.4.1.min.js"></script>
+<script src="/static/notifications/plugins.js"></script>
+<script src="/static/notifications/main.js"></script>
+<script src="/static/notifications/common.js"></script>
+
+
+    <meta name="theme-color" content="#fafafa">
+    <style>
+        .notification-item .cont .text a {
+            color: #848abd;
+        }
+
+        .notification-item .cont .text a:hover {
+            color: #f44336;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if IE]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+
+    <!-- Add your site or application content here -->
+<div class="drop-header">
+    <div class="logo-box">
+        <a href="http://app.dropshe.com/dashboard"><img src="/static/notifications/logo.svg"></a>
+    </div>
+    <div class="head-nav">
+        <ul class="nav-list">
+            <li class="nav-item ">
+                <a href="http://app.dropshe.com/dashboard"><span class="tit">Dashboard</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="http://app.dropshe.com/sourcing"><span class="tit">Sourcing</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="http://app.dropshe.com/hub"><span class="tit">HUB</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="http://app.dropshe.com/product"><span class="tit">Products</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="http://app.dropshe.com/order/drop"><span class="tit">Orders</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="http://app.dropshe.com/stores"><span class="tit">Stores</span></a>
+            </li>
+        </ul>
+    </div>
+    <div class="head-right">
+        <a class="notification-link" href="http://app.dropshe.com/notification">
+                        <i class="icon icon-notification"></i>
+        </a>
+        <div class="user dropdown">
+            <a class="dropdown-hd" href="javascript:void(0);">
+
+                   
+                <img src="/static/notifications/default.jpg" class="img">
+                <span class="user-name">Aierce Zheng</span>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="http://app.dropshe.com/accout/genereal"><i class="icon"></i>Settings</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="icon icon-help"></i>Help Center</a>
+                </li>
+                <li>
+                    <a href="http://app.dropshe.com/tickets"><i class="icon icon-ticket"></i>Ticket</a>
+                </li>
+                <li>
+                    <a href="http://app.dropshe.com/login/index/logout"><i class="icon icon-logout"></i>Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="drop-main">
+        <div class="drop-content">
+            <div class="wrapper">
+                <div class="main-title tc">Notifications</div>
+                <div class="notifications-box">
+                    <ul class="notification-list">
+                                            </ul>
+                    <div class="drop-pagination">
+                                                <a class="prev" style="color: #b5b5b5;cursor: default;"><span class="icon">‹</span>Previous</a>
+                                                <ul class="page-numbers">
+                                                        <li class="active">
+                                <a href="http://app.dropshe.com/notification?page=1">1</a>
+                            </li>
+                                                    </ul>
+                                                <a class="next" style="color: #b5b5b5;cursor: default;">Next<span class="icon">›</span></a>
+                                            </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="drop-foot">Copyright 2019, Dropshipping. All rights reserved.</div>
+    </div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".notification-item").click(function () {
+            $(this).toggleClass("active");
+            $(this).find(".icon").removeClass("icon-unread").addClass(
+                "icon-read");
+            var id = $(this).attr('nid');
+            var that = $(this);
+
+            if (!$(this).hasClass('active')) {
+                //收起
+                //展示简略信息
+                var brief = that.find('.cont').find('.brief').html();
+                that.find('.cont').find('.text').html(brief);
+            } else {
+                //下拉
+                //展示详细详细
+                var content = that.find('.cont').find('.content').html();
+                that.find('.cont').find('.text').html(content);
+            }
+
+
+            $.ajax({
+                url: 'http://app.dropshe.com/notification/index/mark_read?id=' + id,
+                success: function (res) {
+                    //is no matter it's working or not
+                }
+            })
+
+
+
+        });
+
+        $('.cont .time ').each(function (n, e) {
+            var el = $(e).find('#create');
+            var time = el.attr('data');
+            var d = timestampToLocalTime(time);
+            el.text(d);
+        });
+    });
+
+    function timestampToLocalTime(timestamp) {
+
+        var Y, M, D, h, m, s
+        var timestamp = parseInt(timestamp)
+        var date = null
+        if (timestamp.toString().length == 10) {
+
+            date = new Date(timestamp * 1000); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        } else if (timestamp.toString().length == 13) {
+            date = new Date(timestamp); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        }
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        D = date.getDate() + ' ';
+        h = date.getHours() + ':';
+        m = date.getMinutes() + ':';
+        s = date.getSeconds();
+        return Y + M + D; //这里自定义返回 需要后面的加上就好了
+
+    }
+</script>
+
+</body></html>

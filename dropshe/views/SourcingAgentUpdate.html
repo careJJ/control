@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)http://app.dropshe.com/sourcing/add?order_id=31&product_item_id=50 -->
+<html class="js sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers" lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Dropshe</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="/static/home/site.webmanifest">
+    <link rel="apple-touch-icon" href="/static/home/icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="/static/SourcingAgent/normalize.css">
+    <link rel="stylesheet" href="/static/SourcingAgent/main.css">
+    <link rel="stylesheet" href="/static/SourcingAgent/style.css">
+    <link rel="stylesheet" href="/static/SourcingAgent/quill.snow.css">
+    <meta name="theme-color" content="#fafafa">
+    <script>
+
+    </script></head>
+
+
+
+<body>
+<!--[if IE]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<!-- Add your site or application content here -->
+<div class="drop-header">
+    <div class="logo-box">
+        <a href="/dashboard"><img src="/static/SourcingAgent/logo.svg"></a>
+    </div>
+    <div class="head-nav">
+        <ul class="nav-list">
+            <li class="nav-item ">
+                <a href="/dashboard"><span class="tit">Dashboard</span></a>
+            </li>
+            <li class="nav-item active">
+                <a href="/sourcing"><span class="tit">Sourcing</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/hub"><span class="tit">HUB</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/product"><span class="tit">Products</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/order/drop"><span class="tit">Orders</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/stores"><span class="tit">Stores</span></a>
+            </li>
+        </ul>
+    </div>
+    <div class="head-right">
+        <a class="notification-link" href="/notification">
+            <i class="icon icon-notification"></i>
+        </a>
+        <div class="user dropdown">
+            <a class="dropdown-hd" href="javascript:void(0);">
+
+
+                <img src="/static/SourcingAgent/default.jpg" class="img">
+                <span class="user-name">{{.user.FirstName}} {{.user.LastName}}</span>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="/account/general"><i class="icon"></i>Settings</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="icon icon-help"></i>Help Center</a>
+                </li>
+                <li>
+                    <a href="/tickets"><i class="icon icon-ticket"></i>Ticket</a>
+                </li>
+                <li>
+                    <a href="/logout"><i class="icon icon-logout"></i>Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="drop-main">
+    <div class="drop-content">
+        <form id="form" action="/sourcing/add" method="post">
+            <div class="wrapper sourcing-add">
+                <div class="main-title">Create Product Sourcing</div>
+
+                <div class="sourcing-form">
+                    <div class="form-group">
+                        <label class="tit">Product Title</label>
+                        <input type="text" name="product_name" class="form-control" placeholder="" value={{.source.Title}}>
+                    </div>
+                    <div class="form-group">
+                        <label class="tit">Product Sku</label>
+                        <input type="text" name="product_sku" class="form-control" placeholder="" value={{.source.Sku}}>
+                    </div>
+                    <div class="form-group">
+                        <label class="tit">Sourcing Porduct Link</label>
+                        <input type="text" name="url" class="form-control" placeholder="" value={{.source.Link}}>
+                    </div>
+                    <div class="form-group">
+                        <label class="tit">Images</label>
+                        <div class="img-upload">
+                            <div class="img img-add" id="drop-area">
+                                <input type="file" accept="image/*" >
+                            </div>
+                            <div id="imageList">
+                                <div class="img">
+                                    <img class="img"  src={{.source.SourcImage}} >
+
+                                    <span image-id="372" class="del-image-flag del"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/*                    <input type="hidden" name="order_id" value={{.oid}}>*/}}
+                    {{/*                    <input type="hidden" name="product_Id" value={{.pid}}>*/}}
+                    {{/*                    <input type="hidden" name="shopify_product_data" value="[]">*/}}
+                    <div class="row">
+                        <div class="form-group col-xs-6">
+                            <label class="tit">Target product price(USD)</label>
+                            <input type="number" min="0.01" step="0.01" id="price" name="price" class="form-control" placeholder="" value={{.source.Target_price}}>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="tit">Target shipping price(USD)</label>
+                            <input type="number" min="0.01" step="0.01" id="shipping_price" name="shipping_price" class="form-control" placeholder="" value={{.source.Shipping_price}}>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="tit">Estimated Delivery</label>
+
+                            <select class="form-control  express-select" name="user_delivery">
+                                <option>Fast Shipping(3-8 Business Days)</option>
+                                <option>Priority Processing(15-20 Business Days)</option>
+                                <option>Standard shipping(15-25 Business Days)</option>
+                                {{/*                                <option>4</option>*/}}
+                            </select>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label class="tit">SOURCING QTY(Option)</label>
+                            <input type="number" min="1" step="1" id="except_num" name="num" class="form-control" placeholder="" value={{.source.Quantity}}>
+                        </div>
+                    </div>
+                    <div class="container">
+
+                        <input name="sex" id="General" type="radio"  value="Generalcargo" />General cargo
+                        <input name="sex" id="Special" type="radio" value="Specialcargo" />Special cargo
+                    </div>
+                    <div class="form-group">
+                        <label class="tit">Description </label>
+                        <div id="quillDescription" class="sourcing-description" name="Description"></div>
+
+                    </div>
+                    <div class="btn-box">
+                        <button type="button" id="submit" class="btn btn-bg-main btn-big">Post</button>
+                        <button type="button" id="cancel" class="btn btn-bd-main btn-big">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="drop-foot">Copyright 2019, Dropshe. All rights reserved.</div>
+</div>
+<script src="/static/SourcingAgent/jquery-3.4.1.min.js" ></script>
+
+<script src="/static/SourcingAgent/modernizr-3.7.1.min.js"></script>
+<script src="/static/SourcingAgent/plugins.js"></script>
+<script src="/static/SourcingAgent/main.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/static/SourcingAgent/webuploader.css">
+<script type="text/javascript" src="/static/SourcingAgent/webuploader.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/static/SourcingAgent/jquery.dm-uploader.min.css">
+<script src="/static/SourcingAgent/jquery.dm-uploader.min.js"></script>
+<script type="text/javascript" src="/static/SourcingAgent/select2.min.js"></script>
+<script src="/static/SourcingAgent/quill.min.js"></script>
+
+<script>
+    var toolbarOptions = [
+        ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+        ['blockquote', 'code-block'],
+
+        [{
+            'header': 1
+        }, {
+            'header': 2
+        }],
+        [{
+            'list': 'ordered'
+        }, {
+            'list': 'bullet'
+        }],
+        [{
+            'script': 'sub'
+        }, {
+            'script': 'super'
+        }],
+        [{
+            'indent': '-1'
+        }, {
+            'indent': '+1'
+        }],
+        [{
+            'direction': 'rtl'
+        }],
+
+        [{
+            'size': ['small', false, 'large', 'huge']
+        }],
+        [{
+            'header': [1, 2, 3, 4, 5, 6, false]
+        }],
+
+        [{
+            'color': []
+        }, {
+            'background': []
+        }],
+        [{
+            'font': []
+        }],
+        [{
+            'align': []
+        }],
+
+        ['clean']
+    ];
+    var quill = new Quill('#quillDescription', {
+        modules: {
+            toolbar: toolbarOptions
+        },
+        theme: 'snow'
+    });
+</script>
+<script type="text/javascript">
+    var inPost = 0;
+
+    function imageTpl(image_url) {
+        return '<div class="img">\n' +
+            '<img src="http://192.168.71.132:8888/'+image_url+'"/>\n' +
+            // '<span image-id="' + image_id + '" class="del-image-flag del"></span>\n' +
+            '</div>'
+    }
+
+    $(function () {
+
+        $('#price').on('change', function () {
+            $(this).val(parseFloat($(this).val()).toFixed(2));
+        });
+
+        $(".js-example-tags").select2({
+            tags: true
+        });
+
+        var imageListBox = $('#imageList');
+        $("#drop-area").dmUploader({
+            multiple: false,
+            dataType: 'json',
+            url: '/sourcing/api/upload',
+            allowedTypes: "image/*",
+            extFilter: ["jpg", "jpeg", "png", "gif"],
+            onUploadSuccess: function (id, data) {
+                if (data.errno !== 5) {
+                    console.log(data);
+                    // alert(data.errmsg);
+                    return;
+                }
+                var image = data.data;
+                imageListBox.append(imageTpl(image));
+            },
+            onUploadError: function (id, xhr, status, errorThrown) {
+                console.log(id, xhr, status, errorThrown)
+            }
+        });
+
+        $(document).on('click', '.del-image-flag', function () {
+            var ele = $(this).parent();
+            $.post('/sourcing/api/delImage', function (d) {
+                if (d.code !== 1) {
+                    console.log(d);
+                    ele.remove();
+                    // return;
+                }
+
+
+            });
+        });
+
+
+        function getQueryStringArgs() {
+            //取得查询字符串并去掉开头的问号
+            var qs = (location.search.length > 0 ? location.search.substring(1) : ""),
+
+                //保存数据的对象
+                args = {},
+
+                //取得每一项
+                items = qs.length ? qs.split("&") : [],
+                item = null,
+                name = null,
+                value = null,
+                //在 for 循环中使用
+                i = 0,
+                len = items.length;
+            //逐个将每一项添加到 args 对象中
+            for(i = 0; i < len; i++) {
+                item = items[i].split("=");
+                name = decodeURIComponent(item[0]);
+                value = decodeURIComponent(item[1]);
+                if(name.length) {
+                    args[name] = value;
+                }
+            }
+
+            return args;
+        }
+
+
+        $('#submit').on('click', function () {
+            var params = getQueryStringArgs() //获取url上面的参数
+
+            var sex = $('input[name="sex"]:checked').val() //单选框获取到的值
+            if (inPost) {
+                return;
+            }
+
+            var error = 0;
+            var formData = $("#form").serializeArray();
+
+            let postData = { 'description': quill.container.firstChild.innerHTML,...params }; //把url上面的参数放进去
+
+            formData.forEach(function (item) {
+                var ele = "input[name='" + item.name + "'], select[name='" + item.name + "']", ed = $(ele);
+                if (!item.value || item.value === '0') {
+                    error++;
+                    if (error === 1) {
+                        var s = ed.offset().top - 90;
+                        $("body,html").animate({
+                            scrollTop: s
+                        }, 500);
+                        ed.focus();
+                    }
+                    ed.css("border", "1px solid #ff8500")
+                } else {
+                    postData[item.name] = item.value;
+                    ed.css("border", "1px solid #d9e0ea")
+                }
+            });
+
+            if (error > 0) {
+                return;
+            }
+
+            inPost = 1;
+            $.post('/sourcing/update', postData, function (data) {
+                if (data.errno == 1) {
+                    setTimeout(function () {
+                        // console.log(data);
+                        window.location.href="/sourcing";
+                    },1000);
+                }
+
+                // window.location.href = '/account/general'
+            });
+        });
+
+
+        $('#cancel').on('click', function () {
+            alert("error")
+        })
+    });
+</script>
+
+
+</body></html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://app.dropshe.com/sourcing -->
+<html class="js sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers"
+      lang="">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Dropshe</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="/static/home/site.webmanifest">
+    <link rel="apple-touch-icon" href="/static/home/icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="/static/Sourcing/normalize.css">
+    <link rel="stylesheet" href="/static/Sourcing/main.css">
+    <link rel="stylesheet" href="/static/Sourcing/style.css">
+
+    <meta name="theme-color" content="#fafafa">
+
+</head>
+<body>
+<!--[if IE]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<!-- Add your site or application content here -->
+<div class="drop-header">
+    <div class="logo-box">
+        <a href="/dashboard"><img src="/static/Sourcing/logo.svg"></a>
+    </div>
+    <div class="head-nav">
+        <ul class="nav-list">
+            <li class="nav-item ">
+                <a href="/dashboard"><span class="tit">Dashboard</span></a>
+            </li>
+            <li class="nav-item active">
+                <a href="/sourcing"><span class="tit">Sourcing</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/hub"><span class="tit">HUB</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/product"><span class="tit">Products</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/order/drop"><span class="tit">Orders</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/stores"><span class="tit">Stores</span></a>
+            </li>
+        </ul>
+    </div>
+    <div class="head-right">
+        <a class="notification-link" href="/notification">
+            <i class="icon icon-notification"></i>
+        </a>
+        <div class="user dropdown">
+            <a class="dropdown-hd" href="javascript:void(0);">
+                <img src="/static/Sourcing/default.jpg" class="img">
+                <span class="user-name">{{.user.FirstName}} {{.user.LastName}}</span>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="/account/general"><i class="icon"></i>Settings</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="icon icon-help"></i>Help Center</a>
+                </li>
+                <li>
+                    <a href="/tickets"><i class="icon icon-ticket"></i>Ticket</a>
+                </li>
+                <li>
+                    <a href="/logout"><i class="icon icon-logout"></i>Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="drop-main">
+    <div class="drop-content">
+        <div class="wrapper sourcing-box">
+            <div class="toolbar layout-ctlr">
+                <div class="tool-item clearfix">
+                    <form action="/sourcing/search">
+                        {{/*                        <input type="text" name="ordernumber_search" class="form-control serach-input fl"*/}}
+                        {{/*                               placeholder="Enter Sku or order number" value="" style="width: 434px">*/}}
+                        {{/*                        <button type="submit" class="btn btn-main serach-btn fl ml15">Search</button>*/}}
+                        {{/*                        <input type="hidden" name="token" value="">*/}}
+                        <select class="form-control serach-input fl" id="source_status" style="width: 150px;" name="source_status">
+                            <option value="all" selected="">All</option>
+                            <option value="1">Waiting For Check</option>
+                            <option value="2">Waiting For Paid</option>
+                            <option value="3">Processing</option>
+
+                        </select>
+                        <select class="form-control serach-input fl" style="width: 150px;" name="search_key">
+                            {{/*                            <option value="id">订单号</option>*/}}
+                            <option value="order_number">Order Number</option>
+                            {{/*                                <option value="did">物流单号</option>*/}}
+                            {{/*                            <option value="email">客户Email</option>*/}}
+                            {{/*                            <option value="erpsku">平台SKU</option>*/}}
+                            <option value="sku">SKU</option>
+                        </select>
+                        <input class="form-control serach-input fl" name="search_value" value="" style="width: 200px;">
+                        <button type="submit" class="btn btn-main serach-btn fl ml15">Search</button>
+                    </form>
+{{/*                    <form class="form-inline adm-search-form adm-datetimepicker submit_and_clear_page" method="post" action="/search">*/}}
+
+{{/*                    </form>*/}}
+
+                </div>
+
+
+
+
+
+
+            </div>
+
+            <div style="background: #fff; margin:15px 0; padding:10px 0">
+            <span style="margin-left: 15px; font-size: 18px;font-weight: bold;">
+                Total Number Of Your Sourcing Demand:&nbsp;&nbsp;&nbsp;&nbsp;{{.sourcingcount}}
+            </span>
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th width="140px"></th>
+                    <th width="140px">Order Number</th>
+                    <th width="140px">Product Title</th>
+                    <th width="102px">Images</th>
+                    <th width="138px">Status</th>
+                    <th width="129px">Target Product Price</th>
+                    <th width="120px">Quantity</th>
+                    <th width="100px">Product Sku</th>
+                    <th width="100px">Estimated Delivery</th>
+                    <th width="156px">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{range .sourcedemand}}
+                    <tr>
+                        <td style="display: none" class='sourcing_id'>
+                            {{.Id}}             </td>
+
+                        <td>
+                            <input   name="boxs" type="checkbox"/>
+                        </td>
+                        <td >
+                            {{.Ordernumber}}                   </td>
+                        <td>
+                            <div class="product-name" style="width: 270px;">{{.Title}}</div>
+                        </td>
+                        <td>
+                            <img class="img" src="{{.SourcImage}}">
+                        </td>
+                        <td>
+                                {{if  eq .Status 1}}
+                            <option class="text-main" style="color: #ff9900" value="{{.Status}}">Wait for check</option>
+                            {{end}}
+                                {{if  eq .Status 2}}
+                            <option class="text-main" style="color: #38b03f" value="{{.Status}}">wait for paid</option>
+                            {{end}}
+                            {{if  eq .Status 3}}
+                                <option class="text-main" style="color: #1278f6" value="{{.Status}}">Processing</option>
+                            {{end}}
+                        </td>
+                        <td>${{.Target_price}}</td>
+                        <td>{{.Quantity}}</td>
+                        <td>{{.Sku}}
+                        </td>
+                        <td>
+                            {{.Estimated_Delivery}}                    </td>
+                        <td>
+                            <a   style="display: block; color:#ff9900;margin-bottom: 7px;" href="/sourcing/update?sourcing_id={{.Id}}">edit</a>
+
+                            {{if eq .Status 1 2}}
+                            <a onclick="demo({{.Id}})" class="delete-sourcing-flag" style="display: block;color:#ff9900;margin-top: 7px;" >delete</a>
+                                {{end}}
+                            {{if  eq .Status 2  3}}
+                            <a  style="display: block;color:#ff9900;margin-top: 7px;"  href="/sourcing/detail?sourcing_id={{.Id}}" value={{.Status}}>detail</a>
+                            {{end}}
+                        </td>
+
+                    </tr>
+                {{end}}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination-modal">
+            <ul class="pagination">
+            </ul>
+        </div>
+        <div style="text-align: center;">
+            <ul class="pagination">
+                <li><a href="/sourcing?pageIndex=1" class="prev">&lt;&lt;</a></li>
+
+                <li><a class="prev" href="/sourcing?pageIndex={{.prePage}}"style="color: #b5b5b5;cursor: default;">&lt;</a></li>
+                {{range $key,$value := .pages}}
+                    <li><span>
+                            <a href="/sourcing?pageIndex={{$value}}" class="active">{{$value}}</a>
+                        </span></li>
+                {{end}}
+                <li><a class="next" href="/sourcing?pageIndex={{.nextPage}}" >&gt;</a></li>
+
+                <li><a href="/sourcing?pageIndex={{.pageCount}}" class="next">&gt;&gt;</a></li>
+            </ul>
+        </div>
+    </div>
+
+        <button  class="btn btn-main serach-btn fl ml15" onclick="Check()" style="position: fixed;right: 100px;top: 50%;">pay</button>
+
+
+    <div class="drop-foot">Copyright 2019, Dropshe. All rights reserved.</div>
+    <!-- Display a payment form -->
+    <form id="payment-form" style="display: none;width: 30%;margin: 0 auto; position: fixed; top: 50%;   left: 35%;" >
+        <div id="card-element"><!--Stripe.js injects the Card Element--></div>
+        <button id="submit">
+            <div class="spinner hidden" id="spinner"></div>
+            <span id="button-text">Pay</span>
+        </button>
+        <p id="card-errors" role="alert"></p>
+        <p class="result-message hidden">
+            Payment succeeded, see the result in your
+            <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+        </p>
+    </form>
+</div>
+<!-- Display a payment form -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+
+<script src="/static/Sourcing/modernizr-3.7.1.min.js"></script>
+<script src="/static/Sourcing/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script src="/static/Sourcing/client.js"></script>
+<link rel="stylesheet" href="/static/Sourcing/global.css">
+
+
+<script src="/static/Sourcing/main.js"></script>
+<script>
+    // function Check() {
+    //     var sourceidList = []
+    //     var Check = $("table input[type=checkbox]:checked");//在table中找input下类型为checkbox属性为选中状态的数据
+    //     Check.each(function () {//遍历
+    //         var row = $(this).parent("td").parent("tr");//获取选中行
+    //         var ida = row.find(".sourcing_id").text();//获取name='skuid'的值
+    //         sourceidList.push(eval(ida))
+    //
+    //
+    //     })
+    //
+    //     $.ajax({
+    //         url:"/sourcing/pay",
+    //         data:{sourceidList},
+    //         type:"post",
+    //         contentType:'application/x-www-form-urlencoded',
+    //         success:function(data){
+    //                 if( data.errno==1){
+    //                         alert(data.errmsg)
+    //                 }
+    //         }
+    //
+    //     })
+    //
+    // }
+    function demo(id){
+        var sourcing_id = id;
+        api_url = '/sourcing/delete?sourcing_id='+sourcing_id;
+        console.log(sourcing_id)
+        $.confirm({
+            title: 'Are you sure?',
+            content: 'This souring will be delete',
+            buttons: {
+                Yes: function () {
+                    $.post(api_url, function (d) {
+                        location.reload()
+                        if (d.code !== 1) {
+                            console.log(d);
+                        } else {
+                            window.location.reload();
+                        }
+                    });
+                },
+                cancel: function () {
+                    //do nothing
+                },
+
+            }
+        });
+    }
+
+</script>
+
+</body>
+</html>
+<script>
+
+
+</script>

@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)http://d.dropshe.com/index.php/order/admin-dropshipping/index/ -->
+<html lang="zh-cn" class="os-windows screen-desktop-wide device-desktop"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title></title>
+<link href="./zui(1).css" rel="stylesheet">
+<link href="./datetimepicker.min(1).css" rel="stylesheet">
+<link href="./admin.css" rel="stylesheet">
+<link href="./chosen.min.css" rel="stylesheet">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script src="./jquery-2.2.4.min.js.下载"></script>
+<script src="./zui.min.js(1).下载"></script>
+<style>
+.order p{
+  line-height: 16px;
+}
+
+.order tbody tr:hover{
+    background-color: #fff!important;
+}
+.order thead tr:hover{
+    background-color: #ddf3f5!important;
+}
+
+
+</style></head>
+
+<body>
+
+    <div class="container-fluid adm-container">
+    <div class="adm-box">
+
+        <ul class="adm-btns btns-top">
+            <h3>代发订单
+                <!-- <button class="btn btn-link" type="button" onclick="alert('待开发')"><i class="icon icon-cloud"></i>同步Shopify订单</button></h3> -->
+                <li class="pull-right">
+                    <a href="javascript:;" title="在新窗口打卡" onclick="window.open(window.location.href);">
+                        <i class="icon icon-window-alt"></i>
+                    </a>
+                </li>
+        </h3></ul>
+        <div class="adm-search">
+            <form class="form-inline adm-search-form adm-datetimepicker submit_and_clear_page" method="get" action="http://d.dropshe.com/index.php/order/admin-dropshipping/index/page/1">
+                <input type="hidden" name="token" value="fi0IXt">
+                <select class="form-control" id="order_status" style="width: 150px;" name="order_status">
+                    <option value="all" selected="">所有</option>
+                    <option value="1">待处理</option>
+                    <option value="4">已完成</option>
+                </select>
+                <select class="form-control" style="width: 150px;" name="search_key">
+                    <option value="id">订单ID</option>
+                    <option value="order_number">shopify订单ID</option>
+                    <option value="did">物流单号</option>
+                    <option value="email">客户Email</option>
+                    <option value="name">客户名字</option>
+                    <option value="sku">产品SKU</option>
+                </select>
+                <input class="form-control" name="search_value" value="" style="width: 200px;">
+                <button type="submit" class="btn btn-default">检索</button>
+                            </form>
+            <button id="export" class="btn btn-default">导出excel</button>
+        </div>
+        <div class="adm-list">
+                        <table class="order">
+                <thead style="background-color: #ddf3f5">
+                <tr>
+                    <td colspan="3">
+                        <span>2020-04-01 22:06:56</span>&nbsp;
+                        <span>订单号: 196</span><br>
+                        <span>店铺名：mygymgirl.myshopify.com</span><br>
+                        <span>shopify订单号: 1039</span>
+                    </td>
+                    <td colspan="2">用户名：Aierce Zheng</td>
+                    <td colspan="4" style="text-align: left;">
+                        <!-- <a style="color: #808080;"><i class="icon icon-trash"></i></a> -->
+                                                                        <p>收件人信息:</p>
+                        <p>收件人名: Stefanie Bähring</p>
+                        <p>邮件地址: </p>
+                        <p>联系方式：+49 177 4957921</p>
+                        <p>地址: Germany  Berlin</p>
+                        <p>详细地址: Borsigwalderweg 4 , </p>
+                                                <!-- <a onclick="shop_show('')">查看店铺</a> -->
+                    </td>
+                </tr>
+                </thead>
+                <tbody style="line-height: 16px;">
+                                <tr>
+                    <td style="padding-top: 10px; width:300px; padding-bottom:10px;">
+                        <div>
+                            <table style="margin-bottom: 0px;">
+                                <tbody><tr style="border: none;">
+                                    <td style="width: 80px;margin-right: 10px;">
+                                        <img src="./1-001_e76349ed-a139-4ea2-8491-04f7f99a885f.jpg">
+                                    </td>
+                                    <td style="width:200px;">
+                                        <div>
+                                            <h5>LV Lips Graphic Gray Raglan Sweatshirt</h5>
+                                            <p class="text-muted">SKU：FDH000686_GR_L</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>售价: <strong>$35.00</strong></p>
+                        <!-- <p class="text-muted">(含运费：￥0.00)</p> -->
+                    </td>
+                    <td style="text-align: center;">
+                                            </td>
+                    <td style="text-align: center;">
+                        <p>数量: 1</p>
+                    </td>
+                    <td style="text-align: left; border-left: 1px solid #fbfbfb;">
+                        <div>
+                            <p>物流信息:</p>
+                                                                                                            </div>
+                    </td>
+                    <td style="text-align: left">
+                                            </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <a href="http://d.dropshe.com/index.php/order/admin-dropshipping/detail/id/196/order_product_id/458">订单详情</a><br>
+                        <!--                         <a href="/index.php/order/admin-dropshipping/close/id/196/token/fi0IXt" class="adm-ajax">关闭订单</a>
+                         -->
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>
+                                                                                        <span class="label label-danger label-outline">待提交采购</span>
+                                                                                </p>
+                    </td>
+                    <td>
+                                            </td>
+                </tr>
+                
+                </tbody>
+            </table>
+                        <table class="order">
+                <thead style="background-color: #ddf3f5">
+                <tr>
+                    <td colspan="3">
+                        <span>2020-03-21 21:53:19</span>&nbsp;
+                        <span>订单号: 195</span><br>
+                        <span>店铺名：mygymgirl.myshopify.com</span><br>
+                        <span>shopify订单号: 1038</span>
+                    </td>
+                    <td colspan="2">用户名：Aierce Zheng</td>
+                    <td colspan="4" style="text-align: left;">
+                        <!-- <a style="color: #808080;"><i class="icon icon-trash"></i></a> -->
+                                                                        <p>收件人信息:</p>
+                        <p>收件人名: Casey Costin</p>
+                        <p>邮件地址: </p>
+                        <p>联系方式：(704) 564-6100</p>
+                        <p>地址: United States of America North Carolina Charlotte</p>
+                        <p>详细地址: 6631 Gaywind Drive , </p>
+                                                <!-- <a onclick="shop_show('')">查看店铺</a> -->
+                    </td>
+                </tr>
+                </thead>
+                <tbody style="line-height: 16px;">
+                                <tr>
+                    <td style="padding-top: 10px; width:300px; padding-bottom:10px;">
+                        <div>
+                            <table style="margin-bottom: 0px;">
+                                <tbody><tr style="border: none;">
+                                    <td style="width: 80px;margin-right: 10px;">
+                                        <img src="./FDH000643.jpg">
+                                    </td>
+                                    <td style="width:200px;">
+                                        <div>
+                                            <h5>I'm Not For Everyone Sweatshirt</h5>
+                                            <p class="text-muted">SKU：FDH000643_GR_S</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>售价: <strong>$35.00</strong></p>
+                        <!-- <p class="text-muted">(含运费：￥0.00)</p> -->
+                    </td>
+                    <td style="text-align: center;">
+                                            </td>
+                    <td style="text-align: center;">
+                        <p>数量: 1</p>
+                    </td>
+                    <td style="text-align: left; border-left: 1px solid #fbfbfb;">
+                        <div>
+                            <p>物流信息:</p>
+                                                                                                            </div>
+                    </td>
+                    <td style="text-align: left">
+                                            </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <a href="http://d.dropshe.com/index.php/order/admin-dropshipping/detail/id/195/order_product_id/457">订单详情</a><br>
+                        <!--                         <a href="/index.php/order/admin-dropshipping/close/id/195/token/fi0IXt" class="adm-ajax">关闭订单</a>
+                         -->
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>
+                                                                                        <span class="label label-danger label-outline">待提交采购</span>
+                                                                                </p>
+                    </td>
+                    <td>
+                                            </td>
+                </tr>
+                
+                </tbody>
+            </table>
+                        <table class="order">
+                <thead style="background-color: #ddf3f5">
+                <tr>
+                    <td colspan="3">
+                        <span>2020-03-10 04:37:39</span>&nbsp;
+                        <span>订单号: 194</span><br>
+                        <span>店铺名：mygymgirl.myshopify.com</span><br>
+                        <span>shopify订单号: 1037</span>
+                    </td>
+                    <td colspan="2">用户名：Aierce Zheng</td>
+                    <td colspan="4" style="text-align: left;">
+                        <!-- <a style="color: #808080;"><i class="icon icon-trash"></i></a> -->
+                                                                        <p>收件人信息:</p>
+                        <p>收件人名: Sebastiaan Reinarz</p>
+                        <p>邮件地址: </p>
+                        <p>联系方式：06 57830978</p>
+                        <p>地址: Netherlands  Den Haag</p>
+                        <p>详细地址: Gevers Deynootweg 93 G , GamePoint BV - 5th Floor</p>
+                                                <!-- <a onclick="shop_show('')">查看店铺</a> -->
+                    </td>
+                </tr>
+                </thead>
+                <tbody style="line-height: 16px;">
+                                <tr>
+                    <td style="padding-top: 10px; width:300px; padding-bottom:10px;">
+                        <div>
+                            <table style="margin-bottom: 0px;">
+                                <tbody><tr style="border: none;">
+                                    <td style="width: 80px;margin-right: 10px;">
+                                        <img src="./FDH000645_e98139f5-77da-4722-a27d-54853ba69573.jpg">
+                                    </td>
+                                    <td style="width:200px;">
+                                        <div>
+                                            <h5>That's A Horrible Idea What Time Gray Sweatshirt</h5>
+                                            <p class="text-muted">SKU：FDH000646_GR_S</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>售价: <strong>$35.00</strong></p>
+                        <!-- <p class="text-muted">(含运费：￥0.00)</p> -->
+                    </td>
+                    <td style="text-align: center;">
+                                            </td>
+                    <td style="text-align: center;">
+                        <p>数量: 1</p>
+                    </td>
+                    <td style="text-align: left; border-left: 1px solid #fbfbfb;">
+                        <div>
+                            <p>物流信息:</p>
+                                                                                                            </div>
+                    </td>
+                    <td style="text-align: left">
+                                            </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <a href="http://d.dropshe.com/index.php/order/admin-dropshipping/detail/id/194/order_product_id/456">订单详情</a><br>
+                        <!--                         <a href="/index.php/order/admin-dropshipping/close/id/194/token/fi0IXt" class="adm-ajax">关闭订单</a>
+                         -->
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>
+                                                                                        <span class="label label-danger label-outline">待提交采购</span>
+                                                                                </p>
+                    </td>
+                    <td>
+                                            </td>
+                </tr>
+                
+                </tbody>
+            </table>
+                        <table class="order">
+                <thead style="background-color: #ddf3f5">
+                <tr>
+                    <td colspan="3">
+                        <span>2020-02-03 03:03:37</span>&nbsp;
+                        <span>订单号: 193</span><br>
+                        <span>店铺名：mygymgirl.myshopify.com</span><br>
+                        <span>shopify订单号: 1036</span>
+                    </td>
+                    <td colspan="2">用户名：Aierce Zheng</td>
+                    <td colspan="4" style="text-align: left;">
+                        <!-- <a style="color: #808080;"><i class="icon icon-trash"></i></a> -->
+                                                                        <p>收件人信息:</p>
+                        <p>收件人名: Tom Milberg</p>
+                        <p>邮件地址: </p>
+                        <p>联系方式：+972 52-467-7023</p>
+                        <p>地址: Israel  Lapid</p>
+                        <p>详细地址: Ha-Dekel 58 , </p>
+                                                <!-- <a onclick="shop_show('')">查看店铺</a> -->
+                    </td>
+                </tr>
+                </thead>
+                <tbody style="line-height: 16px;">
+                                <tr>
+                    <td style="padding-top: 10px; width:300px; padding-bottom:10px;">
+                        <div>
+                            <table style="margin-bottom: 0px;">
+                                <tbody><tr style="border: none;">
+                                    <td style="width: 80px;margin-right: 10px;">
+                                        <img src="./20_ad4445bd-0164-4c6f-8009-928e332cf254.png">
+                                    </td>
+                                    <td style="width:200px;">
+                                        <div>
+                                            <h5>Strappy Back High Waist Army Green Bikini Set</h5>
+                                            <p class="text-muted">SKU：BH1132220</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>售价: <strong>$24.61</strong></p>
+                        <!-- <p class="text-muted">(含运费：￥0.00)</p> -->
+                    </td>
+                    <td style="text-align: center;">
+                                            </td>
+                    <td style="text-align: center;">
+                        <p>数量: 1</p>
+                    </td>
+                    <td style="text-align: left; border-left: 1px solid #fbfbfb;">
+                        <div>
+                            <p>物流信息:</p>
+                                                                                                            </div>
+                    </td>
+                    <td style="text-align: left">
+                                            </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <a href="http://d.dropshe.com/index.php/order/admin-dropshipping/detail/id/193/order_product_id/455">订单详情</a><br>
+                        <!--                         <a href="/index.php/order/admin-dropshipping/close/id/193/token/fi0IXt" class="adm-ajax">关闭订单</a>
+                         -->
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>
+                                                                                        <span class="label label-danger label-outline">待提交采购</span>
+                                                                                </p>
+                    </td>
+                    <td>
+                                            </td>
+                </tr>
+                
+                </tbody>
+            </table>
+                        <table class="order">
+                <thead style="background-color: #ddf3f5">
+                <tr>
+                    <td colspan="3">
+                        <span>2020-02-02 11:51:45</span>&nbsp;
+                        <span>订单号: 192</span><br>
+                        <span>店铺名：mygymgirl.myshopify.com</span><br>
+                        <span>shopify订单号: 1035</span>
+                    </td>
+                    <td colspan="2">用户名：Aierce Zheng</td>
+                    <td colspan="4" style="text-align: left;">
+                        <!-- <a style="color: #808080;"><i class="icon icon-trash"></i></a> -->
+                                                                        <p>收件人信息:</p>
+                        <p>收件人名: Elsa Blanchard</p>
+                        <p>邮件地址: </p>
+                        <p>联系方式：(425) 922-9033</p>
+                        <p>地址: United States of America Washington Seattle</p>
+                        <p>详细地址: 419 Queen Anne Ave N , apt 306</p>
+                                                <!-- <a onclick="shop_show('')">查看店铺</a> -->
+                    </td>
+                </tr>
+                </thead>
+                <tbody style="line-height: 16px;">
+                                <tr>
+                    <td style="padding-top: 10px; width:300px; padding-bottom:10px;">
+                        <div>
+                            <table style="margin-bottom: 0px;">
+                                <tbody><tr style="border: none;">
+                                    <td style="width: 80px;margin-right: 10px;">
+                                        <img src="./925A8050_770db56c-d9e6-4060-9ff4-624d4093661f.jpg">
+                                    </td>
+                                    <td style="width:200px;">
+                                        <div>
+                                            <h5>Jasmine Jogger - Onyx</h5>
+                                            <p class="text-muted">SKU：BB-JJ-ON201-S</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>售价: <strong>$29.99</strong></p>
+                        <!-- <p class="text-muted">(含运费：￥0.00)</p> -->
+                    </td>
+                    <td style="text-align: center;">
+                                            </td>
+                    <td style="text-align: center;">
+                        <p>数量: 1</p>
+                    </td>
+                    <td style="text-align: left; border-left: 1px solid #fbfbfb;">
+                        <div>
+                            <p>物流信息:</p>
+                                                                                                            </div>
+                    </td>
+                    <td style="text-align: left">
+                                            </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <a href="http://d.dropshe.com/index.php/order/admin-dropshipping/detail/id/192/order_product_id/454">订单详情</a><br>
+                        <!--                         <a href="/index.php/order/admin-dropshipping/close/id/192/token/fi0IXt" class="adm-ajax">关闭订单</a>
+                         -->
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>
+                                                                                        <span class="label label-danger label-outline">待提交采购</span>
+                                                                                </p>
+                    </td>
+                    <td>
+                                            </td>
+                </tr>
+                
+                </tbody>
+            </table>
+                        <table class="order">
+                <thead style="background-color: #ddf3f5">
+                <tr>
+                    <td colspan="3">
+                        <span>2020-02-01 10:04:35</span>&nbsp;
+                        <span>订单号: 191</span><br>
+                        <span>店铺名：mygymgirl.myshopify.com</span><br>
+                        <span>shopify订单号: 1034</span>
+                    </td>
+                    <td colspan="2">用户名：Aierce Zheng</td>
+                    <td colspan="4" style="text-align: left;">
+                        <!-- <a style="color: #808080;"><i class="icon icon-trash"></i></a> -->
+                                                                        <p>收件人信息:</p>
+                        <p>收件人名: Sheryl Addy</p>
+                        <p>邮件地址: </p>
+                        <p>联系方式：(303) 507-2339</p>
+                        <p>地址: United States of America Colorado Thornton</p>
+                        <p>详细地址: 7183 E. 131st Dr., , </p>
+                                                <!-- <a onclick="shop_show('')">查看店铺</a> -->
+                    </td>
+                </tr>
+                </thead>
+                <tbody style="line-height: 16px;">
+                                <tr>
+                    <td style="padding-top: 10px; width:300px; padding-bottom:10px;">
+                        <div>
+                            <table style="margin-bottom: 0px;">
+                                <tbody><tr style="border: none;">
+                                    <td style="width: 80px;margin-right: 10px;">
+                                        <img src="./2D73B89D-98E5-4655-B5CF-08AA3968488F-1570513660987.png">
+                                    </td>
+                                    <td style="width:200px;">
+                                        <div>
+                                            <h5>Blue Casual Round Neck Shirts &amp; Tops</h5>
+                                            <p class="text-muted">SKU：SHA85E2CEFB6</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>售价: <strong>$18.50</strong></p>
+                        <!-- <p class="text-muted">(含运费：￥0.00)</p> -->
+                    </td>
+                    <td style="text-align: center;">
+                                            </td>
+                    <td style="text-align: center;">
+                        <p>数量: 1</p>
+                    </td>
+                    <td style="text-align: left; border-left: 1px solid #fbfbfb;">
+                        <div>
+                            <p>物流信息:</p>
+                                                                                                            </div>
+                    </td>
+                    <td style="text-align: left">
+                                            </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <a href="http://d.dropshe.com/index.php/order/admin-dropshipping/detail/id/191/order_product_id/453">订单详情</a><br>
+                        <!--                         <a href="/index.php/order/admin-dropshipping/close/id/191/token/fi0IXt" class="adm-ajax">关闭订单</a>
+                         -->
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>
+                                                                                        <span class="label label-danger label-outline">待提交采购</span>
+                                                                                </p>
+                    </td>
+                    <td>
+                                            </td>
+                </tr>
+                
+                </tbody>
+            </table>
+                        <table class="order">
+                <thead style="background-color: #ddf3f5">
+                <tr>
+                    <td colspan="3">
+                        <span>2020-02-01 08:10:21</span>&nbsp;
+                        <span>订单号: 190</span><br>
+                        <span>店铺名：mygymgirl.myshopify.com</span><br>
+                        <span>shopify订单号: 1033</span>
+                    </td>
+                    <td colspan="2">用户名：Aierce Zheng</td>
+                    <td colspan="4" style="text-align: left;">
+                        <!-- <a style="color: #808080;"><i class="icon icon-trash"></i></a> -->
+                                                                        <p>收件人信息:</p>
+                        <p>收件人名: Lauren Caygill</p>
+                        <p>邮件地址: </p>
+                        <p>联系方式：(929) 990-1733</p>
+                        <p>地址: United States of America Texas San Antonio</p>
+                        <p>详细地址: 8514 Mexican Alder , </p>
+                                                <!-- <a onclick="shop_show('')">查看店铺</a> -->
+                    </td>
+                </tr>
+                </thead>
+                <tbody style="line-height: 16px;">
+                                <tr>
+                    <td style="padding-top: 10px; width:300px; padding-bottom:10px;">
+                        <div>
+                            <table style="margin-bottom: 0px;">
+                                <tbody><tr style="border: none;">
+                                    <td style="width: 80px;margin-right: 10px;">
+                                        <img src="./5K7A2288.jpg">
+                                    </td>
+                                    <td style="width:200px;">
+                                        <div>
+                                            <h5>Rosa Bra - White</h5>
+                                            <p class="text-muted">SKU：BB-RB-WH601-L</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>售价: <strong>$25.99</strong></p>
+                        <!-- <p class="text-muted">(含运费：￥0.00)</p> -->
+                    </td>
+                    <td style="text-align: center;">
+                                            </td>
+                    <td style="text-align: center;">
+                        <p>数量: 2</p>
+                    </td>
+                    <td style="text-align: left; border-left: 1px solid #fbfbfb;">
+                        <div>
+                            <p>物流信息:</p>
+                                                                                                            </div>
+                    </td>
+                    <td style="text-align: left">
+                                            </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <a href="http://d.dropshe.com/index.php/order/admin-dropshipping/detail/id/190/order_product_id/450">订单详情</a><br>
+                        <!--                         <a href="/index.php/order/admin-dropshipping/close/id/190/token/fi0IXt" class="adm-ajax">关闭订单</a>
+                         -->
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>
+                                                                                        <span class="label label-danger label-outline">待提交采购</span>
+                                                                                </p>
+                    </td>
+                    <td>
+                                            </td>
+                </tr>
+                                <tr>
+                    <td style="padding-top: 10px; width:300px; padding-bottom:10px;">
+                        <div>
+                            <table style="margin-bottom: 0px;">
+                                <tbody><tr style="border: none;">
+                                    <td style="width: 80px;margin-right: 10px;">
+                                        <img src="./925A8050_770db56c-d9e6-4060-9ff4-624d4093661f.jpg">
+                                    </td>
+                                    <td style="width:200px;">
+                                        <div>
+                                            <h5>Jasmine Jogger - Onyx</h5>
+                                            <p class="text-muted">SKU：BB-JJ-ON201-S</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>售价: <strong>$29.99</strong></p>
+                        <!-- <p class="text-muted">(含运费：￥0.00)</p> -->
+                    </td>
+                    <td style="text-align: center;">
+                                            </td>
+                    <td style="text-align: center;">
+                        <p>数量: 1</p>
+                    </td>
+                    <td style="text-align: left; border-left: 1px solid #fbfbfb;">
+                        <div>
+                            <p>物流信息:</p>
+                                                                                                            </div>
+                    </td>
+                    <td style="text-align: left">
+                                            </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <a href="http://d.dropshe.com/index.php/order/admin-dropshipping/detail/id/190/order_product_id/451">订单详情</a><br>
+                        <!--                         <a href="/index.php/order/admin-dropshipping/close/id/190/token/fi0IXt" class="adm-ajax">关闭订单</a>
+                         -->
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>
+                                                                                        <span class="label label-danger label-outline">待提交采购</span>
+                                                                                </p>
+                    </td>
+                    <td>
+                                            </td>
+                </tr>
+                                <tr>
+                    <td style="padding-top: 10px; width:300px; padding-bottom:10px;">
+                        <div>
+                            <table style="margin-bottom: 0px;">
+                                <tbody><tr style="border: none;">
+                                    <td style="width: 80px;margin-right: 10px;">
+                                        <img src="./BBmay4-211.jpg">
+                                    </td>
+                                    <td style="width:200px;">
+                                        <div>
+                                            <h5>Jasmine Jogger - Mystic</h5>
+                                            <p class="text-muted">SKU：BB-JJ-MY201-S</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>售价: <strong>$29.99</strong></p>
+                        <!-- <p class="text-muted">(含运费：￥0.00)</p> -->
+                    </td>
+                    <td style="text-align: center;">
+                                            </td>
+                    <td style="text-align: center;">
+                        <p>数量: 1</p>
+                    </td>
+                    <td style="text-align: left; border-left: 1px solid #fbfbfb;">
+                        <div>
+                            <p>物流信息:</p>
+                                                                                                            </div>
+                    </td>
+                    <td style="text-align: left">
+                                            </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <a href="http://d.dropshe.com/index.php/order/admin-dropshipping/detail/id/190/order_product_id/452">订单详情</a><br>
+                        <!--                         <a href="/index.php/order/admin-dropshipping/close/id/190/token/fi0IXt" class="adm-ajax">关闭订单</a>
+                         -->
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>
+                                                                                        <span class="label label-danger label-outline">待提交采购</span>
+                                                                                </p>
+                    </td>
+                    <td>
+                                            </td>
+                </tr>
+                
+                </tbody>
+            </table>
+                        <table class="order">
+                <thead style="background-color: #ddf3f5">
+                <tr>
+                    <td colspan="3">
+                        <span>2020-01-07 08:21:57</span>&nbsp;
+                        <span>订单号: 189</span><br>
+                        <span>店铺名：mygymgirl.myshopify.com</span><br>
+                        <span>shopify订单号: 1032</span>
+                    </td>
+                    <td colspan="2">用户名：Aierce Zheng</td>
+                    <td colspan="4" style="text-align: left;">
+                        <!-- <a style="color: #808080;"><i class="icon icon-trash"></i></a> -->
+                                                                        <p>收件人信息:</p>
+                        <p>收件人名: Abigail Kaskey</p>
+                        <p>邮件地址: </p>
+                        <p>联系方式：(216) 544-4966</p>
+                        <p>地址: United States of America Ohio Ashland</p>
+                        <p>详细地址: 203 College Avenue , </p>
+                                                <!-- <a onclick="shop_show('')">查看店铺</a> -->
+                    </td>
+                </tr>
+                </thead>
+                <tbody style="line-height: 16px;">
+                                <tr>
+                    <td style="padding-top: 10px; width:300px; padding-bottom:10px;">
+                        <div>
+                            <table style="margin-bottom: 0px;">
+                                <tbody><tr style="border: none;">
+                                    <td style="width: 80px;margin-right: 10px;">
+                                        <img src="./FDH000645_e98139f5-77da-4722-a27d-54853ba69573.jpg">
+                                    </td>
+                                    <td style="width:200px;">
+                                        <div>
+                                            <h5>That's A Horrible Idea What Time Gray Sweatshirt</h5>
+                                            <p class="text-muted">SKU：FDH000646_GR_S</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>售价: <strong>$35.00</strong></p>
+                        <!-- <p class="text-muted">(含运费：￥0.00)</p> -->
+                    </td>
+                    <td style="text-align: center;">
+                                            </td>
+                    <td style="text-align: center;">
+                        <p>数量: 1</p>
+                    </td>
+                    <td style="text-align: left; border-left: 1px solid #fbfbfb;">
+                        <div>
+                            <p>物流信息:</p>
+                                                                                                            </div>
+                    </td>
+                    <td style="text-align: left">
+                                            </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <a href="http://d.dropshe.com/index.php/order/admin-dropshipping/detail/id/189/order_product_id/449">订单详情</a><br>
+                        <!--                         <a href="/index.php/order/admin-dropshipping/close/id/189/token/fi0IXt" class="adm-ajax">关闭订单</a>
+                         -->
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>
+                                                                                        <span class="label label-danger label-outline">待提交采购</span>
+                                                                                </p>
+                    </td>
+                    <td>
+                                            </td>
+                </tr>
+                
+                </tbody>
+            </table>
+                        <table class="order">
+                <thead style="background-color: #ddf3f5">
+                <tr>
+                    <td colspan="3">
+                        <span>2020-01-03 01:57:19</span>&nbsp;
+                        <span>订单号: 188</span><br>
+                        <span>店铺名：mygymgirl.myshopify.com</span><br>
+                        <span>shopify订单号: 1031</span>
+                    </td>
+                    <td colspan="2">用户名：Aierce Zheng</td>
+                    <td colspan="4" style="text-align: left;">
+                        <!-- <a style="color: #808080;"><i class="icon icon-trash"></i></a> -->
+                                                                        <p>收件人信息:</p>
+                        <p>收件人名: Nathalie Lefebvre</p>
+                        <p>邮件地址: </p>
+                        <p>联系方式：(514) 462-0767</p>
+                        <p>地址: Canada Quebec Laval</p>
+                        <p>详细地址: 10-5320 croissant Langevin , </p>
+                                                <!-- <a onclick="shop_show('')">查看店铺</a> -->
+                    </td>
+                </tr>
+                </thead>
+                <tbody style="line-height: 16px;">
+                                <tr>
+                    <td style="padding-top: 10px; width:300px; padding-bottom:10px;">
+                        <div>
+                            <table style="margin-bottom: 0px;">
+                                <tbody><tr style="border: none;">
+                                    <td style="width: 80px;margin-right: 10px;">
+                                        <img src="./FDH000643.jpg">
+                                    </td>
+                                    <td style="width:200px;">
+                                        <div>
+                                            <h5>I'm Not For Everyone Sweatshirt</h5>
+                                            <p class="text-muted">SKU：FDH000643_GR_L</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>售价: <strong>$35.00</strong></p>
+                        <!-- <p class="text-muted">(含运费：￥0.00)</p> -->
+                    </td>
+                    <td style="text-align: center;">
+                                            </td>
+                    <td style="text-align: center;">
+                        <p>数量: 1</p>
+                    </td>
+                    <td style="text-align: left; border-left: 1px solid #fbfbfb;">
+                        <div>
+                            <p>物流信息:</p>
+                                                                                                            </div>
+                    </td>
+                    <td style="text-align: left">
+                                            </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <a href="http://d.dropshe.com/index.php/order/admin-dropshipping/detail/id/188/order_product_id/448">订单详情</a><br>
+                        <!--                         <a href="/index.php/order/admin-dropshipping/close/id/188/token/fi0IXt" class="adm-ajax">关闭订单</a>
+                         -->
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>
+                                                                                        <span class="label label-danger label-outline">待提交采购</span>
+                                                                                </p>
+                    </td>
+                    <td>
+                                            </td>
+                </tr>
+                
+                </tbody>
+            </table>
+                        <table class="order">
+                <thead style="background-color: #ddf3f5">
+                <tr>
+                    <td colspan="3">
+                        <span>2020-01-02 02:58:16</span>&nbsp;
+                        <span>订单号: 187</span><br>
+                        <span>店铺名：mygymgirl.myshopify.com</span><br>
+                        <span>shopify订单号: 1030</span>
+                    </td>
+                    <td colspan="2">用户名：Aierce Zheng</td>
+                    <td colspan="4" style="text-align: left;">
+                        <!-- <a style="color: #808080;"><i class="icon icon-trash"></i></a> -->
+                                                                        <p>收件人信息:</p>
+                        <p>收件人名: Adrienne Parker</p>
+                        <p>邮件地址: </p>
+                        <p>联系方式：07827441719</p>
+                        <p>地址: United Kingdom  Woking</p>
+                        <p>详细地址: 5 Grindstone Crescent , </p>
+                                                <!-- <a onclick="shop_show('')">查看店铺</a> -->
+                    </td>
+                </tr>
+                </thead>
+                <tbody style="line-height: 16px;">
+                                <tr>
+                    <td style="padding-top: 10px; width:300px; padding-bottom:10px;">
+                        <div>
+                            <table style="margin-bottom: 0px;">
+                                <tbody><tr style="border: none;">
+                                    <td style="width: 80px;margin-right: 10px;">
+                                        <img src="./12771.jpg">
+                                    </td>
+                                    <td style="width:200px;">
+                                        <div>
+                                            <h5>High Waist Thigh Highs  Gym Legging</h5>
+                                            <p class="text-muted">SKU：LSV082517_3</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>售价: <strong>$28.99</strong></p>
+                        <!-- <p class="text-muted">(含运费：￥0.00)</p> -->
+                    </td>
+                    <td style="text-align: center;">
+                                            </td>
+                    <td style="text-align: center;">
+                        <p>数量: 1</p>
+                    </td>
+                    <td style="text-align: left; border-left: 1px solid #fbfbfb;">
+                        <div>
+                            <p>物流信息:</p>
+                                                                                                            </div>
+                    </td>
+                    <td style="text-align: left">
+                                            </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <a href="http://d.dropshe.com/index.php/order/admin-dropshipping/detail/id/187/order_product_id/447">订单详情</a><br>
+                        <!--                         <a href="/index.php/order/admin-dropshipping/close/id/187/token/fi0IXt" class="adm-ajax">关闭订单</a>
+                         -->
+                    </td>
+                    <td style="text-align: center;border-left: 1px solid #fbfbfb;">
+                        <p>
+                                                                                        <span class="label label-danger label-outline">待提交采购</span>
+                                                                                </p>
+                    </td>
+                    <td>
+                                            </td>
+                </tr>
+                
+                </tbody>
+            </table>
+                        <div class="clearfix">
+                <br>
+                <ul class="pager">
+                                                                <li class="active"><a href="http://d.dropshe.com/index.php/order/admin-dropshipping/index/?page=1">1</a></li>
+                                            <li class=""><a href="http://d.dropshe.com/index.php/order/admin-dropshipping/index/?page=2">2</a></li>
+                                            <li class=""><a href="http://d.dropshe.com/index.php/order/admin-dropshipping/index/?page=3">3</a></li>
+                                            <li class=""><a href="http://d.dropshe.com/index.php/order/admin-dropshipping/index/?page=4">4</a></li>
+                                            <li class=""><a href="http://d.dropshe.com/index.php/order/admin-dropshipping/index/?page=5">5</a></li>
+                                                            <li class="next">
+                        <a href="http://d.dropshe.com/index.php/order/admin-dropshipping/index/?page=2">»</a>
+                    </li>
+                                    </ul>
+                <!--<ul class="pager pull-right" id="page" data-elements="page_of_total_text,prev_icon,nav,next_icon"
+                    data-ride="pager" data-page="1" data-rec-total="10" data-rec-per-page='10'
+                    data-max-nav-count="8"></ul>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $("#export").on('click', function () {
+            location.href = "/index.php/order/admin-dropshipping/export?page=1&search_key=&search_value=&order_status=all";
+        });
+
+        $(".post-express").on('click', function () {
+            let order_id = $(this).attr('data-order-id');
+            let product_id = $(this).attr('data-product-id');
+            let express_no = $(this).closest('td').find('.express-no').val();
+            if (express_no == '') {
+                return false;
+            }
+
+            $.ajax({
+                type: 'post',
+                url: "/index.php/order/admin-dropshipping/add_express/",
+                dataType: 'json',
+                data: {
+                    'order_id' : order_id,
+                    'product_id' : product_id,
+                    'express_no' : express_no,
+                },
+                success: function (data) {
+                    if (data.status != 0) {
+                        alert(data.msg);
+                        return false;
+                    }
+                    location.reload();
+                }
+
+            });
+        });
+    });
+
+    //页面控制
+    $('#page').on('onPageChange', function (e, state, oldState) {
+        //当页面刚刚加载的时候，也会激活这个事件，所以为了防止他无限跳转，就判断他是否有上一步
+        //如果没有，即oldState.page != undefined，则说明他是刚刚进入本页，不要跳转。
+        if (state.page !== oldState.page && oldState.page != undefined) {
+            location.href = location.href.replace(/^(.*[/]page[/])(\d+)([?/]*)/, '\$1' + state.page + '\$3')
+            //location.href = "/index.php/order/admin-dropshipping/index/" + 'page/' + state.page;
+        }
+    });
+
+    //标签选择
+    var order_type = {};
+    $('.lab_control').click(function (t) {
+        event.preventDefault();
+        var e = $(t.target);
+        if (!e.hasClass('label-primary')) {
+            e.addClass('label-primary');
+            e.css('color', '#3280fc');
+            order_type[e.attr('orderType')] = true;
+        } else {
+            e.removeClass('label-primary');
+            e.css('color', '#000');
+            order_type[e.attr('orderType')] = false;
+        }
+        var val = [];
+        for (const key in order_type) {
+            if (!order_type.hasOwnProperty(key)) {
+                continue;
+            }
+            if (!order_type[key]) {
+                continue;
+            }
+
+            val.push(key);
+        }
+
+        $('#order_type').val(val.join(','));
+    })
+
+    var order_type_selected = '';
+    if (order_type_selected != '') {
+        var arr = order_type_selected.split(',');
+        for (var i of arr) {
+            order_type[i] = true;
+            $('.lab_control[orderType="' + i + '"]').addClass('label-primary').css('color', '#3280fc');
+        }
+        $('#order_type').val(order_type_selected);
+    }
+
+
+
+</script>
+    <div class="modal fade adm-modal" tabindex="-1" role="dialog" id="adm-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span ria-hidden="true">×</span></button>
+                <h4 class="modal-title">图片预览</h4>
+            </div>
+            <div class="modal-body">
+                <img class="adm-modal-img">
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./datetimepicker.min.js(1).下载"></script>
+<script src="./chosen.min.js.下载"></script>
+<script src="./bootstrap-colorpicker.min.js.下载"></script>
+<script src="./kindeditor-all-min.js.下载"></script>
+<script src="./zh-CN.js.下载"></script>
+<script src="./admin.js.下载"></script>
+<script type="text/javascript">
+    var base_url = "http://d.dropshe.com";
+    var backend_module = "backend";
+    var common_module = "common";
+    var current_module = "order";
+    var current_controller = "admin-dropshipping";
+    var current_action = "index";
+    var token = "fi0IXt";
+
+    function sendData(data, sendTourl, redirect = '-1') {
+        $.ajax({
+            type: 'POST',
+            url: sendTourl,
+            data: data,
+            cache: false,
+            success: function (json, textStatus, jqXHR) {
+                //判断返回值不是 json 格式
+                if (is_json(json) == false) {
+                    toast('无法连接服务器，请刷新重试');
+                    return false;
+                }
+                //将字符串转换为对象
+                var remsg = jQuery.parseJSON(json);
+                if (remsg.status == 1) {
+                    // 成功，执行代码
+                    toast(remsg.msg);
+
+                    //返回上一页
+                    if (redirect == '-1') {
+                        setTimeout(function () {
+                            history.go(-1);
+                        }, 1000);
+                    } else if (redirect != null) {
+                        //跳转到指定界面
+                        setTimeout(function () {
+                            window.location.href = redirect;
+                        }, 1000);
+
+                    }
+
+                    return true;
+                }
+                // 失败，弹出错误信息
+                toast(remsg.msg);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                // 失败，弹出错误信息
+                toast(remsg.msg);
+            }
+        });
+        return false;
+    }
+
+
+    // 订单筛选
+    $(document).on('submit', '.submit_and_clear_page', function(event) {
+        event.preventDefault();
+        /* Act on the event */
+
+        var $this = $(this);
+
+        // 防止重复提交
+        if($this.data('clk') == 'clicked'){
+            toast('数据已提交，请耐心等待');
+            return false;
+        }
+
+        $this.data('clk','clicked');
+
+        var url = $this.attr('action');
+
+        $this.serialize()
+        
+        location.href = url + '?' + $this.serialize();
+        return false;
+    });
+
+    $('.reset-search').click(function(){
+        var url = location.href;
+        location.href = url.replace(/[/]page[/]\d+[?](.+)$/,'');
+    })
+</script>
+    <div class="zero-debug"><div id="zerophp_console_info" style="letter-spacing: -.0em;position: fixed;bottom:0;right:0;font-size:14px;width:100%;z-index: 999999;color: #000;text-align:left;font-family:&#39;微软雅黑&#39;;">
+        <div style="height: 26px; bottom: 0px; color: rgb(0, 0, 0); line-height: 26px; display: block; width: 100%; border-bottom: 3px rgb(255, 102, 0) solid;">
+        <div id="zerophp_console_info_switch" style="cursor: pointer;background:#232323;color:#FFF;padding:0 6px;height:27px; line-height:27px;font-size:14px;width: 120px;margin:0 auto;text-align: center;">ZeroPHP控制台</div>
+        </div>
+        <div id="zerophp_console_info_content" style="display: none;background:white;margin:0;height: 390px;">
+        <div style="height:30px;padding: 0 12px 0;border-bottom:1px solid #ececec;border-top:1px solid #ececec;font-size:16px">
+        <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">ZeroPHP运行信息</span>
+        </div>
+        <div style="overflow:auto;height:352px;padding: 0; line-height: 24px">
+        <ul style="padding: 0; margin:0;margin-bottom:15px;">
+
+        <li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">
+        <b>运行信息</b>( 消耗时间 <font color="red">0.0195 </font>秒 )( 消耗内存 <font color="red">1,072.01kb </font> )( 数据库查询 <font color="red">3 </font>次 )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px;font-weight:bold;"><b>包含类库</b></li><li style="font-size:14px;padding:0 0px 0 50px;"><span style="padding-left:10px;">【/home/wwwroot/drop/zero/Base.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/Controller.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/controller/commonBase.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/controller/backendBase.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/order/controller/admin/defaultBase.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/order/controller/admin/orderBase.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/order/controller/admin/dropshipping.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/library/Cookie.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/library/Session.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/library/Cache/Cache.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/library/Cache/CacheFile.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/Model.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/model/CommonModel.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/model/FrontendModel.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/order/model/DropshippingModel.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/Service.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/service/BackendService.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/controller/attachment.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/library/Helper.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/order/service/DropshippingService.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/products/service/ProductsService.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/customer/service/CustomerService.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/View.php】</span></li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px;font-weight:bold;"><b>SQL语句</b></li><li style="font-size:14px;padding:0 0px 0 60px;">1【运行时间】 0.0004 秒 【SQL语句】 SELECT count(1) AS cnt FROM zerophp_order_dropshipping</li><li style="font-size:14px;padding:0 0px 0 60px;">2【运行时间】 0.0006 秒 【SQL语句】 SELECT dropshipping.*, customer.first_name, customer.last_name FROM zerophp_order_dropshipping AS dropshipping LEFT JOIN zerophp_customer_custom AS customer ON dropshipping.custome_id=customer.id WHERE 1=1 ORDER BY id DESC LIMIT 0,10</li><li style="font-size:14px;padding:0 0px 0 60px;">3【运行时间】 0.001 秒 【SQL语句】 SELECT * FROM zerophp_order_search_product WHERE order_id IN (196,195,194,193,192,191,190,189,188,187)</li></ul>
+        </div>
+        </div>
+        </div>
+        <script type="text/javascript">
+        (function(){
+            var show = false;
+            var switchShow  = document.getElementById('zerophp_console_info_switch');
+            var trace    = document.getElementById('zerophp_console_info_content');
+            switchShow.onclick = function(){
+                trace.style.display = show ?  'none' : 'block';
+                show = show ? false : true;
+            }
+        })();
+        </script></div>
+
+
+</body></html>

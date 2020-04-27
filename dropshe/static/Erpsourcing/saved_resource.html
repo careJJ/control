@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)http://d.dropshe.com/index.php/sourcing/admin-index/index/ -->
+<html lang="zh-cn" class="os-windows screen-desktop-wide device-desktop"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title></title>
+<link href="./zui.css" rel="stylesheet">
+<link href="./datetimepicker.min.css" rel="stylesheet">
+<link href="./bootstrap-colorpicker.css" rel="stylesheet">
+<link href="./admin.css" rel="stylesheet">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script src="./jquery-2.2.4.min.js.下载"></script>
+<script src="./zui.min.js.下载"></script></head>
+
+<body>
+
+    <style>
+    .active, .active:hover {
+        background: #579efe !important;
+        color: #fff;
+    }
+</style>
+<div class="container-fluid adm-container">
+    <div class="adm-box">
+        <!-- 扩展按钮 -->
+        <h3>采购管理</h3><br>
+        <ul class="adm-btns btns-top">
+            <li class="pull-right">
+                <a href="javascript:;" title="在新窗口打卡" onclick="window.open(window.location.href);">
+                    <i class="icon icon-window-alt"></i>
+                </a>
+            </li>
+        </ul>
+
+        <!-- 搜索表单 -->
+        <div class="adm-search">
+            <form class="form-inline adm-search-form adm-datetimepicker" method="get">
+                <div class="form-group">
+                        <select name="status" id="select_status" class="btn btn-normal">
+        <option value="0" selected="">Status</option><option value="1">Pending</option><option value="2">In Review</option><option value="3">Success</option><option value="4">Fails</option>    </select>
+                    </div>
+                <div class="form-group">
+                        <select name="platform" id="select_platform" class="btn btn-normal">
+        <option value="0" selected="">Platforms</option><option value="1">Platforms for 1688</option><option value="2">Platforms for Taobao</option><option value="3">Platforms for Alibaba</option><option value="4">Platforms for Aliexpress</option><option value="5">Platforms for Other</option>    </select>
+                    </div>
+
+                <div class="form-group">
+                    <select name="fieldname" class="form-control">
+                                                                        <option value="sourcing_id">采购ID</option>
+                                                                                                <option value="uid">客户UID</option>
+                                                                                                <option value="email">客户邮箱</option>
+                                                                                                <option value="product_name">产品名称</option>
+                                                                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="keyword" value="" class="form-control search-kw" placeholder="请输入关键词">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+                <a href="http://d.dropshe.com/sourcing/admin-index">重置</a>
+            </form>
+        </div>
+
+        <!-- 主要列表信息 -->
+        <div class="adm-list">
+            <form method="post" action="http://d.dropshe.com/index.php/sourcing/admin-index/index/">
+                <table class="table table-bordered table-hover table-striped"><tbody><tr><th style="width:70px;min-width:70px">ID</th><th style="width:70px;min-width:70px">状态</th><th style="width:60px;min-width:60px">平台</th><th style="width:120px;min-width:120px">产品名称</th><th style="width:120px;min-width:120px">产品链接</th><th style="width:90px;min-width:90px">用户</th><th style="width:80px;min-width:80px">送达国家</th><th style="width:80px;min-width:80px">操作</th></tr><tr><td><div class="form-control-static" name="table[11175][sourcing_id]" data-id="11175" data-field="sourcing_id">11175</div></td><td><div class="form-control-static" name="table[11175][status]" data-id="11175" data-field="status">Pending</div></td><td><div class="form-control-static" name="table[11175][platform]" data-id="11175" data-field="platform">Platforms</div></td><td>HydraSho 360 Rotating Shower Head</td><td><a href="http://d.dropshe.com/index.php/sourcing/admin-index/index/123" target="_blank">123</a></td><td>-</td><td>-</td><td><span class="form-control-static" style="display:inline-block;padding-right:15px"><a href="http://d.dropshe.com/index.php/sourcing/admin-index/detail/?id=11175">编辑</a></span></td></tr><tr><td><div class="form-control-static" name="table[11174][sourcing_id]" data-id="11174" data-field="sourcing_id">11174</div></td><td><div class="form-control-static" name="table[11174][status]" data-id="11174" data-field="status">Pending</div></td><td><div class="form-control-static" name="table[11174][platform]" data-id="11174" data-field="platform">Platforms for 1688</div></td><td>New iphone8 mobile phone case Apple 11...</td><td><a href="https://detail.1688.com//offer/542539103624.html" target="_blank">https://detail.1688.com//offer/5...</a></td><td>-</td><td>美国(US)</td><td><span class="form-control-static" style="display:inline-block;padding-right:15px"><a href="http://d.dropshe.com/index.php/sourcing/admin-index/detail/?id=11174">编辑</a></span></td></tr><tr><td><div class="form-control-static" name="table[11173][sourcing_id]" data-id="11173" data-field="sourcing_id">11173</div></td><td><div class="form-control-static" name="table[11173][status]" data-id="11173" data-field="status">Pending</div></td><td><div class="form-control-static" name="table[11173][platform]" data-id="11173" data-field="platform">Platforms for Aliexpress</div></td><td>Cases Silicone-Case Crystal-Clear Appl...</td><td><a href="https://www.aliexpress.com//wholesale" target="_blank">https://www.aliexpress.com//whol...</a></td><td>-</td><td>美国(US)</td><td><span class="form-control-static" style="display:inline-block;padding-right:15px"><a href="http://d.dropshe.com/index.php/sourcing/admin-index/detail/?id=11173">编辑</a></span></td></tr><tr><td><div class="form-control-static" name="table[11172][sourcing_id]" data-id="11172" data-field="sourcing_id">11172</div></td><td><div class="form-control-static" name="table[11172][status]" data-id="11172" data-field="status">Pending</div></td><td><div class="form-control-static" name="table[11172][platform]" data-id="11172" data-field="platform">Platforms for Aliexpress</div></td><td>50pcs 7x9 9x12 10x15 13x18CM Organza B...</td><td><a href="https://www.aliexpress.com//item/32361586750.html" target="_blank">https://www.aliexpress.com//item...</a></td><td>-</td><td>美国(US)</td><td><span class="form-control-static" style="display:inline-block;padding-right:15px"><a href="http://d.dropshe.com/index.php/sourcing/admin-index/detail/?id=11172">编辑</a></span></td></tr><tr><td><div class="form-control-static" name="table[11171][sourcing_id]" data-id="11171" data-field="sourcing_id">11171</div></td><td><div class="form-control-static" name="table[11171][status]" data-id="11171" data-field="status">Pending</div></td><td><div class="form-control-static" name="table[11171][platform]" data-id="11171" data-field="platform">Platforms for Aliexpress</div></td><td>Vero Moda 100% Cotton Pure Color Colla...</td><td><a href="https://www.aliexpress.com//item/32893828025.html" target="_blank">https://www.aliexpress.com//item...</a></td><td>-</td><td>美国(US)</td><td><span class="form-control-static" style="display:inline-block;padding-right:15px"><a href="http://d.dropshe.com/index.php/sourcing/admin-index/detail/?id=11171">编辑</a></span></td></tr><tr><td><div class="form-control-static" name="table[11170][sourcing_id]" data-id="11170" data-field="sourcing_id">11170</div></td><td><div class="form-control-static" name="table[11170][status]" data-id="11170" data-field="status">Pending</div></td><td><div class="form-control-static" name="table[11170][platform]" data-id="11170" data-field="platform">Platforms</div></td><td>Antiskid and wear-resistant safety pro...</td><td><a href="http://guhechengtest.myshopify.com/antiskid-and-wear-resistant-safety-protection-of-baotou-working-shoes-safety-shoes-in-summer" target="_blank">http://guhechengtest.myshopify.c...</a></td><td>-</td><td>-</td><td><span class="form-control-static" style="display:inline-block;padding-right:15px"><a href="http://d.dropshe.com/index.php/sourcing/admin-index/detail/?id=11170">编辑</a></span></td></tr><tr><td><div class="form-control-static" name="table[11169][sourcing_id]" data-id="11169" data-field="sourcing_id">11169</div></td><td><div class="form-control-static" name="table[11169][status]" data-id="11169" data-field="status">Pending</div></td><td><div class="form-control-static" name="table[11169][platform]" data-id="11169" data-field="platform">Platforms for Aliexpress</div></td><td>NORMOV Puff Sleeve Solid Sexy dress Ri...</td><td><a href="https://www.aliexpress.com//item/4000543710352.html" target="_blank">https://www.aliexpress.com//item...</a></td><td>-</td><td>美国(US)</td><td><span class="form-control-static" style="display:inline-block;padding-right:15px"><a href="http://d.dropshe.com/index.php/sourcing/admin-index/detail/?id=11169">编辑</a></span></td></tr><tr><td><div class="form-control-static" name="table[11168][sourcing_id]" data-id="11168" data-field="sourcing_id">11168</div></td><td><div class="form-control-static" name="table[11168][status]" data-id="11168" data-field="status">Pending</div></td><td><div class="form-control-static" name="table[11168][platform]" data-id="11168" data-field="platform">Platforms for Aliexpress</div></td><td>168cm Silicone Huge Breast Lifelike Se...</td><td><a href="https://www.aliexpress.com//item/4000437315091.html" target="_blank">https://www.aliexpress.com//item...</a></td><td>volca hoker(46)</td><td>美国(US)</td><td><span class="form-control-static" style="display:inline-block;padding-right:15px"><a href="http://d.dropshe.com/index.php/sourcing/admin-index/detail/?id=11168">编辑</a></span></td></tr><tr><td><div class="form-control-static" name="table[11167][sourcing_id]" data-id="11167" data-field="sourcing_id">11167</div></td><td><div class="form-control-static" name="table[11167][status]" data-id="11167" data-field="status">Pending</div></td><td><div class="form-control-static" name="table[11167][platform]" data-id="11167" data-field="platform">Platforms for Aliexpress</div></td><td>Princess Dog Dresses high-luminance co...</td><td><a href="https://www.aliexpress.com//item/32970042395.html" target="_blank">https://www.aliexpress.com//item...</a></td><td>-</td><td>美国(US)</td><td><span class="form-control-static" style="display:inline-block;padding-right:15px"><a href="http://d.dropshe.com/index.php/sourcing/admin-index/detail/?id=11167">编辑</a></span></td></tr><tr><td><div class="form-control-static" name="table[11166][sourcing_id]" data-id="11166" data-field="sourcing_id">11166</div></td><td><div class="form-control-static" name="table[11166][status]" data-id="11166" data-field="status">Pending</div></td><td><div class="form-control-static" name="table[11166][platform]" data-id="11166" data-field="platform">Platforms</div></td><td>Baby tools</td><td><a href="http://dominate1314.myshopify.com/shot-thirts" target="_blank">http://dominate1314.myshopify.co...</a></td><td>-</td><td>-</td><td><span class="form-control-static" style="display:inline-block;padding-right:15px"><a href="http://d.dropshe.com/index.php/sourcing/admin-index/detail/?id=11166">编辑</a></span></td></tr></tbody></table>                <div class="adm-list-bot">
+                    <!-- 批量操作菜单 -->
+                    <ul class="adm-btns btns-bot pull-left">
+                                                <!-- 参考代码 -->
+                        <!-- <li><button type="submit" name="action" value="action" class="btn btn-normal class">title</button></li> -->
+                    </ul>
+
+                    <!-- 分页信息 -->
+                                        <ul class="pager pull-right">
+                        <li><a href="http://d.dropshe.com/sourcing/admin-index/index/?p=1" class="first">&lt;&lt;</a></li><li><a href="javascript:void(0)" class="prev">&lt;</a></li><li><a href="http://d.dropshe.com/sourcing/admin-index/index/?p=1" class="">1</a></li><li><a href="http://d.dropshe.com/sourcing/admin-index/index/?p=2" class="">2</a></li><li><a href="http://d.dropshe.com/sourcing/admin-index/index/?p=3" class="">3</a></li><li><a href="http://d.dropshe.com/sourcing/admin-index/index/?p=4" class="">4</a></li><li><a href="http://d.dropshe.com/sourcing/admin-index/index/?p=5" class="">5</a></li><li><a href="javascript:void(0)" class="ellipsis">…</a></li><li><a href="http://d.dropshe.com/sourcing/admin-index/index/?p=8" class="">8</a></li><li><a href="http://d.dropshe.com/sourcing/admin-index/index/?p=1" class="next">&gt;</a></li><li><a href="http://d.dropshe.com/sourcing/admin-index/index/?p=8" class="last">&gt;&gt;</a></li>                    </ul>
+
+                    <div class="adm-clear"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('.select-flag').on('change', function () {
+            var q = {
+                'id': $(this).attr('data-id'),
+                'field': $(this).attr('data-field'),
+                'value': $(this).val(),
+            };
+
+            $.post('/sourcing/admin-index/action', q, function (d) {
+                var response = JSON.parse(d);
+                console.log(response)
+            })
+        });
+
+        $('select[name=status]').on('change', function () {
+            var status = $(this).val();
+            window.location.href = '?status=' + status
+        });
+
+        $('select[name=platform]').on('change', function () {
+            var platform = $(this).val();
+            window.location.href = '?platform=' + platform
+        })
+    })
+</script>
+    <div class="modal fade adm-modal" tabindex="-1" role="dialog" id="adm-modal">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span ria-hidden="true">×</span></button>
+            <h4 class="modal-title">图片预览</h4>
+        </div>
+        <div class="modal-body">
+            <img class="adm-modal-img">
+        </div>
+    </div>
+</div>
+</div>
+<script src="./datetimepicker.min.js.下载"></script>
+<script src="./bootstrap-colorpicker.min.js.下载"></script>
+<script src="./kindeditor-all-min.js.下载"></script>
+<script src="./zh-CN.js.下载"></script>
+<script src="./admin.js.下载"></script>
+<script type="text/javascript">
+var base_url = "http://d.dropshe.com";
+var backend_module = "backend";
+var common_module = "common";
+var current_module = "sourcing";
+var current_controller = "admin-index";
+var current_action = "index";
+var token = "oiuxWT";
+</script>
+    <div class="zero-debug"><div id="zerophp_console_info" style="letter-spacing: -.0em;position: fixed;bottom:0;right:0;font-size:14px;width:100%;z-index: 999999;color: #000;text-align:left;font-family:&#39;微软雅黑&#39;;">
+        <div style="height: 26px; bottom: 0px; color: rgb(0, 0, 0); line-height: 26px; display: block; width: 100%; border-bottom: 3px rgb(255, 102, 0) solid;">
+        <div id="zerophp_console_info_switch" style="cursor: pointer;background:#232323;color:#FFF;padding:0 6px;height:27px; line-height:27px;font-size:14px;width: 120px;margin:0 auto;text-align: center;">ZeroPHP控制台</div>
+        </div>
+        <div id="zerophp_console_info_content" style="display: none;background:white;margin:0;height: 390px;">
+        <div style="height:30px;padding: 0 12px 0;border-bottom:1px solid #ececec;border-top:1px solid #ececec;font-size:16px">
+        <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">ZeroPHP运行信息</span>
+        </div>
+        <div style="overflow:auto;height:352px;padding: 0; line-height: 24px">
+        <ul style="padding: 0; margin:0;margin-bottom:15px;">
+
+        <li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">
+        <b>运行信息</b>( 消耗时间 <font color="red">0.0211 </font>秒 )( 消耗内存 <font color="red">949.84kb </font> )( 数据库查询 <font color="red">2 </font>次 )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px;font-weight:bold;"><b>包含类库</b></li><li style="font-size:14px;padding:0 0px 0 50px;"><span style="padding-left:10px;">【/home/wwwroot/drop/zero/Base.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/Controller.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/controller/commonBase.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/controller/backendBase.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/sourcing/controller/admin/index.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/sourcing/library/lib/UI/UI.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/sourcing/library/lib/UI/IWidget.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/sourcing/library/lib/UI/Widget.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/library/Cookie.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/library/Session.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/library/Cache/Cache.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/library/Cache/CacheFile.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/Model.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/Service.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/service/BackendService.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/controller/attachment.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/library/Helper.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/sourcing/service/ConfigService.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/sourcing/service/ConditionService.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/sourcing/service/SourcingService.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/sourcing/service/ImagesService.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/View.php】</span></li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px;font-weight:bold;"><b>SQL语句</b></li><li style="font-size:14px;padding:0 0px 0 60px;">1【运行时间】 0.0004 秒 【SQL语句】 select 1 from zerophp_sourcing_list l  </li><li style="font-size:14px;padding:0 0px 0 60px;">2【运行时间】 0.002 秒 【SQL语句】 select l.*, u.username, c.country_name, c.short_name, c.english_name, i.image_url from zerophp_sourcing_list l 
+                    left join (SELECT image_id, image_url, sourcing_id FROM zerophp_sourcing_images GROUP BY sourcing_id) i 
+                    ON l.sourcing_id=i.sourcing_id
+                    left join zerophp_customer_custom u ON l.uid = u.id 
+                    left join zerophp_delivery_country c ON l.country_id=c.id 
+                      order by l.sourcing_id desc limit 0, 10</li></ul>
+        </div>
+        </div>
+        </div>
+        <script type="text/javascript">
+        (function(){
+            var show = false;
+            var switchShow  = document.getElementById('zerophp_console_info_switch');
+            var trace    = document.getElementById('zerophp_console_info_content');
+            switchShow.onclick = function(){
+                trace.style.display = show ?  'none' : 'block';
+                show = show ? false : true;
+            }
+        })();
+        </script></div>
+
+
+</body></html>

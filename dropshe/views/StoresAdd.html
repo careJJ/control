@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://app.dropshe.com/stores/add -->
+<html class="js sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers" lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Stores Add - Dropshe</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="/static/home/site.webmanifest">
+    <link rel="apple-touch-icon" href="/static/home/icon.png">
+    <link rel="shortcut icon" type="image/png" href="/static/home/favicon.ico">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="/static/StoresAdd/normalize.css">
+    <link rel="stylesheet" href="/static/StoresAdd/main.css">
+    <link rel="stylesheet" href="/static/StoresAdd/style.css">
+    <link href="/static/StoresAdd/font-awesome.min.css" rel="stylesheet">
+
+    <!-- 提示插件 -->
+    <link rel="stylesheet" type="text/css" href="/static/StoresAdd/animate.css">
+    <link rel="stylesheet" href="/static/StoresAdd/noticejs.css">
+    <script type="text/javascript" async="" src="/static/StoresAdd/p6b7wznf"></script><script src="/static/StoresAdd/notice.js"></script>
+
+    <script src="/static/StoresAdd/modernizr-3.7.1.min.js"></script>
+    <script src="/static/StoresAdd/jquery-3.4.1.min.js"></script>
+    <script src="/static/StoresAdd/plugins.js"></script>
+    <script src="/static/StoresAdd/main.js"></script>
+    <script src="/static/StoresAdd/common.js"></script>
+
+
+    <!--<link rel="stylesheet/less" href="../less/style.less" />
+    <script type="text/javascript" src="../js/less.min.js"></script>-->
+
+    <meta name="theme-color" content="#fafafa">
+</head>
+
+
+
+<body>
+<!--[if IE]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+
+<!-- Add your site or application content here -->
+<div class="drop-header">
+    <div class="logo-box">
+        <a href="/dashboard"><img src="/static/StoresAdd/logo.svg"></a>
+    </div>
+    <div class="head-nav">
+        <ul class="nav-list">
+            <li class="nav-item ">
+                <a href="/dashboard"><span class="tit">Dashboard</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/sourcing"><span class="tit">Sourcing</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/hub"><span class="tit">HUB</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/product"><span class="tit">Products</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/order/drop"><span class="tit">Orders</span></a>
+            </li>
+            <li class="nav-item ">
+                <a href="/stores"><span class="tit">Stores</span></a>
+            </li>
+        </ul>
+    </div>
+    <div class="head-right">
+        <a class="notification-link" href="/notification">
+            <i class="icon icon-notification"></i>
+        </a>
+        <div class="user dropdown">
+            <a class="dropdown-hd" href="javascript:void(0);">
+
+
+                <img src="/static/StoresAdd/default.jpg" class="img">
+                <span class="user-name">{{.user.FirstName}}  {{.user.LastName}}</span>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="/account/general"><i class="icon"></i>Settings</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="icon icon-help"></i>Help Center</a>
+                </li>
+                <li>
+                    <a href="/tickets"><i class="icon icon-ticket"></i>Ticket</a>
+                </li>
+                <li>
+                    <a href="/logout"><i class="icon icon-logout"></i>Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="drop-main">
+    <div class="drop-content store-add">
+        <div class="wrapper store-install">
+            <form class="setting-form" action="/stores/addstore" method="post">
+                <div class="main-title tc">Shopify store install</div>
+                <div class="form-cont">
+
+                    <div class="input-group input-group-big">
+                        <input type="text" class="form-control" placeholder="Store Name" name="shop_url" value="" id="shop_url" style="width:570px">
+                        <span class="input-group-addon" style="width:170px">.myshopify.com</span>
+                    </div>
+                    <div class="input-group input-group-big" style="margin:25px 0">
+                        <input type="text" class="form-control" placeholder="API KEY" name="APIKEY" value="" id="APIKEY" style="width:570px">
+                        <span class="input-group-addon" style="width:170px">    API KEY</span>
+                    </div>
+                    <div class="input-group input-group-big">
+                        <input type="text" class="form-control" placeholder="Password" name="Password" value="" id="Password" style="width:570px">
+                        <span class="input-group-addon" style="width:170px">Password </span>
+                    </div>
+                    <p style="margin: 25px 0; line-height: 25px; font-size: 14px;">
+                        When using our web site we are committed to protecting your privacy and personal information provided, and personal information, APIkey and password is only used to connect to your shopify store in order to get the order, we in the collection, use and store and transmit personal information in accordance with (laws and regulations related to the personal data privacy and the highest standards of consumer protection.
+                    </p>
+                    <div class="btn-box">
+                        <button type="button" class="btn btn-bg-main btn-big" onclick="tools()">INstall</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="drop-foot">Copyright 2019, Dropshipping. All rights reserved.</div>
+</div>
+
+<script>
+
+    $('form').keydown(function (event) {
+        if(event.keyCode == 13) {
+            inputs = $("#shop_url");
+            var shop = $.trim($("#shop_url").val());
+            if (shop == undefined || shop == '') {
+                var str = "<input type='hidden' id='ids' value='ssss'>";
+                if ($('#ids').val() == 'ssss') {
+                    $('#shop_plus').remove();
+                    $('#ids').remove();
+                    inputs.css("border", "1px solid #F08118");
+                    inputs.after(str);
+                } else {
+                    inputs.css("border", "1px solid #F08118");
+                }
+                return false;
+            } else {
+                $('form').submit();
+            }
+        }
+    });
+
+    function tools() {
+        var shop =$('#shop_url').val();
+        var API = $('#APIKEY').val();
+        var Password  = $('#Password ').val()
+        if(shop == undefined || shop==''){
+            var inputs = $('#shop_url');
+            //var str = "<p id='shop_plus' style='color: #F08118;' >不能为空</p>"+
+            //    "<input type='hidden' id='ids' value='ssss'>";
+            var str = "<input type='hidden' id='ids' value='ssss'>";
+            if($('#ids').val() == 'ssss'){
+                $('#shop_plus').remove();
+                $('#ids').remove();
+                inputs.css("border","1px solid #F08118");
+                inputs.after(str);
+            }else {
+                inputs.css("border","1px solid #F08118");
+                inputs.after(str);
+            }
+        }else {
+            $('form').submit();
+        }
+    }
+
+
+
+</script>
+
+</body></html>

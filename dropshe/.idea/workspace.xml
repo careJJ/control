@@ -12,16 +12,16 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Go Application" />
+        <option value="package.json" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="GOROOT" path="$USER_HOME$/go" />
-  <component name="GoLibraries">
-    <option name="indexEntireGoPath" value="false" />
-  </component>
   <component name="ProjectId" id="1VhKvdqhnPpXFVsT8JGt49gxBxP" />
   <component name="PropertiesComponent">
     <property name="DefaultGoTemplateProperty" value="Go Application" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="configurable.Global.GOPATH.is.expanded" value="true" />
     <property name="configurable.Module.GOPATH.is.expanded" value="true" />
@@ -30,7 +30,7 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoLibrariesConfigurableProvider" />
+    <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoProjectSettingsConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -44,8 +44,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="go build models.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Build.go build core.go">
+    <configuration name="go build core.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
+      <module name="dropshe" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/controllers/core.go" />
+      <package value="dropshe" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build models.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
       <module name="dropshe" />
       <working_directory value="$PROJECT_DIR$/" />
       <kind value="FILE" />
@@ -54,8 +63,13 @@
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Go Build.go build core.go" />
+      <item itemvalue="Go Build.go build models.go" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build core.go" />
         <item itemvalue="Go Build.go build models.go" />
       </list>
     </recent_temporary>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://d.dropshe.com/index.php/order/admin-storage/index/ -->
+<html lang="zh-cn" class="os-windows screen-desktop-wide device-desktop"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title></title>
+<link href="./zui(1).css" rel="stylesheet">
+<link href="./datetimepicker.min(1).css" rel="stylesheet">
+<link href="./admin.css" rel="stylesheet">
+<link href="./chosen.min.css" rel="stylesheet">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script src="./jquery-2.2.4.min.js.下载"></script>
+<script src="./zui.min.js(1).下载"></script>
+<style>
+.order p{
+  line-height: 16px;
+}
+
+.order tbody tr:hover{
+    background-color: #fff!important;
+}
+.order thead tr:hover{
+    background-color: #ddf3f5!important;
+}
+
+
+</style></head>
+
+<body>
+
+    <div class="container-fluid adm-container">
+    <div class="adm-box">
+
+        <ul class="adm-btns btns-top">
+            <h3>库存订单
+                <!-- <button class="btn btn-link" type="button" onclick="alert('待开发')"><i class="icon icon-cloud"></i>同步Shopify订单</button></h3> -->
+                <li class="pull-right">
+                    <a href="javascript:;" title="在新窗口打卡" onclick="window.open(window.location.href);">
+                        <i class="icon icon-window-alt"></i>
+                    </a>
+                </li>
+        </h3></ul>
+        <div class="adm-search">
+            <form class="form-inline adm-search-form adm-datetimepicker submit_and_clear_page" method="get" action="http://d.dropshe.com/index.php/order/admin-storage/index/page/1">
+                <input type="hidden" name="token" value="C9dv18">
+                <!-- <div class="form-group">
+                    <div class="control-input input-group date">
+                        <input type="text" name="starttime" class="form-control starttime" value=""
+                            placeholder="开始日期">
+                        <span class="input-group-addon">
+                            <span class="icon icon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="adm-divider horizontal"></div>
+                <div class="form-group">
+                    <div class="control-input input-group date">
+                        <input type="text" name="endtime" class="form-control endtime" value=""
+                            placeholder="结束日期">
+                        <span class="input-group-addon">
+                            <span class="icon icon-calendar"></span>
+                        </span>
+                    </div>
+                </div> -->
+                <select class="form-control" style="width: 150px;" name="search_key">
+                    <option value="id">订单ID</option>
+                    <option value="did">物流单号</option>
+                    <option value="email">客户Email</option>
+                    <option value="name">客户名字</option>
+                    <option value="sku">产品SKU</option>
+                </select>
+                <input class="form-control" name="search_value" value="" style="width: 200px;">
+                <button type="submit" class="btn btn-default">检索</button>
+                            </form>
+
+        </div>
+        <div class="adm-list">
+                        <div class="clearfix">
+                <br>
+                <ul class="pager pull-right" id="page" data-elements="page_of_total_text,prev_icon,nav,next_icon" data-ride="pager" data-page="1" data-rec-total="0" data-rec-per-page="10" data-max-nav-count="8"><li><div class="pager-label">第 <strong>1</strong>/<strong>1</strong> 页</div></li><li class="disabled pager-item-left"><a title="第 0 页" class="pager-item" data-page="0" href="http://d.dropshe.com/index.php/order/admin-storage/index/###"><i class="icon icon-double-angle-left"></i></a></li><li class="active disabled"><a title="第 1 页" class="pager-item" data-page="1" href="http://d.dropshe.com/index.php/order/admin-storage/index/#page=1">1</a></li><li class="disabled pager-item-right"><a title="第 0 页" class="pager-item" data-page="0" href="http://d.dropshe.com/index.php/order/admin-storage/index/###"><i class="icon icon-double-angle-right"></i></a></li></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+//页面控制
+$('#page').on('onPageChange', function (e, state, oldState) {
+        //当页面刚刚加载的时候，也会激活这个事件，所以为了防止他无限跳转，就判断他是否有上一步
+        //如果没有，即oldState.page != undefined，则说明他是刚刚进入本页，不要跳转。
+        if (state.page !== oldState.page && oldState.page != undefined) {
+            location.href = location.href.replace(/^(.*[/]page[/])(\d+)([?/]*)/, '\$1' + state.page + '\$3')
+            //location.href = "/index.php/order/admin-storage/index/" + 'page/' + state.page;
+        }
+    });
+
+    //标签选择
+    var order_type = {};
+    $('.lab_control').click(function (t) {
+        event.preventDefault();
+        var e = $(t.target);
+        if (!e.hasClass('label-primary')) {
+            e.addClass('label-primary');
+            e.css('color', '#3280fc');
+            order_type[e.attr('orderType')] = true;
+        } else {
+            e.removeClass('label-primary');
+            e.css('color', '#000');
+            order_type[e.attr('orderType')] = false;
+        }
+        var val = [];
+        for (const key in order_type) {
+            if (!order_type.hasOwnProperty(key)) {
+                continue;
+            }
+            if (!order_type[key]) {
+                continue;
+            }
+
+            val.push(key);
+        }
+
+        $('#order_type').val(val.join(','));
+    })
+
+    var order_type_selected = '';
+    if (order_type_selected != '') {
+        var arr = order_type_selected.split(',');
+        for (var i of arr) {
+            order_type[i] = true;
+            $('.lab_control[orderType="' + i + '"]').addClass('label-primary').css('color', '#3280fc');
+        }
+        $('#order_type').val(order_type_selected);
+    }
+</script>
+    <div class="modal fade adm-modal" tabindex="-1" role="dialog" id="adm-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span ria-hidden="true">×</span></button>
+                <h4 class="modal-title">图片预览</h4>
+            </div>
+            <div class="modal-body">
+                <img class="adm-modal-img">
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./datetimepicker.min.js(1).下载"></script>
+<script src="./chosen.min.js.下载"></script>
+<script src="./bootstrap-colorpicker.min.js.下载"></script>
+<script src="./kindeditor-all-min.js.下载"></script>
+<script src="./zh-CN.js.下载"></script>
+<script src="./admin.js.下载"></script>
+<script type="text/javascript">
+    var base_url = "http://d.dropshe.com";
+    var backend_module = "backend";
+    var common_module = "common";
+    var current_module = "order";
+    var current_controller = "admin-storage";
+    var current_action = "index";
+    var token = "C9dv18";
+
+    function sendData(data, sendTourl, redirect = '-1') {
+        $.ajax({
+            type: 'POST',
+            url: sendTourl,
+            data: data,
+            cache: false,
+            success: function (json, textStatus, jqXHR) {
+                //判断返回值不是 json 格式
+                if (is_json(json) == false) {
+                    toast('无法连接服务器，请刷新重试');
+                    return false;
+                }
+                //将字符串转换为对象
+                var remsg = jQuery.parseJSON(json);
+                if (remsg.status == 1) {
+                    // 成功，执行代码
+                    toast(remsg.msg);
+
+                    //返回上一页
+                    if (redirect == '-1') {
+                        setTimeout(function () {
+                            history.go(-1);
+                        }, 1000);
+                    } else if (redirect != null) {
+                        //跳转到指定界面
+                        setTimeout(function () {
+                            window.location.href = redirect;
+                        }, 1000);
+
+                    }
+
+                    return true;
+                }
+                // 失败，弹出错误信息
+                toast(remsg.msg);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                // 失败，弹出错误信息
+                toast(remsg.msg);
+            }
+        });
+        return false;
+    }
+
+
+    // 订单筛选
+    $(document).on('submit', '.submit_and_clear_page', function(event) {
+        event.preventDefault();
+        /* Act on the event */
+
+        var $this = $(this);
+
+        // 防止重复提交
+        if($this.data('clk') == 'clicked'){
+            toast('数据已提交，请耐心等待');
+            return false;
+        }
+
+        $this.data('clk','clicked');
+
+        var url = $this.attr('action');
+
+        $this.serialize()
+        
+        location.href = url + '?' + $this.serialize();
+        return false;
+    });
+
+    $('.reset-search').click(function(){
+        var url = location.href;
+        location.href = url.replace(/[/]page[/]\d+[?](.+)$/,'');
+    })
+</script>
+    <div class="zero-debug"><div id="zerophp_console_info" style="letter-spacing: -.0em;position: fixed;bottom:0;right:0;font-size:14px;width:100%;z-index: 999999;color: #000;text-align:left;font-family:&#39;微软雅黑&#39;;">
+        <div style="height: 26px; bottom: 0px; color: rgb(0, 0, 0); line-height: 26px; display: block; width: 100%; border-bottom: 3px rgb(255, 102, 0) solid;">
+        <div id="zerophp_console_info_switch" style="cursor: pointer;background:#232323;color:#FFF;padding:0 6px;height:27px; line-height:27px;font-size:14px;width: 120px;margin:0 auto;text-align: center;">ZeroPHP控制台</div>
+        </div>
+        <div id="zerophp_console_info_content" style="display: none;background:white;margin:0;height: 390px;">
+        <div style="height:30px;padding: 0 12px 0;border-bottom:1px solid #ececec;border-top:1px solid #ececec;font-size:16px">
+        <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">ZeroPHP运行信息</span>
+        </div>
+        <div style="overflow:auto;height:352px;padding: 0; line-height: 24px">
+        <ul style="padding: 0; margin:0;margin-bottom:15px;">
+
+        <li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">
+        <b>运行信息</b>( 消耗时间 <font color="red">0.0165 </font>秒 )( 消耗内存 <font color="red">854.34kb </font> )( 数据库查询 <font color="red">2 </font>次 )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px;font-weight:bold;"><b>包含类库</b></li><li style="font-size:14px;padding:0 0px 0 50px;"><span style="padding-left:10px;">【/home/wwwroot/drop/zero/Base.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/Controller.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/controller/commonBase.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/controller/backendBase.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/order/controller/admin/defaultBase.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/order/controller/admin/orderBase.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/order/controller/admin/storage.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/library/Cookie.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/library/Session.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/library/Cache/Cache.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/library/Cache/CacheFile.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/Model.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/model/CommonModel.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/model/FrontendModel.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/order/model/StorageModel.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/Service.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/service/BackendService.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/controller/attachment.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/library/Helper.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/order/service/StorageService.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/products/service/ProductsService.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/customer/service/CustomerService.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/View.php】</span></li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px;font-weight:bold;"><b>SQL语句</b></li><li style="font-size:14px;padding:0 0px 0 60px;">1【运行时间】 0.0003 秒 【SQL语句】 SELECT COUNT(*) AS M_COUNTER FROM zerophp_order_storage </li><li style="font-size:14px;padding:0 0px 0 60px;">2【运行时间】 0.0002 秒 【SQL语句】 SELECT * FROM zerophp_order_storage  ORDER BY id DESC LIMIT 0,10</li></ul>
+        </div>
+        </div>
+        </div>
+        <script type="text/javascript">
+        (function(){
+            var show = false;
+            var switchShow  = document.getElementById('zerophp_console_info_switch');
+            var trace    = document.getElementById('zerophp_console_info_content');
+            switchShow.onclick = function(){
+                trace.style.display = show ?  'none' : 'block';
+                show = show ? false : true;
+            }
+        })();
+        </script></div>
+
+
+</body></html>

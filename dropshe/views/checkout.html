@@ -1,0 +1,37 @@
+<head>
+
+
+  <title>Checkout</title>
+  <script src="https://js.stripe.com/v3/"></script>
+  <input id="card-name" type="text">
+  <!-- placeholder for Elements -->
+  <div id="card-element"></div>
+  <button id="card-button" data-secret="{{.ClientSecret}}">
+    Submit Payment
+  </button>
+
+
+</head>
+
+<script>
+  var stripe = Stripe('pk_test_TJbZ48ANjDAXvyRiQnCsgAyY00OBMrsdL2');
+  var elements = stripe.elements();
+
+  var style = {
+    base: {
+      color: "#32325d",
+    }
+  };
+
+  var card = elements.create("card", { style: style });
+  card.mount("#card-element");
+
+  card.addEventListener('change', function(event) {
+    var displayError = document.getElementById('card-errors');
+    if (event.error) {
+      displayError.textContent = event.error.message;
+    } else {
+      displayError.textContent = '';
+    }
+  });
+</script>

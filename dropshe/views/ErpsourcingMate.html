@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://app.dropshe.com/sourcing -->
+<html
+  class="js sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers"
+  lang="">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>Dropshe</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="manifest" href="http://app.dropshe.com/static/home/site.webmanifest">
+  <link rel="apple-touch-icon" href="http://app.dropshe.com/static/home/icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="/static/Sourcing/normalize.css">
+  <link rel="stylesheet" href="/static/Sourcing/main.css">
+  <link rel="stylesheet" href="/static/Sourcing/style.css">
+  <meta name="theme-color" content="#fafafa">
+
+
+</head>
+
+
+
+<body>
+  <!--[if IE]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+  <!-- Add your site or application content here -->
+  <!-- Add your site or application content here -->
+  <div class="drop-header">
+
+
+    <div class="head-right">
+
+      <div class="user dropdown">
+        <a class="dropdown-hd" href="javascript:void(0);">
+
+
+          <img src="/static/Sourcing/default.jpg" class="img">
+          <span class="user-name">{{.user.Name}}</span>
+        </a>
+
+      </div>
+    </div>
+  </div>
+  <div class="drop-main">
+    <div class="drop-content">
+      <div class="wrapper sourcing-box" style="background-color: #fff;overflow: hidden;padding-bottom: 44px;">
+        <div style="float: left;width: 150px;height: 150px;"> <img style="max-width:300px;max-height: 300px" src={{.source.SourcImage}} alt=""></div>
+        <div style="float: left;margin-left: 300px;">
+
+          <ul>
+            <li>订单号码：{{.source.Ordernumber}}</li>
+            <li>店铺SKU：{{.source.Sku}}</li>
+            <li>产品名称：{{.source.Title}}</li>
+            <li>产品链接：{{.source.Link}}</li>
+            <li>目标价格：{{.source.Target_price}}$</li>
+            <li>采购数量：{{.source.Quantity}}</li>
+{{/*            <li>普货&特货：{{.source.General}}</li>*/}}
+            <li>订单创建时间：{{.source.Created_at}}</li>
+            <li>来源店铺：{{.source.Store}}</li>
+            <li>收件人：{{.source.FirstName}}  {{.source.LastName}}</li>
+            <li>地址：{{.source.Address1}}</li>
+            <li>手机号码：{{.source.Phone}}</li>
+            <li>国家：{{.source.Country}}</li>
+            <li>省份：{{.source.Province}}</li>
+            <li>城市：{{.source.City}}</li>
+            <li>邮编：{{.source.Zip}}</li>
+            <li>收件人选择时效：{{.source.ShipLine}}</li>
+            <li>店铺时效：{{.source.Estimated_Delivery}}</li>
+            <li>shopify参考售价：{{.source.SellingPrice}}</li>
+          </ul>
+          <div style="clear: both;"></div>
+          <form id="form" action="/erpsourcing/mate?sourcing_id={{.source.Id}}"  style="margin-top: 15px;" method="post">
+            <div style="overflow: hidden; margin-top: 15px;">
+              <label  style="width:65px;float: left;margin-top: 15px;margin-right: 15px;">采购价格</label>
+              <input type="text" name="price" class="form-control serach-input fl" value="" style="width: 434px">
+            </div>
+            <div style="overflow: hidden;margin-top: 15px;">
+              <label  style="width:65px; float: left;margin-top: 15px;margin-right: 15px;">采购运费</label>
+              <input type="text" name="shipprice" class="form-control serach-input fl" value="" style="width: 434px">
+            </div>
+            <div style="margin-bottom: 15px;overflow: hidden;margin-top: 15px;">
+              <label style="width:65px;float: left;margin-top: 15px;margin-right: 15px;">ErpSku</label>
+              <input type="text" name="ErpSku" class="form-control serach-input fl" value="" style="width: 434px">
+            </div>
+            <div style="overflow: hidden;">
+              <label  style="width:65px;float: left;margin-top: 15px;margin-right: 15px;">货源链接</label>
+              <input type="text" name="url" class="form-control serach-input fl" value="" style="width: 434px">
+            </div>
+            <div style="margin-bottom: 15px;overflow: hidden;margin-top: 15px;">
+              <label style="width:65px;float: left;margin-top: 15px;margin-right: 15px;">建议物流</label>
+              <input type="text" name="shippingmethod" class="form-control serach-input fl" value="" style="width: 434px">
+            </div>
+            <div class="container">
+              <input name="sex" id="General" type="radio"  value="Generalcargo" />General cargo
+              <input name="sex" id="Special" type="radio" value="Specialcargo" />Special cargo
+            </div>
+           
+            <div  style="float: left; "><button  type="submit" class="btn btn-main" style="margin: 15px;">匹配</button></div>
+            <div style="float: left;"><button action="/erpsourcing"  class="btn btn-main" style="margin: 15px;">取消</button></div>
+          </form>
+
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="pagination-modal">
+      <ul class="pagination">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+
+  <script src="/static/Sourcing/modernizr-3.7.1.min.js"></script>
+  <script src="/static/Sourcing/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+  <script src="/static/Sourcing/main.js"></script>
+  <script >
+    function getQueryStringArgs() {
+      //取得查询字符串并去掉开头的问号
+      var qs = (location.search.length > 0 ? location.search.substring(1) : ""),
+
+              //保存数据的对象
+              args = {},
+              //取得每一项
+              items = qs.length ? qs.split("&") : [],
+              item = null,
+              name = null,
+              value = null,
+              //在 for 循环中使用
+              i = 0,
+              len = items.length;
+      //逐个将每一项添加到 args 对象中
+      for(i = 0; i < len; i++) {
+        item = items[i].split("=");
+        name = decodeURIComponent(item[0]);
+        value = decodeURIComponent(item[1]);
+        if(name.length) {
+          args[name] = value;
+        }
+      }
+
+      return args;
+    }
+
+    $('#form').on('submit', function () {
+      var params = getQueryStringArgs() //获取url上面的参数
+      var formData = $("#form").serializeArray();
+      let postData = {...params }
+      formData.forEach(function (item) {
+        postData[item.name] = item.value;
+
+      });
+      $.post('/erpsourcing/mate', postData, function (data) {
+        console.log(data)
+        if(data.errno != 0){
+          // console.log(data.errmsg);
+          // window.errors(data.errmsg);
+          alert(data.errmsg);
+        }
+        if(data.errno==0){
+
+            window.href="/erpsourcing";}
+          );
+        // window.location.href = '/account/general'
+      });
+    });
+  </script>
+</body>
+
+</html>

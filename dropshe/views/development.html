@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://app.dropshe.com/hub/setting/setting_billing -->
+<html class="js sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers" lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Dropshe</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="http://app.dropshe.com/static/home/site.webmanifest">
+<link rel="apple-touch-icon" href="http://app.dropshe.com/static/home/icon.png">
+<link rel="shortcut icon" type="image/png" href="http://app.dropshe.com/static/home/favicon.ico">
+<!-- Place favicon.ico in the root directory -->
+
+<link rel="stylesheet" href="./development/normalize.css">
+<link rel="stylesheet" href="./development/main.css">
+<link rel="stylesheet" href="./development/style.css">
+<link href="./development/font-awesome.min.css" rel="stylesheet">
+
+<!-- 提示插件 -->
+<link rel="stylesheet" type="text/css" href="./development/animate.css">
+<link rel="stylesheet" href="./development/noticejs.css">
+<script type="text/javascript" async="" src="./development/p6b7wznf"></script><script src="./development/notice.js"></script>
+
+<script src="./development/modernizr-3.7.1.min.js"></script>
+<script src="./development/jquery-3.4.1.min.js"></script>
+<script src="./development/plugins.js"></script>
+<script src="./development/main.js"></script>
+<script src="./development/common.js"></script>
+
+    <!--<link rel="stylesheet/less" href="../less/style.less" />
+    <script type="text/javascript" src="../js/less.min.js"></script>-->
+    <style>
+        .StripeElement {
+            box-sizing: border-box;
+
+            height: 40px;
+
+            padding: 10px 12px;
+
+            border: 1px solid transparent;
+            border-radius: 4px;
+            background-color: white;
+
+            box-shadow: 0 1px 3px 0 #e6ebf1;
+            -webkit-transition: box-shadow 150ms ease;
+            transition: box-shadow 150ms ease;
+        }
+
+        .StripeElement--focus {
+            box-shadow: 0 1px 3px 0 #cfd7df;
+        }
+
+        .StripeElement--invalid {
+            border-color: #fa755a;
+        }
+
+        .StripeElement--webkit-autofill {
+            background-color: #fefde5 !important;
+        }
+    </style>
+    <meta name="theme-color" content="#fafafa">
+<script>
+    window.intercomSettings = {
+        app_id: "p6b7wznf",
+        name: "Aierce Zheng", // Full name
+        email: "udbmnmidtf@gmail.com", // Email address
+        created_at: "1574039860" // Signup date as a Unix timestamp
+    };
+</script><script>
+    (function(){
+        var w=window;
+        var ic = w.Intercom;
+        if(typeof ic==="function")
+        {
+            ic('reattach_activator');
+            ic('update',w.intercomSettings);
+        }
+        else {
+            var d=document;
+            var i=function(){ i.c(arguments); };
+            i.q=[];i.c=function(args){ i.q.push(args); };
+            w.Intercom=i;var l=function(){
+                var s=d.createElement('script');
+                s.type='text/javascript';
+                s.async=true;
+                s.src='https://widget.intercom.io/widget/p6b7wznf';
+                var x=d.getElementsByTagName('script')[0];
+                x.parentNode.insertBefore(s,x);
+            };
+            if(w.attachEvent){
+                w.attachEvent('onload',l);
+            } else {
+                w.addEventListener('load',l,false);
+            }
+        }
+    })();
+</script></head>
+
+
+
+<body>
+    <!--[if IE]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+    <!-- Add your site or application content here -->
+
+    <!-- Add your site or application content here -->
+
+
+    <div class="drop-main">
+      
+                    <div class="tab-content devep">
+                        The feature is under development, please so stay tuned
+                        
+                    </div>
+          
+    </div>
+
+
+<script src="./development/saved_resource"></script>
+<style>
+.devep{
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    margin-top: 22%;
+}
+</style>
+<script>
+    var stripe = Stripe('pk_live_tfYrZXn9mUgI1qczKEQOoGZ300kwweNKJJ');
+
+    var elements = stripe.elements();
+
+    // var card = elements.create('card');
+    // card.mount('#card-element');
+    // card.addEventListener('change', function (event) {
+    //     if (event.error) {
+    //         showError(event.error.message);
+    //     } else {
+    //         showError('');
+    //     }
+    // });
+    $('#apply').click(function () {
+        $('#apply').hide();
+        $('#loading_svg').show();
+        $.ajax({
+                url:'http://app.dropshe.com/hub/setting/apply_billing',
+                data:{
+                    'cardNum':$('#cardNum').val(),   //卡号
+                    'month':$('#month').val(),   //月份
+                    'day':$('#day').val(),   //日期
+                    'cvn':$('#cvn').val()   //cvn
+                },
+                success:function(res){
+                    $('#apply').show();
+                    $('#loading_svg').hide();
+                    res = JSON.parse(res);
+                    if(res['status'] == 1){
+                        //success
+                        location.href="/accout/billing";
+                        return;
+                    }
+                    showError(res['msg']);
+                },
+                error:function(res){
+                    console.log(res);
+                    $('#apply').show();
+                    $('#loading_svg').hide();
+                }
+            })
+        
+        // stripe.createToken(card).then(function (result) {
+        //     if (result.error) {
+        //         $('#main').removeClass('load-indicator').removeClass('loading');
+        //         var errorElement = document.getElementById('card-errors');
+        //         errorElement.textContent = result.error.message;
+        //         $('#apply').show();
+        //         $('#loading_svg').hide();
+        //     }
+        //     var id = result.token.id;
+            
+           
+        // })
+    })
+
+    function showError(error) {
+        var displayError = document.getElementById('card-errors');
+        displayError.textContent = error;
+    }
+</script><iframe frameborder="0" allowtransparency="true" scrolling="no" name="__privateStripeController1" allowpaymentrequest="true" src="./development/controller-40ee2e35c0e13e2e072320469122a918.html" aria-hidden="true" tabindex="-1" style="border: none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; visibility: hidden !important; position: fixed !important; height: 1px !important; pointer-events: none !important; user-select: none !important;"></iframe>
+
+<iframe frameborder="0" allowtransparency="true" scrolling="no" name="__privateStripeMetricsController0" allowpaymentrequest="true" src="./development/m-outer-a0f6c1465b8d9aab778cf2913d1d3c86.html" aria-hidden="true" tabindex="-1" style="border: none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; visibility: hidden !important; position: fixed !important; height: 1px !important; pointer-events: none !important; user-select: none !important;"></iframe></body></html>
