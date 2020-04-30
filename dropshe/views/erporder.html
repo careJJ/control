@@ -46,7 +46,7 @@
         </a>
     </div>
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul> -->
+
 
 </div>
 <div class="adm-content" style="overflow: scroll;">
@@ -56,49 +56,52 @@
             <div class="menu-item">
                 <div class="item-header">
                     <i class="icon icon-tasks"></i>
-                    <a href="javascript:;">采购管理</a>
+                    <a href="javascript:;">订单列表</a>
                 </div>
                 <ul class="item-list adm-hide" style="display: none;">
                     <li>
-                        <a href="http://d.dropshe.com/index.php/sourcing/admin-index/index/" target="adm-frame">采购列表</a>
+                        <a href="/erporder" target="adm-frame">待支付列表</a>
                     </li>
                     <li>
-                        <a href="http://d.dropshe.com/index.php/sourcing/admin-add/index/" target="adm-frame">添加采购</a>
+                        <a href="/erporder/status3" target="adm-frame">待采购列表</a>
                     </li>
+{{/*                    <li>*/}}
+{{/*                        <a href="http://d.dropshe.com/index.php/sourcing/admin-add/index/" target="adm-frame">添加采购</a>*/}}
+{{/*                    </li>*/}}
                 </ul>
             </div>
             <div class="menu-item">
                 <div class="item-header">
                     <i class="icon icon-server"></i>
-                    <a href="javascript:;">系统功能</a>
+                    <a href="javascript:;">采购单</a>
                 </div>
                 <ul class="item-list adm-hide" style="display: none;">
                     <li>
-                        <a href="http://d.dropshe.com/index.php/backend/admin-apps/index/status/1" target="adm-frame">应用管理</a>
+                        <a href="/erpsourcing" target="adm-frame">采购单列表</a>
                     </li>
+{{/*                    <li>*/}}
+{{/*                        <a href="http://d.dropshe.com/index.php/backend/admin-block/setting/" target="adm-frame">系统设置</a>*/}}
+{{/*                    </li>*/}}
+{{/*                    <li>*/}}
+{{/*                        <a href="http://d.dropshe.com/index.php/backend/admin-block/index/" target="adm-frame">配置管理</a>*/}}
+{{/*                    </li>*/}}
+{{/*                    <li>*/}}
+{{/*                        <a href="http://d.dropshe.com/index.php/backend/admin-menu/index/" target="adm-frame">导航管理</a>*/}}
+{{/*                    </li>*/}}
+{{/*                    <li>*/}}
+{{/*                        <a href="http://d.dropshe.com/index.php/backend/admin-files/index/" target="adm-frame">附件管理</a>*/}}
+{{/*                    </li>*/}}
+{{/*                    <li>*/}}
+{{/*                        <a href="http://d.dropshe.com/index.php/backend/admin-user/index/" target="adm-frame">用户管理</a>*/}}
+{{/*                    </li>*/}}
+{{/*                    <li>*/}}
+{{/*                        <a href="http://d.dropshe.com/index.php/backend/admin-group/index/" target="adm-frame">角色管理</a>*/}}
+{{/*                    </li>*/}}
+{{/*                    <li>*/}}
+{{/*                        <a href="http://d.dropshe.com/index.php/backend/admin-firewall/index/" target="adm-frame">拦截管理</a>*/}}
+{{/*                    </li>*/}}
                     <li>
-                        <a href="http://d.dropshe.com/index.php/backend/admin-block/setting/" target="adm-frame">系统设置</a>
-                    </li>
-                    <li>
-                        <a href="http://d.dropshe.com/index.php/backend/admin-block/index/" target="adm-frame">配置管理</a>
-                    </li>
-                    <li>
-                        <a href="http://d.dropshe.com/index.php/backend/admin-menu/index/" target="adm-frame">导航管理</a>
-                    </li>
-                    <li>
-                        <a href="http://d.dropshe.com/index.php/backend/admin-files/index/" target="adm-frame">附件管理</a>
-                    </li>
-                    <li>
-                        <a href="http://d.dropshe.com/index.php/backend/admin-user/index/" target="adm-frame">用户管理</a>
-                    </li>
-                    <li>
-                        <a href="http://d.dropshe.com/index.php/backend/admin-group/index/" target="adm-frame">角色管理</a>
-                    </li>
-                    <li>
-                        <a href="http://d.dropshe.com/index.php/backend/admin-firewall/index/" target="adm-frame">拦截管理</a>
-                    </li>
-                    <li>
-                        <a href="http://d.dropshe.com/index.php/backend/admin-logs/index/" target="adm-frame">操作日志</a>
+                        <a href="/erpsourcing/status2" target="adm-frame">已匹配列表</a>
                     </li>
                 </ul>
             </div>
@@ -107,22 +110,22 @@
     <div class="adm-right" style="min-height: 804px;">
         <div class="adm-breadcrumb">
             当前位置
-            <span class="breadcrumb_pos breadcrumb_pos_m">订单管理</span>
-            <span class="breadcrumb_pos breadcrumb_pos_c">代发订单</span>
+            <span class="breadcrumb_pos breadcrumb_pos_m">订单列表</span>
+            <span class="breadcrumb_pos breadcrumb_pos_c">采购单</span>
         </div>
         <div class="adm-right-main" style="overflow: auto;">
             <div class="container-fluid adm-container">
                 <div class="adm-box">
 
-                    <ul class="adm-btns btns-top">
-                        <h3>代发订单
-                            <!-- <button class="btn btn-link" type="button" onclick="alert('待开发')"><i class="icon icon-cloud"></i>同步Shopify订单</button></h3> -->
-                            <li class="pull-right">
-                                <a href="javascript:;" title="在新窗口打卡" onclick="window.open(window.location.href);">
-                                    <i class="icon icon-window-alt"></i>
-                                </a>
-                            </li>
-                        </h3></ul>
+{{/*                    <ul class="adm-btns btns-top">*/}}
+{{/*                        <h3>代发订单*/}}
+{{/*                            <!-- <button class="btn btn-link" type="button" onclick="alert('待开发')"><i class="icon icon-cloud"></i>同步Shopify订单</button></h3> -->*/}}
+{{/*                            <li class="pull-right">*/}}
+{{/*                                <a href="javascript:;" title="在新窗口打卡" onclick="window.open(window.location.href);">*/}}
+{{/*                                    <i class="icon icon-window-alt"></i>*/}}
+{{/*                                </a>*/}}
+{{/*                            </li>*/}}
+{{/*                        </h3></ul>*/}}
                     <div class="adm-search">
                         <form class="form-inline adm-search-form adm-datetimepicker submit_and_clear_page" method="post" action="/erporder/search">
                             <input type="hidden" name="token" value="">
@@ -161,7 +164,12 @@
                                     <span>title:{{.Title}}</span><br>
                                     <span>SKU：{{.Sku}}</span><br>
                                     <span>erpsku:{{.Erpsku}}</span><br>
-
+                                    {{if eq .Status 2}}
+                                    <span>订单状态:等待支付</span><br>
+                                    {{end}}
+                                    {{if eq .Status 3}}
+                                        <span>订单状态:等待采购</span><br>
+                                    {{end}}
                                 </td>
                                 <td>
                                     <span style="width: 80px;margin-right: 10px;display: inline-block;"> <img src={{.SourcImage}}></span><br>
@@ -400,41 +408,12 @@
                     location.href = url.replace(/[/]page[/]\d+[?](.+)$/,'');
                 })
             </script>
-            <div class="zero-debug"><div id="zerophp_console_info" style="letter-spacing: -.0em;position: fixed;bottom:0;right:0;font-size:14px;width:100%;z-index: 999999;color: #000;text-align:left;font-family:&#39;微软雅黑&#39;;">
-                    <div style="height: 26px; bottom: 0px; color: rgb(0, 0, 0); line-height: 26px; display: block; width: 100%; border-bottom: 3px rgb(255, 102, 0) solid;">
-                        <div id="zerophp_console_info_switch" style="cursor: pointer;background:#232323;color:#FFF;padding:0 6px;height:27px; line-height:27px;font-size:14px;width: 120px;margin:0 auto;text-align: center;">ZeroPHP控制台</div>
-                    </div>
-                    <div id="zerophp_console_info_content" style="display: none;background:white;margin:0;height: 390px;">
-                        <div style="height:30px;padding: 0 12px 0;border-bottom:1px solid #ececec;border-top:1px solid #ececec;font-size:16px">
-                            <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">ZeroPHP运行信息</span>
-                        </div>
-                        <div style="overflow:auto;height:352px;padding: 0; line-height: 24px">
-                            <ul style="padding: 0; margin:0;margin-bottom:15px;">
 
-                                <li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">
-                                    <b>运行信息</b>( 消耗时间 <font color="red">0.0195 </font>秒 )( 消耗内存 <font color="red">1,072.01kb </font> )( 数据库查询 <font color="red">3 </font>次 )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px;font-weight:bold;"><b>包含类库</b></li><li style="font-size:14px;padding:0 0px 0 50px;"><span style="padding-left:10px;">【/home/wwwroot/drop/zero/Base.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/Controller.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/controller/commonBase.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/controller/backendBase.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/order/controller/admin/defaultBase.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/order/controller/admin/orderBase.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/order/controller/admin/dropshipping.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/library/Cookie.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/library/Session.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/library/Cache/Cache.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/library/Cache/CacheFile.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/Model.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/model/CommonModel.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/model/FrontendModel.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/order/model/DropshippingModel.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/Service.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/service/BackendService.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/common/controller/attachment.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/library/Helper.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/order/service/DropshippingService.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/products/service/ProductsService.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/apps/customer/service/CustomerService.php】</span><span style="padding-left:10px;">【/home/wwwroot/drop/zero/View.php】</span></li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px;font-weight:bold;"><b>SQL语句</b></li><li style="font-size:14px;padding:0 0px 0 60px;">1【运行时间】 0.0004 秒 【SQL语句】 SELECT count(1) AS cnt FROM zerophp_order_dropshipping</li><li style="font-size:14px;padding:0 0px 0 60px;">2【运行时间】 0.0006 秒 【SQL语句】 SELECT dropshipping.*, customer.first_name, customer.last_name FROM zerophp_order_dropshipping AS dropshipping LEFT JOIN zerophp_customer_custom AS customer ON dropshipping.custome_id=customer.id WHERE 1=1 ORDER BY id DESC LIMIT 0,10</li><li style="font-size:14px;padding:0 0px 0 60px;">3【运行时间】 0.001 秒 【SQL语句】 SELECT * FROM zerophp_order_search_product WHERE order_id IN (196,195,194,193,192,191,190,189,188,187)</li></ul>
-                        </div>
-                    </div>
-                </div>
-                <script type="text/javascript">
-                    (function(){
-                        var show = false;
-                        var switchShow  = document.getElementById('zerophp_console_info_switch');
-                        var trace    = document.getElementById('zerophp_console_info_content');
-                        switchShow.onclick = function(){
-                            trace.style.display = show ?  'none' : 'block';
-                            show = show ? false : true;
-                        }
-                    })();
-                </script></div>
         </div>
 
     </div>
 </div>
-<!-- <div class="adm-files">
-    <div class="adm-mask"></div>
-    <iframe src="/index.php/backend/admin-files/filelist/" name="adm-files-frame" id="adm-files-frame" class="adm-files-frame"></iframe>
-</div> -->
+
 <div class="modal fade adm-modal" tabindex="-1" role="dialog" id="adm-modal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

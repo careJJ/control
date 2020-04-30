@@ -724,13 +724,12 @@ func (this *UserController) FindPassword() {
 		if err != nil {
 			beego.Error(err)
 		}
-
 	}
-
 }
 
 //退出登录
 func (this *UserController) Logout() {
+	beego.Alert("logout")
 	this.DelSession("id")
 	//跳转页面
 	this.Redirect("/login", 302)

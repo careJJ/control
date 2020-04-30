@@ -1096,14 +1096,20 @@ type CheckoutData struct {
 
 func (this *CoreController) HandlePay() {
 	beego.Alert("HandlePay")
+	resp := make(map[string]interface{})
+	defer RespFunc(&this.Controller, resp)
 	sourceidlist := this.GetStrings("sourceidList[]")
+	if len(sourceidlist)==0{
+		resp["errno"]=4
+		resp["errmsg"]="Please select the order to be paid"
+		return
+	}
 	beego.Alert(sourceidlist)
 	o := orm.NewOrm()
 	var order models.Order
 	var prices float64
 	var finalprice int64
-	resp := make(map[string]interface{})
-	defer RespFunc(&this.Controller, resp)
+	var showprice float32
 	for i := 0; i < len(sourceidlist); i++ {
 		o.QueryTable("Order").Filter("SourceId", sourceidlist[i]).One(&order)
 		if order.TotalPrice == 0 {
@@ -1121,8 +1127,10 @@ func (this *CoreController) HandlePay() {
 		//得到选择订单的价格
 		beego.Alert(prices)
 		finalprice = int64(prices * 100)
-
+		showprice=float32(prices*100)/100
 	}
+	resp["payMomeny"]=showprice
+
 	resp["errno"]=10
 	pi := util.StripeTest(finalprice)
 	beego.Alert(pi.ClientSecret)
@@ -1132,7 +1140,8 @@ func (this *CoreController) HandlePay() {
 
 func (this *CoreController) Pay() {
 	sourceidlist := this.GetStrings("sourceidList[]")
-	beego.Alert(sourceidlist)
+	status:=this.GetString("status")
+	beego.Alert(sourceidlist,status)
 	resp := make(map[string]interface{})
 	defer RespFunc(&this.Controller, resp)
 	o := orm.NewOrm()

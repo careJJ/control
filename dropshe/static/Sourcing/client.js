@@ -21,6 +21,7 @@ function Check() {
     type:"post",
     contentType:'application/x-www-form-urlencoded',
     success:function(data){
+      // 传sourceidList给后台获取clientSecret
       if( data.errno!=10){
         alert(data.errmsg)
         location.reload();
@@ -29,7 +30,11 @@ function Check() {
       $('#payment-form').css(
         'display','block'
       )
-      var elements = stripe.elements();
+      var elements = stripe.elements(
+          {        //设置默认显示语种   en 英文 cn 中文 auto 自动获取语种
+            locale: 'en'
+          }
+      );
       var style = {
         base: {
           color: "#32325d",
@@ -46,12 +51,21 @@ function Check() {
           iconColor: "#fa755a"
         }
       };
-
       var card = elements.create("card", { style: style });
       // Stripe injects an iframe into the DOM
       card.mount("#card-element");
 
+      $('#button-text').html('pay  $ '+data.payMomeny)
+      card.addEventListener('change', ({error}) => {
+        const displayError = document.getElementById('card-errors');
+        if (error) {
+          displayError.textContent = error.message;
+        } else {
+          displayError.textContent = '';
+        }
+      });
       card.on("change", function (event) {
+
         // Disable the Pay button if there are no card details in the Element
         document.querySelector("button").disabled = event.empty;
         document.querySelector("#card-errors").textContent = event.error ? event.error.message : "";
@@ -64,6 +78,7 @@ function Check() {
           // Complete payment when the submit button is clicked
           payWithCard(stripe, card, data.clientSecret,sourceidList);
         });
+
       },2000)
     }
 
@@ -85,9 +100,13 @@ var payWithCard = function(stripe, card, clientSecret,sourceidList) {
     })
     .then(function(result) {
       if (result.error) {
+        //支付失败
+       alert('Payment failed, please enter the correct information')
+        location.reload();
         // Show error to your customer
         showError(result.error.message);
       } else {
+        //支付成功
         // The payment succeeded!
         console.log(sourceidList,'sourceidList')
 

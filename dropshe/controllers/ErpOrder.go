@@ -237,6 +237,56 @@ func (this *ErpController) HandleErpEdit() {
 	beego.Alert("order insert finish")
 
 }
+//展示已经匹配的采购单
+func (this *ErpController)ShowErpSourcestatus2(){
+	//获取订单
+	//name := this.GetSession("name")
+	//if name == nil {
+	//	beego.Error("用户未登录")
+	//	this.TplName = "erplogin.html"
+	//	return
+	//}
+	//获取所有订单  直接查用户下单的采购需求表 Sourcing 表
+	o := orm.NewOrm()
+	var erpsource []models.SourcingDemand
+	//o.Read(&erpsource)
+	//按创建顺序排列？
+	o.QueryTable("SourcingDemand").Filter("Status", 2).OrderBy("-Created_at").All(&erpsource)
+	count, err := o.QueryTable("SourcingDemand").Count()
+
+	//beego.Alert(erpsource)
+	this.Data["source"] = erpsource
+	pageSize := 200
+	pageCount := int(math.Ceil(float64(count) / float64(pageSize)))
+	//获取当前页码
+	pageIndex, err := this.GetInt("pageIndex")
+	if err != nil {
+		beego.Error(err)
+	}
+	pages := PageEdit(pageCount, pageIndex)
+	this.Data["pages"] = pages
+	this.Data["pageCount"] = pageCount
+	//获取上一页，下一页的值
+	var prePage, nextPage int
+	//设置范围
+	if pageIndex-1 <= 0 {
+		prePage = 1
+	} else {
+		prePage = pageIndex - 1
+	}
+	if pageIndex+1 >= pageCount {
+		nextPage = pageCount
+	} else {
+		nextPage = pageIndex + 1
+	}
+	this.Data["prePage"] = prePage
+	this.Data["nextPage"] = nextPage
+
+	//直接传递整个Sourcing
+	this.Data["source"] = erpsource
+	this.TplName = "Erpsourcing.html"
+}
+
 
 //管理已审核订单
 func (this *ErpController) ShowErpOrder_status2() {
@@ -251,7 +301,7 @@ func (this *ErpController) ShowErpOrder_status2() {
 	//o.Read(&user,"Id")
 	//this.Data["user"]=user
 	var order []models.Order
-	o.QueryTable("Order").OrderBy("-Created_at").All(&order)
+	o.QueryTable("Order").Filter("Status",2).OrderBy("-Created_at").All(&order)
 	count, err := o.QueryTable("Order").Count()
 
 	//beego.Alert(erpsource)
@@ -529,7 +579,6 @@ func (this *ErpController) ShowErpOrderEdit() {
 	o.Read(&order, "Id")
 
 	this.Data["order"] = order
-
 	this.TplName = "ErpOrderEdit.html"
 }
 

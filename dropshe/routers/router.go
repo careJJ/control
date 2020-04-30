@@ -121,6 +121,8 @@ func init() {
 	//ShowErpSourceList
 	beego.Router("/erpsourcing", &controllers.ErpController{}, "get:ShowErpSource")
 
+	beego.Router("/erpsourcing/status2", &controllers.ErpController{}, "get:ShowErpSourcestatus2")
+
 	beego.Router("/erpsourcing/searchbysku", &controllers.ErpController{}, "get:SearchBySku")
 
 	beego.Router("/erpsourcing/searchbystore", &controllers.ErpController{}, "get:SearchByStore")
@@ -128,12 +130,13 @@ func init() {
 	beego.Router("/erpsourcing/edit", &controllers.ErpController{}, "get:ShowErpAudit")
 
 	beego.Router("/erpsourcing/mate", &controllers.ErpController{}, "post:HandleErpEdit")
-//展示已经匹配好的订单 默认
+
+	//展示已经匹配好的订单 默认
 	beego.Router("/erporder", &controllers.ErpController{}, "get:ShowErpOrder_status2")
 	//展示已经支付完待处理的订单
 	beego.Router("/erporder/status3", &controllers.ErpController{}, "get:ShowErpOrder_status3")
 
-
+	//
 	//修改已经匹配好的订单
 	beego.Router("/erporder/edit", &controllers.ErpController{}, "post:HandleOrder")
 
